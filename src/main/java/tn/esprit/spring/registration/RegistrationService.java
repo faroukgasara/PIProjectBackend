@@ -42,7 +42,7 @@ public class RegistrationService {
                 )
         );
 
-        String link = "http://localhost:8089/SpringMVC/registration/confirm?token="+token;
+        String link = "http://localhost:8089/WomenEmpowerment/registration/confirm?token="+token;
         emailSender.send(request.getEmail(), buildEmail(request.getFirstName(),link));
         return token;
     }
