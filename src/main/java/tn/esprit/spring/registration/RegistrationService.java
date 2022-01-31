@@ -25,15 +25,15 @@ public class RegistrationService {
     private final EmailSender emailSender;
 
     public String register(Expert request) {
-        boolean isValidEmail = emailValidator.
-                test(request.getEmail());
+    	
+        boolean isValidEmail = emailValidator.test(request.getEmail());
+        String token ="";
 
         if (!isValidEmail) {
             throw new IllegalStateException("email not valid");
         }
-        String token ="";
         
-        if(request.getAppUserRole().name()=="PSY"){
+        if(request.getAppUserRole().name()=="EXPERT"){
         	 token = appUserService.signUpUser(request);
 		}else{
 			User u = new User();
@@ -47,10 +47,7 @@ public class RegistrationService {
 	                        request.getAppUserRole()
 	                )
 	        );
-			
 		}
-
-        
 
         String link = "http://localhost:8089/WomenEmpowerment/registration/confirm?token="+token;
         emailSender.send(request.getEmail(), buildEmail(request.getFirstName(),link));

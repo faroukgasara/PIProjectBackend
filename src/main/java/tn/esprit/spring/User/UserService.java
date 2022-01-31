@@ -5,7 +5,7 @@ import tn.esprit.spring.entity.Expert;
 import tn.esprit.spring.registration.EmailValidator;
 import tn.esprit.spring.registration.token.ConfirmationToken;
 import tn.esprit.spring.registration.token.ConfirmationTokenService;
-import tn.esprit.spring.repository.ExpertRepository;
+import tn.esprit.spring.repository.SubscriberRepository;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,11 +27,10 @@ import java.util.UUID;
 @AllArgsConstructor
 public class UserService implements UserDetailsService {
 
-    private final static String USER_NOT_FOUND_MSG =
-            "user with email %s not found";
+    private final static String USER_NOT_FOUND_MSG = "user with email %s not found";
 
     private final UserRepository appUserRepository;
-    private final ExpertRepository expertRepository;
+    private final SubscriberRepository expertRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
 
@@ -49,6 +48,7 @@ public class UserService implements UserDetailsService {
 		List<SimpleGrantedAuthority> authorities = getUserAuthority(user.getAppUserRole().name());
 		return new org.springframework.security.core.userdetails.User(user.getUsername(),user.getPassword(), authorities);
 	}
+	
 	
 	private List<SimpleGrantedAuthority> getUserAuthority(String userRoles) {
 		Set<SimpleGrantedAuthority> roles = new HashSet<SimpleGrantedAuthority>();
@@ -105,6 +105,7 @@ public class UserService implements UserDetailsService {
         confirmationTokenService.saveConfirmationToken(confirmationToken);
         return token;
     }
+    
     public int enableAppUser(String email) {
         return appUserRepository.enableAppUser(email);
     }

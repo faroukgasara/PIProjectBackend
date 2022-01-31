@@ -20,12 +20,10 @@ import tn.esprit.spring.User.UserRole;
 @Entity
 public class Expert extends User{
 	
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	private String specialty;
+	
 	public Expert(String firstName, String lastName, String email, String password, UserRole appUserRole,
 			String specialty) {
 		super(firstName, lastName, email, password, appUserRole);

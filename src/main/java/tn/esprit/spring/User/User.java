@@ -1,12 +1,17 @@
 package tn.esprit.spring.User;
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tn.esprit.spring.entity.Subscriber;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -18,6 +23,7 @@ import java.util.Collections;
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User implements UserDetails,Serializable {
@@ -42,6 +48,10 @@ public class User implements UserDetails,Serializable {
     private UserRole appUserRole;
     private Boolean locked = false;
     private Boolean enabled = false;
+    
+    @JsonIgnore
+    @OneToOne
+    private Subscriber subscriber;
 
     public User(String firstName,
                    String lastName,
@@ -54,6 +64,21 @@ public class User implements UserDetails,Serializable {
         this.password = password;
         this.appUserRole = appUserRole;
     }
+    
+    
+    public User(Long id,String firstName,
+            String lastName,
+            String email,
+            String password,
+            UserRole appUserRole,Subscriber subscriber) {
+ this.id = id;   	
+ this.firstName = firstName;
+ this.lastName = lastName;
+ this.email = email;
+ this.password = password;
+ this.appUserRole = appUserRole;
+ this.subscriber = subscriber;
+}
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

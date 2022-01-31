@@ -3,9 +3,9 @@ package tn.esprit.spring.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import tn.esprit.spring.entity.Expert;
+import tn.esprit.spring.entity.Subscriber;
 
 @Repository
-public interface ExpertRepository extends JpaRepository<Expert, Long>{
+public interface SubscriberRepository extends JpaRepository<Subscriber, Long>{
 
 }

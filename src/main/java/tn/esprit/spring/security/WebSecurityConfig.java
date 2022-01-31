@@ -29,6 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		//http.authorizeRequests().antMatchers("/SpringMVC/login/**").permitAll();
 		//http.authorizeRequests().antMatchers(HttpMethod.GET,"/user/users/**").hasAnyAuthority("User");
 		http.authorizeRequests().antMatchers("/user/**").hasAnyAuthority("ADMIN");
+		http.authorizeRequests().antMatchers("/subscriber/**").hasAnyAuthority("ADMIN");
 		http.addFilter(new CustomAuthentificationFilter(authenticationManagerBean()));
 		http.addFilterBefore(new CustomAuthorizationFilter(),UsernamePasswordAuthenticationFilter.class);
 		http
