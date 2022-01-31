@@ -1,8 +1,11 @@
 package tn.esprit.spring.User;
 
 import lombok.AllArgsConstructor;
+import tn.esprit.spring.entity.Expert;
+import tn.esprit.spring.registration.EmailValidator;
 import tn.esprit.spring.registration.token.ConfirmationToken;
 import tn.esprit.spring.registration.token.ConfirmationTokenService;
+import tn.esprit.spring.repository.ExpertRepository;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,6 +31,7 @@ public class UserService implements UserDetailsService {
             "user with email %s not found";
 
     private final UserRepository appUserRepository;
+    private final ExpertRepository expertRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
 
@@ -53,6 +57,8 @@ public class UserService implements UserDetailsService {
 		List<SimpleGrantedAuthority> grantedAuthorities = new ArrayList<>(roles);
 		return grantedAuthorities;
 	}
+	
+   
 	
 
     public String signUpUser(User appUser) {

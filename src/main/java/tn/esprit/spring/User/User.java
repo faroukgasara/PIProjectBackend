@@ -19,10 +19,11 @@ import java.util.Collections;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User implements UserDetails,Serializable {
 
-
-    @SequenceGenerator(
+	private static final long serialVersionUID = 1L;
+	@SequenceGenerator(
             name = "user_sequence",
             sequenceName = "user_sequence",
             allocationSize = 1
