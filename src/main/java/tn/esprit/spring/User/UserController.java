@@ -19,7 +19,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.swagger.annotations.Api;
 import lombok.Data;
-import tn.esprit.spring.entity.Expert;
 
 @RestController
 @Api(tags = "User management")
@@ -50,7 +49,7 @@ public class UserController {
 	//http://localhost:8089/WomenEmpowerment/user/updateUser
 	@PutMapping("/updateUser")
 	@ResponseBody
-	public void updateUser(@RequestBody Expert user) {
+	public void updateUser(@RequestBody User user) {
 	userService.updateUser(user);
 	}
 	

@@ -2,7 +2,6 @@ package tn.esprit.spring.registration;
 
 import lombok.AllArgsConstructor;
 import tn.esprit.spring.User.User;
-import tn.esprit.spring.entity.Expert;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +15,7 @@ public class RegistrationController {
 
     // http://localhost:8089/WomenEmpowerment/registration
     @PostMapping
-    public String register(@RequestBody Expert request) {
+    public String register(@RequestBody User request) {
     	
         return registrationService.register(request);
     }

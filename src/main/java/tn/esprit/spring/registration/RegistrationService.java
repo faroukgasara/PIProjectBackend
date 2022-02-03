@@ -5,7 +5,6 @@ package tn.esprit.spring.registration;
 import lombok.AllArgsConstructor;
 import tn.esprit.spring.User.User;
 import tn.esprit.spring.User.UserService;
-import tn.esprit.spring.entity.Expert;
 import tn.esprit.spring.registration.email.EmailSender;
 import tn.esprit.spring.registration.token.ConfirmationToken;
 import tn.esprit.spring.registration.token.ConfirmationTokenService;
@@ -24,7 +23,7 @@ public class RegistrationService {
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailSender emailSender;
 
-    public String register(Expert request) {
+    public String register(User request) {
     	
         boolean isValidEmail = emailValidator.test(request.getEmail());
         String token ="";
@@ -32,12 +31,8 @@ public class RegistrationService {
         if (!isValidEmail) {
             throw new IllegalStateException("email not valid");
         }
-        
-        if(request.getAppUserRole().name()=="EXPERT"){
-        	 token = appUserService.signUpUser(request);
-		}else{
-			User u = new User();
-			u = request;
+
+		
 			 token = appUserService.signUpUser(
 	                new User(
 	                        request.getFirstName(),
@@ -47,7 +42,7 @@ public class RegistrationService {
 	                        request.getAppUserRole()
 	                )
 	        );
-		}
+		
 
         String link = "http://localhost:8089/WomenEmpowerment/registration/confirm?token="+token;
         emailSender.send(request.getEmail(), buildEmail(request.getFirstName(),link));

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.User.User;
 import tn.esprit.spring.User.UserRepository;
-import tn.esprit.spring.entity.Expert;
 import tn.esprit.spring.entity.Subscriber;
 import tn.esprit.spring.repository.SubscriberRepository;
 

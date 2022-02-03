@@ -1,7 +1,6 @@
 package tn.esprit.spring.User;
 
 import lombok.AllArgsConstructor;
-import tn.esprit.spring.entity.Expert;
 import tn.esprit.spring.registration.EmailValidator;
 import tn.esprit.spring.registration.token.ConfirmationToken;
 import tn.esprit.spring.registration.token.ConfirmationTokenService;
