@@ -7,8 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,24 +20,22 @@ import tn.esprit.spring.User.User;
 
 @Getter
 @Setter
-@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Subscriber implements Serializable{
-	
+public class Reporting implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String picture_qr ;
-	private LocalDateTime expiresAt;
-	private LocalDateTime createdAt;
+	private String reported_by;
 	
 	@JsonIgnore
-	@OneToOne(mappedBy="subscriber")
-	private User user;
+	@ManyToOne
+	User user;
+	
+	private String reason ;
 
 }

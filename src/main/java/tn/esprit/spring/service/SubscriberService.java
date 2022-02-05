@@ -35,11 +35,23 @@ public class SubscriberService implements ISubscriberService{
 	
 
 	@Override
-	public void unSubscribe(String email, Long id) {
+	public void unSubscribe(String email) {
 		User u =  userRepository.findByEmail(email).orElse(null);
-		myRepository.deleteById(id);
+		myRepository.deleteById(u.getSubscriber().getId());
 		u.setSubscriber(null);
 		userRepository.save(u);
+		
+	}
+
+
+	@Override
+	public void extensionSubscribe(String email) {
+		User u =  userRepository.findByEmail(email).orElse(null);
+		Subscriber s =u.getSubscriber();
+		s.setCreatedAt(LocalDateTime.now());
+		s.setExpiresAt(s.getExpiresAt().plusMonths(1));
+		myRepository.save(s);
+		
 		
 	}
 

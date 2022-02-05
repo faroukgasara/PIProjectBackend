@@ -1,6 +1,8 @@
 package tn.esprit.spring.registration.token;
 
 import lombok.AllArgsConstructor;
+
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -22,5 +24,9 @@ public class ConfirmationTokenService {
 
     public int setConfirmedAt(String token) {
         return confirmationTokenRepository.updateConfirmedAt(token, LocalDateTime.now());
+    }
+   
+    public void deleteAllTokens(){
+    	confirmationTokenRepository.deleteAll();
     }
 }

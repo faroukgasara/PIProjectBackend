@@ -33,15 +33,7 @@ public class RegistrationService {
         }
 
 		
-			 token = appUserService.signUpUser(
-	                new User(
-	                        request.getFirstName(),
-	                        request.getLastName(),
-	                        request.getEmail(),
-	                        request.getPassword(),
-	                        request.getAppUserRole()
-	                )
-	        );
+			 token = appUserService.signUpUser(request);
 		
 
         String link = "http://localhost:8089/WomenEmpowerment/registration/confirm?token="+token;

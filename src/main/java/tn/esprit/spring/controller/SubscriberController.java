@@ -2,7 +2,9 @@ package tn.esprit.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,10 +31,19 @@ public class SubscriberController {
 	}
 	
 	// http://localhost:8089/WomenEmpowerment/subscriber/unSubscribe/
-	@PostMapping("/unSubscribe/{email}/{id}")
+	@DeleteMapping("/unSubscribe/{email}")
 	@ResponseBody
-	public void unSubscribe(@PathVariable("email") String email,@PathVariable("id") Long id){
-		subscriberService.unSubscribe(email,id);
+	public void unSubscribe(@PathVariable("email") String email){
+		subscriberService.unSubscribe(email);
 	}
+	
+	// http://localhost:8089/WomenEmpowerment/subscriber/extensionSubscribe/
+	@PutMapping("/extensionSubscribe/{email}")
+	@ResponseBody
+	public void extensionSubscribe(@PathVariable("email") String email){
+		subscriberService.extensionSubscribe(email);
+	}
+	
+	
 
 }
