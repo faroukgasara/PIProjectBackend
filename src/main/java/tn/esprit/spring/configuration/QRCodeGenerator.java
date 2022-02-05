@@ -26,7 +26,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 
 import lombok.AllArgsConstructor;
-import tn.esprit.spring.controller.IQRCodeGenerator;
+import tn.esprit.spring.Controller.IQRCodeGenerator;
 import tn.esprit.spring.registration.email.EmailService;
 @Service
 @AllArgsConstructor

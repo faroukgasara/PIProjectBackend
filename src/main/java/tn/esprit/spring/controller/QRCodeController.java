@@ -1,4 +1,4 @@
-package tn.esprit.spring.controller;
+package tn.esprit.spring.Controller;
 
 import java.io.File;
 import java.io.IOException;
