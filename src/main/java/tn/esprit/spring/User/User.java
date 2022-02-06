@@ -5,8 +5,12 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tn.esprit.spring.entity.Chat;
+import tn.esprit.spring.entity.Offer;
+import tn.esprit.spring.entity.Publication;
 import tn.esprit.spring.entity.Reporting;
 import tn.esprit.spring.entity.Subscriber;
+import tn.esprit.spring.entity.Training;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,7 +31,6 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 public class User implements UserDetails,Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -60,9 +63,24 @@ public class User implements UserDetails,Serializable {
     private String availability ;
     private int age ;
     
+    @ManyToMany(mappedBy="user", cascade = CascadeType.ALL)
+    private Set<Offer> offers;
+    
+    @JsonIgnore
+    @ManyToMany(mappedBy="users", cascade = CascadeType.ALL)
+    private Set<Chat> chat;
+    
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="users")
+    private Set<Publication> publications;
+    
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
     private Set<Reporting> reporting;
+    
+    @JsonIgnore
+    @ManyToMany(mappedBy="users", cascade = CascadeType.ALL)
+    private Set<Training> trainings;
     
     @JsonIgnore
     @OneToOne
