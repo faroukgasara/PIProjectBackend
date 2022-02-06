@@ -16,25 +16,28 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Commentaire implements Serializable{
-
+public class CommentairePub implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String commentaire;
+
+	private String comment ; 
 	private String description;
 	private String type;
 	private String emojis;
-	private Long like;
+	private Long likes;
 	private Long dislike;
+	
 	
 	@JsonIgnore
 	@ManyToOne
 	Publication publications;
 	
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="commentaires")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="commentairesPub")
     private Set<MotsInterdit> motsInterdits;
+
 }

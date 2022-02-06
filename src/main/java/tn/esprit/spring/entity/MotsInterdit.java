@@ -29,5 +29,5 @@ public class MotsInterdit implements Serializable{
 	
 	@JsonIgnore
 	@ManyToOne
-	Commentaire commentaires;
+	CommentairePub commentairesPub;
 }

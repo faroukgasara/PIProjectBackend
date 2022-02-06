@@ -26,7 +26,7 @@ public class CommentaireTraining implements Serializable{
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String commentaire;
+	private String commentaireTraining;
 	
 	@JsonIgnore
 	@ManyToOne

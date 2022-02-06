@@ -41,6 +41,6 @@ public class Publication implements Serializable{
     
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy="publications")
-    private Set<Commentaire> commentaires;
+    private Set<CommentairePub> commentairesPub;
 
 }
