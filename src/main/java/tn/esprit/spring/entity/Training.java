@@ -49,4 +49,7 @@ public class Training implements Serializable{
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="trainings")
 	private Set<Certificate> certificates;
+	
+	@OneToOne(mappedBy="trainings")
+	private Quiz quiz;
 }
