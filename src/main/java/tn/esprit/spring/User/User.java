@@ -5,9 +5,13 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tn.esprit.spring.entity.Calendrier;
 import tn.esprit.spring.entity.Chat;
 import tn.esprit.spring.entity.Offer;
 import tn.esprit.spring.entity.Publication;
+import tn.esprit.spring.entity.Publicite;
+import tn.esprit.spring.entity.Reclamation;
+import tn.esprit.spring.entity.RendezVous;
 import tn.esprit.spring.entity.Reporting;
 import tn.esprit.spring.entity.Subscriber;
 import tn.esprit.spring.entity.Training;
@@ -85,7 +89,23 @@ public class User implements UserDetails,Serializable {
     @JsonIgnore
     @OneToOne
     private Subscriber subscriber;
-
+    
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<RendezVous> rendezVous;
+    
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<Reclamation> reclamations;
+    
+    @JsonIgnore
+    @ManyToMany( cascade = CascadeType.ALL, mappedBy="user")
+    private Set<Publicite> publicites;
+    
+    @JsonIgnore
+    @ManyToMany( cascade = CascadeType.ALL, mappedBy="user")
+    private Set<Calendrier> calendriers;
+    
     
 	public User(Long id, String firstName, String lastName, String email, String password, UserRole appUserRole,
 			String picture, String adress, String companyName, String numTel,
