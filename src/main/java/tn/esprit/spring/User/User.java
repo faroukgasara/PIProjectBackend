@@ -43,6 +43,7 @@ public class User implements UserDetails,Serializable {
             sequenceName = "user_sequence",
             allocationSize = 1
     )
+	//farouk
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
