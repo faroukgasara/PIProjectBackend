@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,8 +31,8 @@ public class Don implements Serializable {
 	private Long id;
 	private float montant;
 	private Date dateDon;
-	@OneToOne
+	
+	@OneToOne(mappedBy="Don")
 	User user;
 	
-
 }

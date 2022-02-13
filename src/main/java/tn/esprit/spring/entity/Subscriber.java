@@ -3,6 +3,7 @@ package tn.esprit.spring.entity;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,7 +39,7 @@ public class Subscriber implements Serializable{
 	private LocalDateTime createdAt;
 	
 	@JsonIgnore
-	@OneToOne(mappedBy="subscriber")
+	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
 
 }

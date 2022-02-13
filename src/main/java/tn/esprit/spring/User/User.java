@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import tn.esprit.spring.entity.Calendrier;
 import tn.esprit.spring.entity.Chat;
+import tn.esprit.spring.entity.Don;
 import tn.esprit.spring.entity.Offer;
 import tn.esprit.spring.entity.Publication;
 import tn.esprit.spring.entity.Publicite;
@@ -105,6 +106,10 @@ public class User implements UserDetails,Serializable {
     @JsonIgnore
     @ManyToMany( cascade = CascadeType.ALL, mappedBy="user")
     private Set<Calendrier> calendriers;
+    
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL)
+    Don don;
     
     
 	public User(Long id, String firstName, String lastName, String email, String password, UserRole appUserRole,
