@@ -1,14 +1,18 @@
 package tn.esprit.spring.entity;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,6 +40,14 @@ public class Evenement implements Serializable {
 	private TypeEvenement typeEvenement;
 	
 	@JsonIgnore
-	@ManyToOne
-	private List<User> participants;
+	@ManyToMany(cascade = CascadeType.ALL)
+	private Set<User> participants;
+	
+	@JsonIgnore
+    @OneToOne
+    private Don don;
+	
+	@JsonIgnore
+    @OneToOne
+    private Reservation reservation;
 }

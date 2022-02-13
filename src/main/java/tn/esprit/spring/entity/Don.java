@@ -3,10 +3,12 @@ package tn.esprit.spring.entity;
 import java.io.Serializable;
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -32,7 +34,16 @@ public class Don implements Serializable {
 	private float montant;
 	private Date dateDon;
 	
-	@OneToOne(mappedBy="Don")
-	User user;
+	@JsonIgnore
+	@ManyToOne
+	private User user;
+	
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL)
+	private Evenement evenement;
+	
+	@JsonIgnore
+	@ManyToOne
+	private Cagnotte cagnotte;
 	
 }

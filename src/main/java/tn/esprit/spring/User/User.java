@@ -5,9 +5,11 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tn.esprit.spring.entity.Cagnotte;
 import tn.esprit.spring.entity.Calendrier;
 import tn.esprit.spring.entity.Chat;
 import tn.esprit.spring.entity.Don;
+import tn.esprit.spring.entity.Evenement;
 import tn.esprit.spring.entity.Offer;
 import tn.esprit.spring.entity.Publication;
 import tn.esprit.spring.entity.Publicite;
@@ -108,8 +110,12 @@ public class User implements UserDetails,Serializable {
     private Set<Calendrier> calendriers;
     
     @JsonIgnore
-    @OneToOne(cascade = CascadeType.ALL)
-    Don don;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<Don> dons;
+    
+    @JsonIgnore
+    @ManyToMany(mappedBy="participants", cascade = CascadeType.ALL)
+    private Set<Evenement> evenements;
     
     
 	public User(Long id, String firstName, String lastName, String email, String password, UserRole appUserRole,
