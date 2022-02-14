@@ -2,5 +2,5 @@ package tn.esprit.spring.entity;
 
 public enum TypeEvenement {
 
-	INTERNE,CHARITE
+	INTERN,CHARITY
 }
