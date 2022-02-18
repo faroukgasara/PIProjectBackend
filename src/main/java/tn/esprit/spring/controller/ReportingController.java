@@ -1,8 +1,11 @@
 package tn.esprit.spring.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
+import tn.esprit.spring.entity.Reporting;
 import tn.esprit.spring.service.IReportingService;
 
 @RestController
@@ -25,6 +29,21 @@ public class ReportingController {
 	@ResponseBody
 	public void addReport(@PathVariable("reported") String reported,@PathVariable("reportedby") String reportedby,@PathVariable("reason") String reason){
 		reportingService.addReport(reported, reportedby, reason);
+	}
+	
+	
+	// http://localhost:8089/WomenEmpowerment/reporting/deleteReport/
+	@DeleteMapping("/deleteReport/{id}")
+	@ResponseBody
+	public void deleteReport(@PathVariable("id") Long id){
+		reportingService.deleteReport(id);
+	}
+	
+	// http://localhost:8089/WomenEmpowerment/reporting/getReports
+	@GetMapping("/getReports")
+	@ResponseBody
+	public List<Reporting> getReports(){
+		return reportingService.getReports();
 	}
 }
 

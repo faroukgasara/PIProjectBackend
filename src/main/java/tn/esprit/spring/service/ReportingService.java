@@ -1,5 +1,7 @@
 package tn.esprit.spring.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +29,18 @@ public class ReportingService implements IReportingService{
 		Reporting r1 = myRepository.save(r);
 		u.getReporting().add(r1);
 	}
+
+	@Override
+	public void deleteReport(Long id) {
+		myRepository.deleteById(id);
+		
+	}
+
+	@Override
+	public List<Reporting> getReports() {
+		return myRepository.findAll();
+	}
+
+
 
 }
