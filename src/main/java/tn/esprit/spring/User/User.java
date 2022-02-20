@@ -79,7 +79,7 @@ public class User implements UserDetails,Serializable {
     private Set<Publication> publications;
     
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy="user")
     private Set<Reporting> reporting;
     
     @JsonIgnore

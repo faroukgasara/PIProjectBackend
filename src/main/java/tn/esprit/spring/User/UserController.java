@@ -54,6 +54,41 @@ public class UserController {
 	}
 	
 	
+	// http://localhost:8089/WomenEmpowerment/user/findByFirstNameContains/
+	@GetMapping("/findByFirstNameContains/{firstName}")
+	@ResponseBody
+	public List<User> findByFirstNameContains(@PathVariable("firstName") String firstName){
+		return userService.findByFirstNameContains(firstName);
+	}
+	
+	// http://localhost:8089/WomenEmpowerment/user/findByFirstNameOrLastNameContains/
+	@GetMapping("/findByFirstNameOrLastNameContains/{firstName}/{lastName}")
+	@ResponseBody
+	public List<User> findByFirstNameOrLastNameContains(@PathVariable("firstName") String firstName,@PathVariable("lastName") String lastName){
+		return userService.findByFirstNameOrLastNameContains(firstName,lastName);
+	}
+	
+	
+	// http://localhost:8089/WomenEmpowerment/user/findByLocked/
+	@GetMapping("/findByLocked/{locked}")
+	@ResponseBody
+	public List<User> findByLocked(@PathVariable("locked") Boolean locked){
+		return userService.findByLocked(locked);
+	}
+	
+	// http://localhost:8089/WomenEmpowerment/user/unlockedAppUser/
+	@PutMapping("/unlockedAppUser/{email}")
+	@ResponseBody
+	public int unlockedAppUser(@PathVariable("email") String email){
+		return userService.unlockedAppUser(email);
+	}
+	
+	// http://localhost:8089/WomenEmpowerment/user/lockedAppUser/
+	@PutMapping("/lockedAppUser/{email}")
+	@ResponseBody
+	public int lockedAppUser(@PathVariable("email") String email){
+		return userService.lockedAppUser(email);
+	}
 
 	
 

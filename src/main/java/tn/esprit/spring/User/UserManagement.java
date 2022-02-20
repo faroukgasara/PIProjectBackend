@@ -28,4 +28,30 @@ public class UserManagement implements IUserManagement{
 			 myRepository.save(user);
 	}
 
+	@Override
+	public List<User> findByFirstNameContains(String firstName) {
+		return myRepository.findByFirstNameContains(firstName);
+	}
+
+	@Override
+	public List<User> findByFirstNameOrLastNameContains(String firstName,String lastName) {
+		
+		return myRepository.findByFirstNameOrLastNameContains(firstName, lastName);
+	}
+
+	@Override
+	public List<User> findByLocked(Boolean locked) {
+		return myRepository.findByLocked(locked);
+	}
+
+	@Override
+	public int unlockedAppUser(String email) {
+		return myRepository.unlockedAppUser(email);
+	}
+
+	@Override
+	public int lockedAppUser(String email) {
+		return myRepository.lockedAppUser(email);
+	}
+
 }

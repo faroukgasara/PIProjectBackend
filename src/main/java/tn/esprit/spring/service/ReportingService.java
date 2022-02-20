@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import tn.esprit.spring.User.User;
 import tn.esprit.spring.User.UserRepository;
 import tn.esprit.spring.entity.Reporting;
+import tn.esprit.spring.entity.ReportingReason;
 import tn.esprit.spring.repository.ReportingRepository;
 
 @Service
@@ -39,6 +40,16 @@ public class ReportingService implements IReportingService{
 	@Override
 	public List<Reporting> getReports() {
 		return myRepository.findAll();
+	}
+
+	@Override
+	public List<Reporting> findByUserFirstNameContains(String firstName) {
+		return myRepository.findByUserFirstNameContains(firstName);
+	}
+
+	@Override
+	public List<Reporting> findByReasonContains(String reason) {
+		return myRepository.findByReasonContains(reason);
 	}
 
 

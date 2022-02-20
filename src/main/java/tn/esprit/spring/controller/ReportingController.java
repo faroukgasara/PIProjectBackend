@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
+import tn.esprit.spring.entity.ReportingReason;
+import tn.esprit.spring.repository.ReportingRepository;
+import tn.esprit.spring.User.User;
 import tn.esprit.spring.entity.Reporting;
 import tn.esprit.spring.service.IReportingService;
 
@@ -23,6 +26,7 @@ import tn.esprit.spring.service.IReportingService;
 public class ReportingController {
 	@Autowired
 	IReportingService reportingService;
+	
 	
 	// http://localhost:8089/WomenEmpowerment/reporting/addReport/
 	@PostMapping("/addReport/{reported}/{reportedby}/{reason}")
@@ -45,6 +49,22 @@ public class ReportingController {
 	public List<Reporting> getReports(){
 		return reportingService.getReports();
 	}
+	
+	// http://localhost:8089/WomenEmpowerment/reporting/findByUserFirstNameContains
+	@GetMapping("/findByUserFirstNameContains/{firstName}")
+	@ResponseBody
+	public List<Reporting> findByUserFirstNameContains(@PathVariable("firstName") String firstName){
+		return reportingService.findByUserFirstNameContains(firstName);
+	}
+	
+	// http://localhost:8089/WomenEmpowerment/reporting/findByReasonContains
+	@GetMapping("/findByReasonContains/{reason}")
+	@ResponseBody
+	public List<Reporting> findByReasonContains(@PathVariable("reason") String reason){
+		return reportingService.findByReasonContains(reason);
+	}
+	
+
 }
 
 

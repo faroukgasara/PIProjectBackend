@@ -1,7 +1,13 @@
 package tn.esprit.spring.service;
 
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.social.facebook.api.Facebook;
+import org.springframework.social.facebook.api.Page;
 import org.springframework.social.facebook.api.PagedList;
 import org.springframework.social.facebook.api.Post;
 import org.springframework.social.facebook.api.impl.FacebookTemplate;
@@ -9,10 +15,17 @@ import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
+import tn.esprit.spring.entity.FacebookData;
+import tn.esprit.spring.repository.FacebookRepository;
+@Slf4j
 @Service
 public class FacebookService implements IFacebookService{
 	
 	private String accessToken;
+	
+	@Autowired
+	FacebookRepository facebookRepository;
 
 	@Value("${spring.social.facebook.app-id}")
 	private String facebookAppId;
@@ -45,11 +58,35 @@ public class FacebookService implements IFacebookService{
 		String[] fields = {"id","first_name","name"};
 		return facebook.fetchObject("me", String.class,fields);
 	}
+	private Facebook facebook;
 
 	@Override
 	public PagedList<Post> getUserFeed() {
-		// TODO Auto-generated method stub
+		List<Post> posts = new FacebookTemplate(accessToken).feedOperations().getPosts();
+
+		String regex = "^[a-zA-Z0-9]+$";
+		 
+		Pattern pattern = Pattern.compile(regex);
+		for (Post post : posts) {
+			FacebookData f = new FacebookData();
+			
+			if(post.getMessage() != null){
+				
+				 Matcher matcher = pattern.matcher(post.getMessage());
+				 if(matcher.matches()==true){
+					 f.setMessage(post.getMessage());
+				 }else{
+						f.setMessage(null);
+				 }
+			}else{
+				f.setMessage(null);
+			 }
+			
+			f.setPostedAt(post.getCreatedTime());
+			facebookRepository.save(f);
+		}
 		return new FacebookTemplate(accessToken).feedOperations().getFeed();
 	}
+			
 
 }

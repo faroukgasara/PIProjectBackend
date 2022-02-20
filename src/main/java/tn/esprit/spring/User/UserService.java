@@ -40,7 +40,7 @@ public class UserService implements UserDetailsService {
 		if(user == null){
 			throw new UsernameNotFoundException("User not found in the data base");
 		}
-		if(user.getEnabled()==false) {
+		if(user.getEnabled()==false||user.getLocked()==true) {
 			throw new UsernameNotFoundException("You need To Confirm your email");
 		
 		}
