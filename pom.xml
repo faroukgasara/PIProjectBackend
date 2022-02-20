@@ -16,8 +16,42 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+				<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 	<dependencies>
+	
+	
+<!-- https://mvnrepository.com/artifact/org.springframework.social/spring-social-facebook -->
+<dependency>
+    <groupId>org.springframework.social</groupId>
+    <artifactId>spring-social-facebook</artifactId>
+    <version>2.0.3.RELEASE</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.springframework.social/spring-social-core -->
+<dependency>
+    <groupId>org.springframework.social</groupId>
+    <artifactId>spring-social-core</artifactId>
+    <version>1.1.6.RELEASE</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.springframework.social/spring-social-config -->
+<dependency>
+    <groupId>org.springframework.social</groupId>
+    <artifactId>spring-social-config</artifactId>
+    <version>1.1.6.RELEASE</version>
+</dependency>
+ <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+    
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+  </dependency>
+
 		<dependency>
     		<groupId>org.springframework</groupId>
     		<artifactId>spring-context-support</artifactId>
@@ -108,4 +142,24 @@
 			</plugin>   
 		</plugins>
 	</build>
+		<repositories>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/libs-milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/libs-milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
 </project>
