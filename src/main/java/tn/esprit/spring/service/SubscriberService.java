@@ -62,4 +62,10 @@ public class SubscriberService implements ISubscriberService{
 		return myRepository.findAll();
 	}
 
+
+	@Override
+	public List<Object[]> countSubscriberByMonth() {
+		return myRepository.countSubscriberByMonth();
+	}
+
 }

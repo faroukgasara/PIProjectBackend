@@ -12,5 +12,6 @@ public interface IUserManagement {
 	List<User> findByLocked(Boolean locked);
     int unlockedAppUser(String email);
     int lockedAppUser(String email);
+    List<Object[]> countTotalUsersByYear();
 
 }

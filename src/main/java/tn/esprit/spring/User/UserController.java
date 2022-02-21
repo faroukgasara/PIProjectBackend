@@ -89,6 +89,14 @@ public class UserController {
 	public int lockedAppUser(@PathVariable("email") String email){
 		return userService.lockedAppUser(email);
 	}
+	
+	
+	// http://localhost:8089/WomenEmpowerment/user/countTotalUsersByYear
+	@GetMapping("/countTotalUsersByYear")
+	@ResponseBody
+	public List<Object[]> countTotalUsersByYear(){
+		return userService.countTotalUsersByYear();
+	}
 
 	
 

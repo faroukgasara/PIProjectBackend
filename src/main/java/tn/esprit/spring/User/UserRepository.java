@@ -38,5 +38,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByFirstNameOrLastNameContains(String firstName, String lastName);
     
     List<User> findByLocked(Boolean locked);
+    
+    
+    @Query("SELECT c.age, COUNT(c.age) FROM User AS c GROUP BY c.age ORDER BY c.age DESC")
+	List<Object[]> countTotalUsersByYear();
 
 }

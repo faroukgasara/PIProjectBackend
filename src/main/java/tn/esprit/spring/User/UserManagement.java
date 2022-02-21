@@ -3,6 +3,7 @@ package tn.esprit.spring.User;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
@@ -14,7 +15,7 @@ public class UserManagement implements IUserManagement{
 
 	@Override
 	public List<User> getUsers() {
-		return myRepository.findAll();
+		return myRepository.findAll(Sort.by(Sort.Direction.DESC, "firstName"));
 	}
 
 	@Override
@@ -52,6 +53,11 @@ public class UserManagement implements IUserManagement{
 	@Override
 	public int lockedAppUser(String email) {
 		return myRepository.lockedAppUser(email);
+	}
+
+	@Override
+	public List<Object[]> countTotalUsersByYear() {
+		return myRepository.countTotalUsersByYear();
 	}
 
 }

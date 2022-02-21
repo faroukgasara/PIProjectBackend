@@ -12,4 +12,5 @@ public interface IReportingService {
 	public List<Reporting> getReports();
 	List<Reporting> findByUserFirstNameContains(String firstName);
 	List<Reporting> findByReasonContains(String reason);
+	List<Object[]> countTotalReportingByReason();
 }

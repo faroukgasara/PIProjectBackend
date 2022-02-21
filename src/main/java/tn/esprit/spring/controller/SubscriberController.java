@@ -55,6 +55,13 @@ public class SubscriberController {
 		return subscriberService.getSubscribers();
 	}
 	
+	// http://localhost:8089/WomenEmpowerment/subscriber/countSubscriberByMonth
+	@GetMapping("/countSubscriberByMonth")
+	@ResponseBody
+	public List<Object[]> countSubscriberByMonth(){
+		return subscriberService.countSubscriberByMonth();
+	}
+	
 	
 
 }

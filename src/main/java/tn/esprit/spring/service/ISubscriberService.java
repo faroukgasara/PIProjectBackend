@@ -10,6 +10,7 @@ public interface ISubscriberService {
 	public void addSubscriber(String email);
 	public void unSubscribe(String email);
 	public void extensionSubscribe(String email);
+	List<Object[]> countSubscriberByMonth();
 	
 
 }

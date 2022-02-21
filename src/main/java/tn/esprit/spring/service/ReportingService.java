@@ -52,6 +52,11 @@ public class ReportingService implements IReportingService{
 		return myRepository.findByReasonContains(reason);
 	}
 
+	@Override
+	public List<Object[]> countTotalReportingByReason() {
+		return myRepository.countTotalReportingByReason();
+	}
+
 
 
 }

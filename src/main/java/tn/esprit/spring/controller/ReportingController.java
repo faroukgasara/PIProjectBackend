@@ -64,6 +64,13 @@ public class ReportingController {
 		return reportingService.findByReasonContains(reason);
 	}
 	
+	// http://localhost:8089/WomenEmpowerment/reporting/countTotalReportingByReason
+	@GetMapping("/countTotalReportingByReason")
+	@ResponseBody
+	public List<Object[]> countTotalReportingByReason(){
+		return reportingService.countTotalReportingByReason();
+	}
+	
 
 }
 
