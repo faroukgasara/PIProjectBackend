@@ -16,6 +16,8 @@ import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
+import tn.esprit.spring.User.User;
+import tn.esprit.spring.User.UserRepository;
 import tn.esprit.spring.entity.FacebookData;
 import tn.esprit.spring.repository.FacebookRepository;
 @Slf4j
@@ -26,6 +28,9 @@ public class FacebookService implements IFacebookService{
 	
 	@Autowired
 	FacebookRepository facebookRepository;
+	
+	@Autowired
+	UserRepository userRepository;
 
 	@Value("${spring.social.facebook.app-id}")
 	private String facebookAppId;
@@ -61,7 +66,7 @@ public class FacebookService implements IFacebookService{
 	private Facebook facebook;
 
 	@Override
-	public PagedList<Post> getUserFeed() {
+	public PagedList<Post> getUserFeed(String email) {
 		List<Post> posts = new FacebookTemplate(accessToken).feedOperations().getPosts();
 
 		String regex = "^[a-zA-Z0-9]+$";
@@ -76,12 +81,13 @@ public class FacebookService implements IFacebookService{
 				 if(matcher.matches()==true){
 					 f.setMessage(post.getMessage());
 				 }else{
-						f.setMessage(null);
+						f.setMessage("null");
 				 }
 			}else{
-				f.setMessage(null);
+				f.setMessage("null");
 			 }
-			
+			User u = userRepository.findByEmail(email).orElse(null);
+			f.setUser(u);
 			f.setPostedAt(post.getCreatedTime());
 			facebookRepository.save(f);
 		}

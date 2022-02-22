@@ -1,6 +1,7 @@
 package tn.esprit.spring.User;
 
 import java.util.List;
+import java.util.Map;
 
 
 public interface IUserManagement {
@@ -13,5 +14,6 @@ public interface IUserManagement {
     int unlockedAppUser(String email);
     int lockedAppUser(String email);
     List<Object[]> countTotalUsersByYear();
+    Map<String, Float> UserPrediction(String email);
 
 }

@@ -2,6 +2,7 @@ package tn.esprit.spring.User;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -96,6 +97,16 @@ public class UserController {
 	@ResponseBody
 	public List<Object[]> countTotalUsersByYear(){
 		return userService.countTotalUsersByYear();
+	}
+	
+	
+	
+	
+	// http://localhost:8089/WomenEmpowerment/user/UserPrediction
+	@GetMapping("/UserPrediction/{email}")
+	@ResponseBody
+	public Map<String, Float> UserPrediction(@PathVariable("email") String email){
+		return userService.UserPrediction(email);
 	}
 
 	

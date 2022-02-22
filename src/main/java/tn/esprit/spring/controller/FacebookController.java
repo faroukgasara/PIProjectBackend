@@ -1,6 +1,7 @@
 package tn.esprit.spring.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import tn.esprit.spring.service.IFacebookService;
 
@@ -48,9 +51,12 @@ public class FacebookController {
 	}
 	
 	
-	@GetMapping("/getUserFeed")
-	public PagedList<Post> getUserFeed(){
-		return facebookService.getUserFeed();
+	@GetMapping("/getUserFeed/{email}")
+	@ResponseBody
+	public PagedList<Post> getUserFeed(@PathVariable("email") String email){
+		return facebookService.getUserFeed(email);
 	}
+	
+
 
 }

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import tn.esprit.spring.entity.Calendrier;
 import tn.esprit.spring.entity.Chat;
+import tn.esprit.spring.entity.FacebookData;
 import tn.esprit.spring.entity.Offer;
 import tn.esprit.spring.entity.Publication;
 import tn.esprit.spring.entity.Publicite;
@@ -15,6 +16,7 @@ import tn.esprit.spring.entity.RendezVous;
 import tn.esprit.spring.entity.Reporting;
 import tn.esprit.spring.entity.Subscriber;
 import tn.esprit.spring.entity.Training;
+import tn.esprit.spring.entity.UserEmotions;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -83,12 +85,20 @@ public class User implements UserDetails,Serializable {
     private Set<Reporting> reporting;
     
     @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy="user")
+    private Set<FacebookData> facebookData;
+    
+    @JsonIgnore
     @ManyToMany(mappedBy="users", cascade = CascadeType.ALL)
     private Set<Training> trainings;
     
     @JsonIgnore
     @OneToOne
     private Subscriber subscriber;
+    
+    @JsonIgnore
+    @OneToOne
+    private UserEmotions userEmotions;
     
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
