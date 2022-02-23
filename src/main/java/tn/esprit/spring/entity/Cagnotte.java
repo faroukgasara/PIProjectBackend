@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -37,4 +38,8 @@ public class Cagnotte implements Serializable {
 	@JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cagnotte")
     private Set<Don> dons;
+	
+	@JsonIgnore
+    @OneToOne
+    private Evenement evenement;
 }

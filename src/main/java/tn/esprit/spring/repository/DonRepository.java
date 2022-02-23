@@ -1,5 +1,8 @@
 package tn.esprit.spring.repository;
 
-public interface DonRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import tn.esprit.spring.entity.Don;
+
+public interface DonRepository extends JpaRepository<Don, Long>{
 
 }

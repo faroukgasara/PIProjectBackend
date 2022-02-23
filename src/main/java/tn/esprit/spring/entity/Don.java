@@ -39,10 +39,6 @@ public class Don implements Serializable {
 	private User user;
 	
 	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL)
-	private Evenement evenement;
-	
-	@JsonIgnore
 	@ManyToOne
 	private Cagnotte cagnotte;
 	

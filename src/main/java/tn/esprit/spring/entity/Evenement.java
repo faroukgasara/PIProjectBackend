@@ -36,6 +36,7 @@ public class Evenement implements Serializable {
 	private String lieux;
 	private String affiche;
 	private String description;
+	
 	@Enumerated(EnumType.STRING)
 	private TypeEvenement typeEvenement;
 	
@@ -45,7 +46,7 @@ public class Evenement implements Serializable {
 	
 	@JsonIgnore
     @OneToOne
-    private Don don;
+    private Cagnotte cagnotte;
 	
 	@JsonIgnore
     @OneToOne
