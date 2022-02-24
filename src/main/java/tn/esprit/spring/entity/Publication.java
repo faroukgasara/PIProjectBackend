@@ -1,5 +1,6 @@
 package tn.esprit.spring.entity;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -30,6 +31,8 @@ public class Publication implements Serializable{
 	private String description;
 	private String type;
 	private String picture;
+
+	private LocalDateTime createdAt;
 	
 	@JsonIgnore
 	@ManyToOne
