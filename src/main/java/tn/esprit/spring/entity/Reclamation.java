@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,15 +28,29 @@ import tn.esprit.spring.User.User;
 @AllArgsConstructor
 @Entity
 public class Reclamation implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Enumerated(EnumType.STRING)
+	@NotNull
 	private ReclamationType type;
 	private String description;
-	private Date dateReclamation;
-	@JsonIgnore
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dateReclamation = new Date(System.currentTimeMillis());
 	@ManyToOne
 	private User user;
+	
+	
+	
+	
+
+	
+	
+	
+	
 	
 }
