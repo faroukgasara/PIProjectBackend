@@ -17,32 +17,53 @@ import tn.esprit.spring.repository.ReservationRepository;
 public class EvenementService implements IEvenementService  {
 
 	
-	
-	@Autowired
-	CagnotteRepository cagRepository;
-	
-	
-	
 	@Autowired
 	EvenementRepository eventRepository ;
 	
+	
 	@Autowired
-	ReservationRepository reservationRepository ;
+	ICagnotteService cagnotteService ;
 	
-	
-	
-	
-	
-	
+	@Autowired
+	IReservationService reservationService ;
 	
 	
 	
 	@Override
-	public Evenement addEvent(Evenement event,Reservation res,Date dd , Date df){
-		Cagnotte cag = new Cagnotte();
-		cag.setDateDebut(dd);
-		cag.setDateFin(df);
-		event.setCagnotte(cag);
+	public Evenement addEventonly(Evenement event){
+		
+		eventRepository.save(event);
+		
+		return event;
+		
+		
+	}
+	
+	
+	@Override
+	public Evenement effectuer(Long idevent,Long idres,Long idcag){
+		
+		
+		Reservation res = reservationService.getres(idres);
+		Cagnotte cag =  cagnotteService.getcag(idcag);
+		Evenement e =  eventRepository.findById(idevent).orElse(null);
+
+		e.setCagnotte(cag);
+		e.setReservation(res);
+		eventRepository.save(e);
+		
+		return e;
+		
+		
+	}
+	
+	
+	
+	@Override
+	public Evenement addEvent(Evenement event,Reservation res){
+
+		//cag.setValeur(0);
+		//event.setCagnotte(cag);
 		event.setReservation(res);
 		eventRepository.save(event);
 		
@@ -75,8 +96,10 @@ public class EvenementService implements IEvenementService  {
 	@Override
 	public String deleteevent(Long  idevent){
 		Evenement e =  eventRepository.findById(idevent).orElse(null);
-		reservationRepository.delete(e.getReservation());
-		cagRepository.delete(e.getCagnotte());
+		
+		reservationService.deleteReservation(e.getReservation().getId());
+		
+		cagnotteService.deletecagnotte(e.getCagnotte().getId());
 
 		eventRepository.delete(e);
 		
