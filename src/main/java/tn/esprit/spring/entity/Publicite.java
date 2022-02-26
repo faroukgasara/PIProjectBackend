@@ -25,6 +25,10 @@ import tn.esprit.spring.User.User;
 @AllArgsConstructor
 @Entity
 public class Publicite implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -37,11 +41,11 @@ public class Publicite implements Serializable{
 	private Long nbrVuesFinal;
 	@Enumerated(EnumType.STRING)
 	private PubType type;
-	@OneToOne(mappedBy = "publicite")
-	private PopulationCible populationCible;
-	
+	@OneToOne
 	@JsonIgnore
+	private PopulationCible populationCible;
 	@ManyToOne
+	@JsonIgnore
 	private User user;
 	
 }
