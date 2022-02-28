@@ -88,12 +88,14 @@ public class UserManagement implements IUserManagement{
 	    return count;
 	}
 	
-	String[] sad = {"sad","sadness","deplorable","distressing","lamentable","pitiful","sorry","sadness","bittersweet","doleful","heavyhearted", "melancholic","melancholy",
+	String[] sadness = {"sad","sadness","deplorable","distressing","lamentable","pitiful","sorry","sadness","bittersweet","doleful","heavyhearted", "melancholic","melancholy",
 			"mournful","pensive","tragic", "tragical","tragicomic","tragicomical","wistful"}; 
-	String[] happy = {"happiness","felicitous","cheerful","content","contented","elated","euphoric","glad","joyful","joyous","blessed","prosperous","halcyon",
+	String[] happiness = {"happiness","felicitous","cheerful","content","contented","elated","euphoric","glad","joyful","joyous","blessed","prosperous","halcyon",
 	        "riant","laughing","blissful","bright","golden"}; 
 	String[] suicide = {"self-annihilation","self-destruction","killing","death","kill","suicidal","slayer","killer"}; 
 	String[] violence = {"ferocity","killing","death","kill","fierceness","furiousness","fury","vehemence","wildness","savagery","savageness"}; 
+	String[] fear ={"mournful"};
+	String[] anger ={"mournful"};
 	@Override
 	public Map<String, Float> UserPrediction(String email) {
 		int nbgood = 0;
@@ -110,13 +112,13 @@ public class UserManagement implements IUserManagement{
 			all = all+words.length;
 		}
 		for (FacebookData facebookData2 : facebookData) {
-			for(String str : sad){
+			for(String str : sadness){
 				nbbad = nbbad+countOccurrences(facebookData2.getMessage(),str);
 				//System.out.println(nbbad); 
 			}
 			
 			
-			for(String str : happy){
+			for(String str : happiness){
 				nbgood = nbgood+countOccurrences(facebookData2.getMessage(),str);
 				//System.out.println(nbgood); 
 			}

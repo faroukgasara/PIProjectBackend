@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import tn.esprit.spring.service.IFacebookService;
+import tn.esprit.spring.service.NotificationUserService;
 
 @RestController
 @RequestMapping("/face")
@@ -23,6 +24,7 @@ public class FacebookController {
 	
 	@Autowired
 	private IFacebookService facebookService;
+	
 	
 	@GetMapping
 	public List<String> welcome(){

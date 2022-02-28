@@ -78,7 +78,7 @@ public class RegistrationService {
         		);
         passwordTokenRepository.save(resetToken);
 
-        String link = "http://localhost:8089/WomenEmpowerment/registration/reset"+token;
+        String link = "http://localhost:8089/WomenEmpowerment/registration/reset"+token+email;
         emailSender.send(email, buildEmailReset("User",link));
         return token;
     }

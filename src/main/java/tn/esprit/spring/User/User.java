@@ -8,6 +8,7 @@ import lombok.Setter;
 import tn.esprit.spring.entity.Calendrier;
 import tn.esprit.spring.entity.Chat;
 import tn.esprit.spring.entity.FacebookData;
+import tn.esprit.spring.entity.NotificationUser;
 import tn.esprit.spring.entity.Offer;
 import tn.esprit.spring.entity.Publication;
 import tn.esprit.spring.entity.Publicite;
@@ -83,6 +84,10 @@ public class User implements UserDetails,Serializable {
     @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy="user")
     private Set<Reporting> reporting;
+    
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy="user")
+    private Set<NotificationUser> notificationUser;
     
     @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy="user")
