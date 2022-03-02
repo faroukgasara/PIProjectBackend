@@ -94,14 +94,17 @@ public class UserManagement implements IUserManagement{
 	        "riant","laughing","blissful","bright","golden"}; 
 	String[] suicide = {"self-annihilation","self-destruction","killing","death","kill","suicidal","slayer","killer"}; 
 	String[] violence = {"ferocity","killing","death","kill","fierceness","furiousness","fury","vehemence","wildness","savagery","savageness"}; 
-	String[] fear ={"mournful"};
-	String[] anger ={"mournful"};
+	String[] fear ={"revere","reverence","venerate", "fearfulness","fright"};
+	String[] anger ={"rage","angry","angriness",        "enragement","fury","hackles", "huffiness","dander","indignation","annoyance", "infuriation", "chafe","bad temper","vexation", "madness","umbrage", "offence","offense", "rage", "outrage"};
 	@Override
 	public Map<String, Float> UserPrediction(String email) {
 		int nbgood = 0;
 		int nbbad = 0;
 		int nbsuicide = 0;
 		int nbviolence = 0;
+		
+		int nbfear = 0;
+		int nbanger = 0;
 		int all =0;
 		Map<String, Float> mapOfLists = new HashMap<String, Float>();
 		User u = myRepository.findByEmail(email).orElse(null);
@@ -133,6 +136,15 @@ public class UserManagement implements IUserManagement{
 				//System.out.println(nbgood); 
 			}
 			
+			for(String str : fear){
+				nbfear = nbfear+countOccurrences(facebookData2.getMessage(),str);
+				//System.out.println(nbgood); 
+			}
+			for(String str : anger){
+				nbanger = nbanger+countOccurrences(facebookData2.getMessage(),str);
+				//System.out.println(nbgood); 
+			}
+			
 		}
 		UserEmotions UE = new UserEmotions();
 		UE.setUser(u);
@@ -140,6 +152,9 @@ public class UserManagement implements IUserManagement{
 		UE.setSad(nbbad*100/all);
 		UE.setViolence(nbviolence*100/all);
 		UE.setSuicide(nbsuicide*100/all);
+		UE.setFear(nbfear*100/all);
+		UE.setAnger(nbanger*100/all);
+		
 		
 		
 		
@@ -148,6 +163,8 @@ public class UserManagement implements IUserManagement{
 		mapOfLists.put("Happy", (float) nbgood*100/all);
 		mapOfLists.put("Suicide", (float) nbsuicide*100/all);
 		mapOfLists.put("Violence", (float) nbviolence*100/all);
+		mapOfLists.put("Fear", (float) nbfear*100/all);
+		mapOfLists.put("Anger", (float) nbanger*100/all);
 
 		
 		return mapOfLists;

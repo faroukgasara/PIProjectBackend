@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -26,20 +25,17 @@ import tn.esprit.spring.User.UserRole;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class UserEmotions implements Serializable{
+public class ChatbotKnowledge implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private float Sad;
-	private float Happy;
-	private float Suicide;
-	private float Violence;
-	private float Fear;
-	private float Anger;
+	private String question;
+	private String answer;
+	private Boolean active;
 	
-	@OneToOne(mappedBy="userEmotions")
-	private User user;
+	
 
 }
