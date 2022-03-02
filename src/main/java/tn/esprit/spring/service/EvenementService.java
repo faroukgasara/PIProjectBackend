@@ -1,5 +1,6 @@
 package tn.esprit.spring.service;
 
+import java.io.Console;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +17,13 @@ import tn.esprit.spring.repository.ReservationRepository;
 @Service
 public class EvenementService implements IEvenementService  {
 
+	
+	@Autowired
+	ReservationRepository reservationRepository ;
+	
+	
+	@Autowired
+	CagnotteRepository cagRepository;
 	
 	@Autowired
 	EvenementRepository eventRepository ;
@@ -35,14 +43,11 @@ public class EvenementService implements IEvenementService  {
 		eventRepository.save(event);
 		
 		return event;
-		
-		
 	}
 	
 	
 	@Override
 	public Evenement effectuer(Long idevent,Long idres,Long idcag){
-		
 		
 		Reservation res = reservationService.getres(idres);
 		Cagnotte cag =  cagnotteService.getcag(idcag);
@@ -52,26 +57,22 @@ public class EvenementService implements IEvenementService  {
 		e.setReservation(res);
 		eventRepository.save(e);
 		
-		return e;
-		
+		return e;	
 		
 	}
 	
-	
-	
 	@Override
-	public Evenement addEvent(Evenement event,Reservation res){
-
-		//cag.setValeur(0);
-		//event.setCagnotte(cag);
-		event.setReservation(res);
+	public Evenement addEvent(Evenement event){
+		
+		System.out.println("aaaa");
+		System.out.println(event.getCagnotte());
+		reservationRepository.save(event.getReservation());
+		cagRepository.save(event.getCagnotte()) ;
 		eventRepository.save(event);
 		
 		return event;
 		
-		
 	}
-	
 	
 	@Override
 	public Evenement UpdateEvent(Long  idevent,Evenement event,Reservation res,Date dd , Date df){
@@ -89,8 +90,7 @@ public class EvenementService implements IEvenementService  {
 		eventRepository.save(e);
 		
 		return event;
-		
-		
+			
 	}
 	
 	@Override
@@ -122,7 +122,4 @@ public class EvenementService implements IEvenementService  {
 		return e;
 
 	}
-	
-	
-	
 }

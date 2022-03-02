@@ -1,7 +1,5 @@
 package tn.esprit.spring.controller;
-
 import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -32,10 +30,12 @@ public class evenementController {
 	// http://localhost:8089/addevent/dd/df/
 	@PostMapping("/addevent")
 	@ResponseBody
-	public Evenement addEvent(@RequestBody Evenement event,@RequestBody Reservation res)
+	public Evenement addEvent(@RequestBody Evenement event)
 	{
+		
 		//@RequestBody Cagnotte cag
-		return	EventService.addEvent(event,res);
+		return	EventService.addEvent(event);
+		
 		
 	}
 	

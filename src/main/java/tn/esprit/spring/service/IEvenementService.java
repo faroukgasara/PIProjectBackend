@@ -10,7 +10,7 @@ import tn.esprit.spring.entity.Reservation;
 public interface IEvenementService {
 
 
-	Evenement addEvent(Evenement event, Reservation res);
+	Evenement addEvent(Evenement event);
 
 	Evenement UpdateEvent(Long idevent, Evenement event, Reservation res, Date dd, Date df);
 
