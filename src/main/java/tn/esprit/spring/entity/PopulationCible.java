@@ -29,17 +29,15 @@ public class PopulationCible implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	
-	@OneToOne
-	private Publicite publicite;
-	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private int age;
 	private String profession;
 	private String gender;
+	
+	@OneToOne
+	private Publicite publicite; 
 
 	
 	
