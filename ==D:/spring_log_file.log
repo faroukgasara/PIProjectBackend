@@ -1,19 +1,22 @@
-2022-02-27 03:21:46.082  WARN 4915 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h42m48s663ms).
-2022-02-27 08:37:32.699  WARN 4915 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5h9m46s349ms).
-2022-02-27 09:55:08.250  WARN 4915 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h17m35s791ms).
-2022-02-27 10:12:56.971  WARN 4915 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m17s739ms).
-2022-02-27 10:22:33.011  WARN 4915 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m5s721ms).
-2022-02-27 10:44:33.034  WARN 4915 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Retrograde clock change detected (housekeeper delta=29s808ms), soft-evicting connections from pool.
-2022-02-27 10:54:59.204  WARN 4915 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m49s10ms).
-2022-02-27 11:37:10.057  WARN 4915 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=20m10s586ms).
-2022-02-27 11:50:02.500  WARN 4915 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m52s207ms).
-2022-02-27 12:00:57.514  WARN 4915 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10m55s14ms).
-2022-02-27 13:22:45.292  WARN 4915 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11m43s490ms).
-2022-02-27 15:00:05.420  WARN 4915 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h36m49s991ms).
-2022-02-27 21:10:12.782  WARN 4915 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6h10m7s362ms).
-2022-02-27 21:10:42.584  WARN 4915 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Retrograde clock change detected (housekeeper delta=29s802ms), soft-evicting connections from pool.
-2022-02-27 21:15:22.720  WARN 4915 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m9s956ms).
-2022-02-27 22:39:04.215  INFO 4915 --- [RMI TCP Connection(395)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
-2022-02-27 22:39:04.280  INFO 4915 --- [RMI TCP Connection(395)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-02-27 22:39:04.292  INFO 4915 --- [RMI TCP Connection(395)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-02-27 22:39:04.300  INFO 4915 --- [RMI TCP Connection(395)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-03-02 20:18:47.560  INFO 8506 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-03-02 20:18:47.563  INFO 8506 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-02 20:18:47.563  INFO 8506 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2022-03-02 20:18:47.571  INFO 8506 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
+2022-03-02 20:18:47.571  INFO 8506 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 520 ms
+2022-03-02 20:18:47.625  INFO 8506 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-02 20:18:47.629  INFO 8506 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2022-03-02 20:18:47.647  INFO 8506 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2022-03-02 20:18:47.648  INFO 8506 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-03-02 20:18:48.762  INFO 8506 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-02 20:18:48.762  INFO 8506 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-02 20:18:49.105  WARN 8506 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-02 20:18:49.281  INFO 8506 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6a3cb0da, org.springframework.security.web.context.SecurityContextPersistenceFilter@4eb45ffe, org.springframework.security.web.header.HeaderWriterFilter@70a70482, org.springframework.web.filter.CorsFilter@ec3ef3e, org.springframework.security.web.authentication.logout.LogoutFilter@7a3efc47, tn.esprit.spring.security.CustomAuthorizationFilter@519015f4, tn.esprit.spring.security.CustomAuthentificationFilter@3dd85363, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@795604fd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@311d9c41, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@32ed9e62, org.springframework.security.web.session.SessionManagementFilter@5f3f1384, org.springframework.security.web.access.ExceptionTranslationFilter@6f6b07c2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@78a290dd]
+2022-03-02 20:18:49.316  INFO 8506 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-02 20:18:49.414  INFO 8506 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
+2022-03-02 20:18:49.555  INFO 8506 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 22.551 seconds (JVM running for 302.89)
+2022-03-02 20:18:49.558  INFO 8506 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-03-02 20:19:28.435  INFO 8506 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-02 20:19:28.435  INFO 8506 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-02 20:19:28.438  INFO 8506 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2022-03-02 20:32:39.185  WARN 8506 --- [HikariPool-3 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Thread starvation or clock leap detected (housekeeper delta=11m21s415ms).
+2022-03-02 20:44:15.257  WARN 8506 --- [HikariPool-3 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Thread starvation or clock leap detected (housekeeper delta=11m36s73ms).

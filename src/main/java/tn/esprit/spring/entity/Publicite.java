@@ -3,6 +3,7 @@ package tn.esprit.spring.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -41,9 +42,10 @@ public class Publicite implements Serializable{
 	private Long nbrVuesFinal;
 	@Enumerated(EnumType.STRING)
 	private PubType type;
+	
 	@OneToOne
-	@JsonIgnore
 	private PopulationCible populationCible;
+	
 	@ManyToOne
 	@JsonIgnore
 	private User user;

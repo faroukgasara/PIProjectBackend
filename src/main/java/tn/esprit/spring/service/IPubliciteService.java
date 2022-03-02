@@ -1,5 +1,13 @@
 package tn.esprit.spring.service;
 
-public interface IPubliciteService {
+import java.util.List;
 
+import tn.esprit.spring.entity.PopulationCible;
+import tn.esprit.spring.entity.Publicite;
+
+
+public interface IPubliciteService {
+	public String addPublicite(Publicite p);
+	 public List<Publicite> getAllPublicite();
+	 public void deletePub(Long id);
 }
