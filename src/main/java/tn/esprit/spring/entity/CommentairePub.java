@@ -29,7 +29,7 @@ public class CommentairePub implements Serializable{
 
 	private String comment ; 
 	private String description;
-	private String type;
+	
 	private String emojis;
 	private Long likes;
 	private Long dislike;

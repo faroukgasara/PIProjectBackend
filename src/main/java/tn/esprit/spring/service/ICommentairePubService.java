@@ -10,6 +10,7 @@ public interface ICommentairePubService {
 	public List<CommentairePub> getCommentairePub();
 	public void deleteCom(Long id);
 	public void updateCom(CommentairePub comP);
+	public int nbreLikeParCmnt(Long id);
 
 
 }

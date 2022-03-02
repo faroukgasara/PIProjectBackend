@@ -9,6 +9,7 @@ public interface IRatingService {
 	void deleteRate(Long id);
 
 	void updateRate(Rating rat,Long idPub,String email);
+	public float RateAVG(Long pub);
 
 
 }

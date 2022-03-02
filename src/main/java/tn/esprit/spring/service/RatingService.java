@@ -62,5 +62,11 @@ Publication p = pubrepo.findById(idPub).orElse(null);
 		ratrepo.save(r);
 	}
 
+	@Override
+	public float RateAVG(Long pub) {
+		// TODO Auto-generated method stub
+		return ratrepo.RateAVG(pub);
+	}
+
 
 }

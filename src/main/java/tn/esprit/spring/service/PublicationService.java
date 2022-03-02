@@ -33,10 +33,10 @@ public class PublicationService implements IPublicationService {
 		pub.setCreatedAt(LocalDateTime.now());
 		Publication p = pubrepo.save(pub);
 		
-		
+	
 		
 		p.setUsers(u);
-		pubrepo.save(p);
+		 pubrepo.save(p);
 	 }
 	
 	@Override

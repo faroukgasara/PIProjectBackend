@@ -29,7 +29,25 @@ ILikesService likser;
 	@ResponseBody
 	public void ajoutercategorie(@ RequestBody  Likes lik,@PathVariable("idCo")  Long idCo,@PathVariable("email") String email){
 	likser.AjouterLik(lik, idCo, email);
+	
+	
 	}
+
+	@GetMapping("/getlik/{pub}")
+	@ResponseBody
+	public long getlik(@PathVariable("pub") Long pub){
+		return likser.getlikpar(pub);
 		
+	}
+	
+	
+	
+	@GetMapping("/getlikedby/{publ}")
+	@ResponseBody
+	public List<String> getlikedby(@PathVariable("publ") Long publ){
+		return likser.displayLiedby(publ);
+		
+	}
+
 
 }

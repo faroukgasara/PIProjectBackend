@@ -45,6 +45,7 @@ LikesRepository likrepo;
 		  
 			
 			Likes L = likrepo.save(lik);
+			
 		L.setLikedBy(email);
 		L.setCommentairesPubs(p);
 		likrepo.save(L);
@@ -73,6 +74,29 @@ LikesRepository likrepo;
 		Likes l = likrepo.findById(id).orElse(null);
 		likrepo.delete(l);
 		}
+
+
+
+	@Override
+	public Long getlikpar(Long publ) {
+		long l =likrepo.countBylikes(publ);
+		System.out.println(l);
+		return likrepo.countBylikes(publ);
+	
+	
+		
+		
+		
+	
+	}
+
+
+
+	@Override
+	public List<String> displayLiedby(Long pub) {
+		// TODO Auto-generated method stub
+		return likrepo.displaylikedby(pub);
+	}
 	
 	
 

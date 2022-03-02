@@ -9,6 +9,8 @@ public interface ILikesService {
 	public void AjouterLik(Likes lik,Long idCo ,String email) ;
 	public List<Likes> getLikes();
 	public void deleteLikes(Long id);
+	public Long getlikpar(Long pub);
+	public List<String> displayLiedby(Long publ);
 	
 
 }

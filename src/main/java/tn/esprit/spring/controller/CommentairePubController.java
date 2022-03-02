@@ -45,7 +45,7 @@ public class CommentairePubController {
 		comserv.deleteCom(id);
 		
 	}
-	
+
 	
 	//http://localhost:8089/WomenEmpowerment/publication/update
 	@PutMapping("/update")
@@ -54,6 +54,15 @@ public class CommentairePubController {
 		comserv.updateCom(comP);
 	
 	}	
+	
+	// http://localhost:8089/WomenEmpowerment/commentaire
+	@GetMapping("/getlik/{id}")
+	@ResponseBody
+	public int getlikes(@PathVariable("id") Long id)
+{
+		return comserv.nbreLikeParCmnt(id);
+		
+	}
 
 }
 

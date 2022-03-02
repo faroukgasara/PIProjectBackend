@@ -38,7 +38,7 @@ public class LoggingAspect {
 	IPublicationService pubserv;
 	
 	@Async
-	@Scheduled(fixedRate=50000)
+	@Scheduled(fixedRate=5000000)
 	public void deletePub() {
 		List<Publication> p= pubserv.getPublications();
 		for (Publication publication : p) {
@@ -56,9 +56,9 @@ public class LoggingAspect {
 	public void deletePub1() {
 		List<Publication> p1= pubrepo.findAll();
 		List<String> list1 = new ArrayList<String>(); 
-	     list1.add("fuck"); 
-	     list1.add("fck"); 
-	     list1.add("fuk");
+	     list1.add("xxx"); 
+	     list1.add("xx"); 
+	     list1.add("x");
 		List<Publication> p= pubserv.getPublications();
 		for (Publication publication : p) {
 			if(list1.contains(publication.getTitle())){
