@@ -51,10 +51,9 @@ public class Simplex {
       if (p == -1)
        throw new ArithmeticException("Linear program is unbounded");
    
-      // pivot
       pivot(p, q);
    
-      // update basis
+      
       basis[p] = q;
    
      }
@@ -68,7 +67,7 @@ public class Simplex {
        q = j;
    
      if (tableaux[numberOfConstraints][q] <= 0)
-      return -1; // optimal
+      return -1; 
      else
       return q;
     }
@@ -102,10 +101,9 @@ public class Simplex {
      return p;
     }
    
-    // pivot on entry (p, q) using Gauss-Jordan elimination
+    
     private void pivot(int p, int q) {
    
-     // everything but row p and column q
      for (int i = 0; i <= numberOfConstraints; i++)
       for (int j = 0; j <= numberOfConstraints
         + numberOfOriginalVariables; j++)
@@ -113,25 +111,21 @@ public class Simplex {
         tableaux[i][j] -= tableaux[p][j] * tableaux[i][q]
           / tableaux[p][q];
    
-     // zero out column q
      for (int i = 0; i <= numberOfConstraints; i++)
       if (i != p)
        tableaux[i][q] = 0.0;
    
-     // scale row p
      for (int j = 0; j <= numberOfConstraints + numberOfOriginalVariables; j++)
       if (j != q)
        tableaux[p][j] /= tableaux[p][q];
      tableaux[p][q] = 1.0;
     }
    
-    // return optimal objective value
     public double value() {
      return -tableaux[numberOfConstraints][numberOfConstraints
        + numberOfOriginalVariables];
     }
    
-    // return primal solution vector
     public double[] primal() {
      double[] x = new double[numberOfOriginalVariables];
      for (int i = 0; i < numberOfConstraints; i++)
@@ -149,9 +143,9 @@ public class Simplex {
     }
    
     public static class Modeler {
-     private double[][] a; // tableaux
-     private int numberOfConstraints; // number of constraints
-     private int numberOfOriginalVariables; // number of original variables
+     private double[][] a; 
+     private int numberOfConstraints; 
+     private int numberOfOriginalVariables; 
    
      public Modeler(double[][] constraintLeftSide,
        double[] constraintRightSide, Constraint[] constraintOperator,
@@ -161,7 +155,6 @@ public class Simplex {
       a = new double[numberOfConstraints + 1][numberOfOriginalVariables
         + numberOfConstraints + 1];
    
-      // initialize constraint
       for (int i = 0; i < numberOfConstraints; i++) {
        for (int j = 0; j < numberOfOriginalVariables; j++) {
         a[i][j] = constraintLeftSide[i][j];
@@ -171,7 +164,6 @@ public class Simplex {
       for (int i = 0; i < numberOfConstraints; i++)
        a[i][numberOfConstraints + numberOfOriginalVariables] = constraintRightSide[i];
    
-      // initialize slack variable
       for (int i = 0; i < numberOfConstraints; i++) {
        int slack = 0;
        switch (constraintOperator[i]) {
@@ -186,7 +178,6 @@ public class Simplex {
        a[i][numberOfOriginalVariables + i] = slack;
       }
    
-      // initialize objective function
       for (int j = 0; j < numberOfOriginalVariables; j++)
        a[numberOfConstraints][j] = objectiveFunction[j];
      }

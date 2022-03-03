@@ -71,7 +71,7 @@ public class PubliciteService implements IPubliciteService{
 	   
 	     Simplex simplex = new Simplex(model.getTableaux(),
 	       model.getNumberOfConstraint(),
-	       model.getNumberOfOriginalVariable(), simplexx.MINIMIZE);
+	       model.getNumberOfOriginalVariable(), simplexx.MAXIMIZE);
 	    // double[] x = simplex.primal();
 		return  simplex.value();
 	}
