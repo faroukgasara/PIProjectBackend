@@ -18,6 +18,7 @@ import tn.esprit.spring.entity.Reporting;
 import tn.esprit.spring.entity.Subscriber;
 import tn.esprit.spring.entity.Training;
 import tn.esprit.spring.entity.UserEmotions;
+import tn.esprit.spring.registration.token.ConfirmationToken;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
@@ -69,6 +71,8 @@ public class User implements UserDetails,Serializable {
     private String CIN ;
     private String availability ;
     private int age ;
+    private LocalDateTime birthdate;
+    
     
     @ManyToMany(mappedBy="user", cascade = CascadeType.ALL)
     private Set<Offer> offers;
@@ -112,6 +116,11 @@ public class User implements UserDetails,Serializable {
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<Reclamation> reclamations;
+    
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<ConfirmationToken> confirmationTokens;
+    
     
     @JsonIgnore
     @ManyToMany( cascade = CascadeType.ALL, mappedBy="user")

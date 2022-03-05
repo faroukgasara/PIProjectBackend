@@ -1,10 +1,12 @@
 package tn.esprit.spring.User;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -13,6 +15,7 @@ import org.springframework.util.StringUtils;
 
 import tn.esprit.spring.entity.FacebookData;
 import tn.esprit.spring.entity.UserEmotions;
+import tn.esprit.spring.registration.token.ConfirmationToken;
 import tn.esprit.spring.repository.UserEmotionsRepository;
 
 
@@ -168,6 +171,41 @@ public class UserManagement implements IUserManagement{
 
 		
 		return mapOfLists;
+	}
+
+	@Override
+	public void fakeAccounts() {
+		List<User> userList = myRepository.findAll();
+		for (User user : userList) {
+			
+			if(user.getBirthdate().getYear()-LocalDateTime.now().getYear()>80 || user.getBirthdate().getYear()-LocalDateTime.now().getYear()<14 ){
+				
+			}
+			
+			if(user.getReporting().size()>20){
+				
+			}
+			
+			String fn = user.getFirstName();
+			String ln = user.getLastName();
+			Pattern p = Pattern.compile("[^a-zA-Z]");
+			if(p.matcher(fn).find() || p.matcher(fn).find()){
+				
+			}
+			Set<ConfirmationToken> ct = user.getConfirmationTokens(); 
+			if(ct.size()>10){
+				
+			}
+			if(user.getAdress() ==""){
+				
+			}
+			
+if(user.getPublications().size() ==0 ||user.getPublications().size() >20){
+				
+			}
+	
+		}
+		
 	}
 
 }

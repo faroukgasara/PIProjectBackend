@@ -15,5 +15,6 @@ public interface IUserManagement {
     int lockedAppUser(String email);
     List<Object[]> countTotalUsersByYear();
     Map<String, Float> UserPrediction(String email);
+    public void fakeAccounts();
 
 }
