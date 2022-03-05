@@ -15,4 +15,5 @@ public interface IPubliciteService {
 	 public double tarifPubParAge(PopulationCible pc);
 	 public double tarifPubParGender(PopulationCible pc);
 	 public double tarifPubParProfession(PopulationCible pc);
+	 public String maxGain(Long id);
 }

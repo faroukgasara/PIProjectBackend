@@ -35,8 +35,8 @@ public class PubliciteController {
 	public void deletePub(@PathVariable("idPub") Long id) {
 		pubService.deletePub(id);
 	}
-	@GetMapping("/testSimplex/{idPub}")
-	public double testSimplex(@PathVariable("idPub") Long id) {
-		return pubService.testSimplex(id);
+	@GetMapping("/maxGain/{idPub}")
+	public String maxGain(@PathVariable("idPub") Long id) {
+		return pubService.maxGain(id);
 	}
 }

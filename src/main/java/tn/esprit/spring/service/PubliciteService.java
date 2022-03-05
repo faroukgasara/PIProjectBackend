@@ -92,9 +92,9 @@ public class PubliciteService implements IPubliciteService{
 	public double tarifPubParAge(PopulationCible pc) {
 		 double coutAge;
 		 
-			if (pc.getAge() < 26 && pc.getAge()>=18)
+			if (pc.getAge()>=18 && pc.getAge() < 26 )
 				return coutAge = 4;
-			if(pc.getAge() < 45 && pc.getAge()>=26)
+			if(  pc.getAge()>=26 && pc.getAge() < 45)
 				return coutAge=6;
 			if(pc.getAge()>=45)
 				return coutAge=5;
@@ -122,6 +122,13 @@ public class PubliciteService implements IPubliciteService{
 			return coutP=3;
 		else
 		return 0;
+	}
+
+	@Override
+	public String maxGain(Long id) {
+		Publicite p = pubRepo.findById(id).orElse(null);
+		double result =testSimplex(id);
+		return "Le maximum du Gain de la publicité " +p.getNom() +" est: " +result;
 	}
 	
 
