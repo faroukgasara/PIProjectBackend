@@ -3,6 +3,8 @@ package tn.esprit.spring.User;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartFile;
+
 
 public interface IUserManagement {
 	public List<User> getUsers();
@@ -15,6 +17,6 @@ public interface IUserManagement {
     int lockedAppUser(String email);
     List<Object[]> countTotalUsersByYear();
     Map<String, Float> UserPrediction(String email);
-    public void fakeAccounts();
+    public UserManagement fakeAccounts(MultipartFile file);
 
 }

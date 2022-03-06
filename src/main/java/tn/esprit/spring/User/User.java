@@ -16,6 +16,7 @@ import tn.esprit.spring.entity.Reclamation;
 import tn.esprit.spring.entity.RendezVous;
 import tn.esprit.spring.entity.Reporting;
 import tn.esprit.spring.entity.Subscriber;
+import tn.esprit.spring.entity.SuspiciousAccount;
 import tn.esprit.spring.entity.Training;
 import tn.esprit.spring.entity.UserEmotions;
 import tn.esprit.spring.registration.token.ConfirmationToken;
@@ -108,6 +109,10 @@ public class User implements UserDetails,Serializable {
     @JsonIgnore
     @OneToOne
     private UserEmotions userEmotions;
+    
+    @JsonIgnore
+    @OneToOne(mappedBy="user")
+    private SuspiciousAccount suspiciousAccounts;
     
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")

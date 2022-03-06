@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,8 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.swagger.annotations.Api;
@@ -107,6 +111,14 @@ public class UserController {
 	@ResponseBody
 	public Map<String, Float> UserPrediction(@PathVariable("email") String email){
 		return userService.UserPrediction(email);
+	}
+	
+	
+	// http://localhost:8089/WomenEmpowerment/user/fakeAccounts
+    @RequestMapping(value = "/fakeAccounts", method = RequestMethod.POST, produces = MediaType.IMAGE_JPEG_VALUE)
+	@ResponseBody
+	public byte[] fakeAccounts(@RequestParam("file") MultipartFile file){
+    	return userService.fakeAccounts(file).toImage();
 	}
 
 	

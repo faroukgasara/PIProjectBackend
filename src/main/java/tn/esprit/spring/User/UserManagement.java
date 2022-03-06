@@ -1,5 +1,7 @@
 package tn.esprit.spring.User;
 
+import java.io.IOException;
+import java.nio.file.FileSystems;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,15 +10,35 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
+import org.opencv.core.MatOfRect;
+import org.opencv.core.Point;
+import org.opencv.core.Rect;
+import org.opencv.core.Scalar;
+import org.opencv.core.Size;
+import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.imgproc.Imgproc;
+import org.opencv.objdetect.CascadeClassifier;
+import org.opencv.objdetect.Objdetect;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
+
+import nu.pattern.OpenCV;
 import tn.esprit.spring.entity.FacebookData;
+import tn.esprit.spring.entity.SuspiciousAccount;
 import tn.esprit.spring.entity.UserEmotions;
 import tn.esprit.spring.registration.token.ConfirmationToken;
+import tn.esprit.spring.repository.SuspiciousAccountRepository;
 import tn.esprit.spring.repository.UserEmotionsRepository;
+import tn.esprit.spring.entity.FaceEntity;
 
 
 @Service
@@ -24,6 +46,9 @@ public class UserManagement implements IUserManagement{
 	
 	@Autowired
 	private UserRepository myRepository;
+	
+	@Autowired
+	private SuspiciousAccountRepository suspiciousAccountRepository;
 	
 	@Autowired
 	private UserEmotionsRepository userEmotionsRepository;
@@ -173,38 +198,93 @@ public class UserManagement implements IUserManagement{
 		return mapOfLists;
 	}
 
+	private Resource faceResource = new ClassPathResource("haarcascades/haarcascade_frontalface_alt.xml");
+    private List<FaceEntity> faceEntities;
+    private Mat image;
+    
+
+	 public List<FaceEntity> toList() {
+	        return faceEntities;
+	    }
+
+
+	    public byte[] toImage() {
+	        for (FaceEntity fc : faceEntities) {
+	            Imgproc.rectangle(image, new Point(fc.getX(), fc.getY()), new Point(fc.getX() + fc.getWidth(), fc.getY() + fc.getHeight()), new Scalar(0, 255, 0));
+	        }
+	        return mat2Image(image);
+	    }
+
+	    private byte[] mat2Image(Mat frame) {
+	        MatOfByte buffer = new MatOfByte();
+	        Imgcodecs.imencode(".jpg", frame, buffer);
+	        return buffer.toArray();
+	    }
+
 	@Override
-	public void fakeAccounts() {
+	public UserManagement fakeAccounts(MultipartFile file) {
+		SuspiciousAccount sa = new SuspiciousAccount();
+		sa.setAdre("f");
+		suspiciousAccountRepository.save(sa);
+		try {
+	        faceEntities=new ArrayList<>();
+	        MatOfRect faceDetections = new MatOfRect();
+	        CascadeClassifier faceDetector;
+			
+				faceDetector = new CascadeClassifier(faceResource.getFile().getAbsolutePath());
+				image = Imgcodecs.imdecode(new MatOfByte(file.getBytes()), Imgcodecs.CV_LOAD_IMAGE_UNCHANGED);
+		
+	        faceDetector.detectMultiScale(image, faceDetections);
+
+	        System.out.println(String.format("Detected %s faces", faceDetections.toArray().length));
+
+	        for (Rect rect : faceDetections.toArray()) {
+	            faceEntities.add(new FaceEntity(rect.x, rect.y, rect.width, rect.height, 0));
+	        }}	 catch (IOException e) {
+				e.printStackTrace();
+			}
+	        
+	        
 		List<User> userList = myRepository.findAll();
+		float suspicious = 0;
+		String test="";
+
 		for (User user : userList) {
+
+			
+			String fn = user.getFirstName();
+			String ln = user.getLastName();
+			Pattern p = Pattern.compile("[^a-zA-Z]");
+			Pattern p1 = Pattern.compile("[^a-zA-Z09]");
 			
 			if(user.getBirthdate().getYear()-LocalDateTime.now().getYear()>80 || user.getBirthdate().getYear()-LocalDateTime.now().getYear()<14 ){
-				
+				suspicious = (float) (suspicious+0.25);
 			}
 			
 			if(user.getReporting().size()>20){
 				
 			}
 			
-			String fn = user.getFirstName();
-			String ln = user.getLastName();
-			Pattern p = Pattern.compile("[^a-zA-Z]");
+			
 			if(p.matcher(fn).find() || p.matcher(fn).find()){
-				
+				test = "f";
 			}
+			
+			
 			Set<ConfirmationToken> ct = user.getConfirmationTokens(); 
 			if(ct.size()>10){
 				
 			}
-			if(user.getAdress() ==""){
+			if(p1.matcher(user.getAdress()).find()){
 				
 			}
 			
-if(user.getPublications().size() ==0 ||user.getPublications().size() >20){
+			if(user.getPublications().size() ==0 ||user.getPublications().size() >20){
 				
 			}
 	
 		}
+		return this;
 		
 	}
 
