@@ -15,4 +15,7 @@ public boolean verifExistCalendrMedcin(RendezVous r);
 public boolean verifExistCalendrLawyer(RendezVous r);
 public boolean verifExistCalendrPsy(RendezVous r);
 public boolean verifExistCalendr(RendezVous r);
+public String confirm(String code);
+String buildEmailredv(String name, String code, String link);
+
 }
