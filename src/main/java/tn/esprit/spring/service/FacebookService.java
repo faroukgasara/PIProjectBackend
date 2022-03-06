@@ -69,23 +69,18 @@ public class FacebookService implements IFacebookService{
 	public PagedList<Post> getUserFeed(String email) {
 		List<Post> posts = new FacebookTemplate(accessToken).feedOperations().getPosts();
 
-		String regex = "^[a-zA-Z0-9]+$";
+		String regex = "^[a-zA-Z0-9]";
 		 
 		Pattern pattern = Pattern.compile(regex);
 		for (Post post : posts) {
 			FacebookData f = new FacebookData();
 			
-			if(post.getMessage() != null){
+		
 				
-				 Matcher matcher = pattern.matcher(post.getMessage());
-				 if(matcher.matches()==true){
+			
 					 f.setMessage(post.getMessage());
-				 }else{
-						f.setMessage("null");
-				 }
-			}else{
-				f.setMessage("null");
-			 }
+				 
+			
 			User u = userRepository.findByEmail(email).orElse(null);
 			f.setUser(u);
 			f.setPostedAt(post.getCreatedTime());

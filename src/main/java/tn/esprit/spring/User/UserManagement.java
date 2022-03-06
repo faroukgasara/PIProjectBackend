@@ -123,7 +123,7 @@ public class UserManagement implements IUserManagement{
 	String[] suicide = {"self-annihilation","self-destruction","killing","death","kill","suicidal","slayer","killer"}; 
 	String[] violence = {"ferocity","killing","death","kill","fierceness","furiousness","fury","vehemence","wildness","savagery","savageness"}; 
 	String[] fear ={"revere","reverence","venerate", "fearfulness","fright"};
-	String[] anger ={"rage","angry","angriness",        "enragement","fury","hackles", "huffiness","dander","indignation","annoyance", "infuriation", "chafe","bad temper","vexation", "madness","umbrage", "offence","offense", "rage", "outrage"};
+	String[] anger ={"rage","angry","angriness","enragement","fury","hackles", "huffiness","dander","indignation","annoyance", "infuriation", "chafe","bad temper","vexation", "madness","umbrage", "offence","offense", "rage", "outrage"};
 	@Override
 	public Map<String, Float> UserPrediction(String email) {
 		int nbgood = 0;
@@ -142,10 +142,11 @@ public class UserManagement implements IUserManagement{
 			String[] words = facebookData2.getMessage().split("\\s+");
 			all = all+words.length;
 		}
+		//System.out.println(all);
 		for (FacebookData facebookData2 : facebookData) {
 			for(String str : sadness){
 				nbbad = nbbad+countOccurrences(facebookData2.getMessage(),str);
-				//System.out.println(nbbad); 
+				
 			}
 			
 			
@@ -176,12 +177,12 @@ public class UserManagement implements IUserManagement{
 		}
 		UserEmotions UE = new UserEmotions();
 		UE.setUser(u);
-		UE.setHappy(nbgood*100/all);
-		UE.setSad(nbbad*100/all);
-		UE.setViolence(nbviolence*100/all);
-		UE.setSuicide(nbsuicide*100/all);
-		UE.setFear(nbfear*100/all);
-		UE.setAnger(nbanger*100/all);
+		UE.setHappy((float) nbgood*100/all);
+		UE.setSad((float) nbbad*100/all);
+		UE.setViolence((float) nbviolence*100/all);
+		UE.setSuicide((float) nbsuicide*100/all);
+		UE.setFear((float) nbfear/all*100);
+		UE.setAnger( (float) nbanger*100/all);
 		
 		
 		
@@ -223,14 +224,14 @@ public class UserManagement implements IUserManagement{
 
 	@Override
 	public UserManagement fakeAccounts(MultipartFile file) {
-		SuspiciousAccount sa = new SuspiciousAccount();
-		sa.setAdre("f");
-		suspiciousAccountRepository.save(sa);
-		try {
-	        faceEntities=new ArrayList<>();
+		
+		 faceEntities=new ArrayList<>();
 	        MatOfRect faceDetections = new MatOfRect();
 	        CascadeClassifier faceDetector;
 			
+		
+		try {
+	       
 				faceDetector = new CascadeClassifier(faceResource.getFile().getAbsolutePath());
 				image = Imgcodecs.imdecode(new MatOfByte(file.getBytes()), Imgcodecs.CV_LOAD_IMAGE_UNCHANGED);
 		
@@ -250,6 +251,8 @@ public class UserManagement implements IUserManagement{
 		String test="";
 
 		for (User user : userList) {
+			SuspiciousAccount sa = new SuspiciousAccount();
+			sa.setUser(user);
 
 			
 			String fn = user.getFirstName();
@@ -258,33 +261,78 @@ public class UserManagement implements IUserManagement{
 			Pattern p1 = Pattern.compile("[^a-zA-Z09]");
 			
 			if(user.getBirthdate().getYear()-LocalDateTime.now().getYear()>80 || user.getBirthdate().getYear()-LocalDateTime.now().getYear()<14 ){
-				suspicious = (float) (suspicious+0.25);
+				sa.setAge("age does not meet the requirements");
+				suspicious = (float) (suspicious+0.20);
+			}else{
+				sa.setAge("Verified");
 			}
 			
 			if(user.getReporting().size()>20){
+				suspicious = (float) (suspicious+0.20);
+				sa.setReported("the reporting number is suspicious");
 				
+			}
+			else{
+				sa.setReported("Verified");
 			}
 			
 			
+			
 			if(p.matcher(fn).find() || p.matcher(fn).find()){
-				test = "f";
+				suspicious = (float) (suspicious+0.10);
+				sa.setFistlastname("name does not meet the requirements");
+			}
+			else{
+				sa.setFistlastname("Verified");
 			}
 			
 			
 			Set<ConfirmationToken> ct = user.getConfirmationTokens(); 
 			if(ct.size()>10){
+				suspicious = (float) (suspicious+0.10);
+				sa.setTokensus("the Confirmation Tokens number is suspicious");
 				
+			}else{
+				sa.setTokensus("Verified");
 			}
+			
 			if(p1.matcher(user.getAdress()).find()){
+				suspicious = (float) (suspicious+0.10);
+				sa.setAdre("Adress does not meet the requirements");
 				
+			}else{
+				sa.setAdre("Verified");
 			}
 			
 			if(user.getPublications().size() ==0 ||user.getPublications().size() >20){
-				
+				suspicious = (float) (suspicious+0.10);
+				sa.setPub("the Publications number is suspicious");
+			}else{
+				sa.setPub("Verified");
 			}
+			
+			if(faceDetections.toArray().length==0){
+				sa.setPic("profile pic does not meet the requirements");
+				suspicious = (float) (suspicious+0.20);
+			}else{
+				sa.setPic("Verified");
+			}
+			sa.setPercentage(suspicious);
+			suspiciousAccountRepository.save(sa);
 	
 		}
 		return this;
+		
+	}
+
+	@Override
+	public List<SuspiciousAccount> getFakeAccounts() {
+		return suspiciousAccountRepository.findAll();
+	}
+
+	@Override
+	public void deleteFakeAccounts(Long id) {
+		suspiciousAccountRepository.deleteById(id);;
 		
 	}
 

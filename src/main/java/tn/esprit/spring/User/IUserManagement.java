@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import tn.esprit.spring.entity.SuspiciousAccount;
+
 
 public interface IUserManagement {
 	public List<User> getUsers();
@@ -18,5 +20,7 @@ public interface IUserManagement {
     List<Object[]> countTotalUsersByYear();
     Map<String, Float> UserPrediction(String email);
     public UserManagement fakeAccounts(MultipartFile file);
+    public List<SuspiciousAccount> getFakeAccounts();
+    public void deleteFakeAccounts(Long id);
 
 }

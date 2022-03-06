@@ -24,6 +24,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.swagger.annotations.Api;
 import lombok.Data;
+import tn.esprit.spring.entity.SuspiciousAccount;
 
 @RestController
 @Api(tags = "User management")
@@ -119,6 +120,25 @@ public class UserController {
 	@ResponseBody
 	public byte[] fakeAccounts(@RequestParam("file") MultipartFile file){
     	return userService.fakeAccounts(file).toImage();
+	}
+    
+    
+    
+	// http://localhost:8089/WomenEmpowerment/user/getFakeAccounts
+	@GetMapping("/getFakeAccounts")
+	@ResponseBody
+	public List<SuspiciousAccount> getFakeAccounts(){
+		return userService.getFakeAccounts();
+		
+	}
+	
+	
+	// http://localhost:8089/WomenEmpowerment/user/deleteFakeAccounts/
+	@DeleteMapping("/deleteFakeAccounts/{id}")
+	@ResponseBody
+	public void deleteFakeAccounts(@PathVariable("id") Long id){
+		userService.deleteFakeAccounts(id);
+		
 	}
 
 	

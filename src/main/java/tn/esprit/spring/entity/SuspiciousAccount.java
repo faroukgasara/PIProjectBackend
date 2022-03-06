@@ -36,10 +36,13 @@ public class SuspiciousAccount implements Serializable{
 	private String tokensus;
 	private String reported;
 	private String age;
+	private String pub;
+	private float percentage;
 	
 	
 	
 	
+	@JsonIgnore
 	@OneToOne
 	private User user;
 	
