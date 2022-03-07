@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import tn.esprit.spring.entity.Calendrier;
+import tn.esprit.spring.entity.Candidature;
 import tn.esprit.spring.entity.Chat;
 import tn.esprit.spring.entity.Offer;
 import tn.esprit.spring.entity.Publication;
@@ -108,6 +109,10 @@ public class User implements UserDetails,Serializable {
     @ManyToMany( cascade = CascadeType.ALL, mappedBy="user")
     private Set<Calendrier> calendriers;
     
+    //*************
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+    private Set<Candidature> candidatures;
     
 	public User(Long id, String firstName, String lastName, String email, String password, UserRole appUserRole,
 			String picture, String adress, String companyName, String numTel,

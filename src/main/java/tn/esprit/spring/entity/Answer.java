@@ -2,10 +2,14 @@ package tn.esprit.spring.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -39,4 +43,7 @@ public class Answer implements Serializable{
 	@JsonIgnore
 	@NotNull
 	private Boolean iscorrect;
+	
+	//@ManyToMany(mappedBy="answers", cascade = CascadeType.ALL)  
+	//private Set<Question> questions;
 }

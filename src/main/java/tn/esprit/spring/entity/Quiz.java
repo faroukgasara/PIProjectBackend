@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import tn.esprit.spring.User.UserRole;
 
 import javax.persistence.*;
 @Getter
@@ -29,6 +28,8 @@ public class Quiz implements Serializable{
 	
     @Enumerated(EnumType.STRING)
     private TypeQuiz Type;
+    
+    private String name;
     
     @OneToOne
     private Training trainings;
