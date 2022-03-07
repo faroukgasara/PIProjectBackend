@@ -1,358 +1,413 @@
-2022-03-06 19:42:56.919 ERROR 15367 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[.[dispatcherServlet]      : Servlet.service() for servlet [dispatcherServlet] in context with path [/WomenEmpowerment] threw exception [Request processing failed; nested exception is org.springframework.dao.InvalidDataAccessApiUsageException: Executing an update/delete query; nested exception is javax.persistence.TransactionRequiredException: Executing an update/delete query] with root cause
-
-javax.persistence.TransactionRequiredException: Executing an update/delete query
-	at org.hibernate.internal.AbstractSharedSessionContract.checkTransactionNeededForUpdateOperation(AbstractSharedSessionContract.java:422) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.query.internal.AbstractProducedQuery.executeUpdate(AbstractProducedQuery.java:1679) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution$ModifyingExecution.doExecute(JpaQueryExecution.java:239) ~[spring-data-jpa-2.5.6.jar:2.5.6]
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:88) ~[spring-data-jpa-2.5.6.jar:2.5.6]
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:155) ~[spring-data-jpa-2.5.6.jar:2.5.6]
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:143) ~[spring-data-jpa-2.5.6.jar:2.5.6]
-	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:137) ~[spring-data-commons-2.5.6.jar:2.5.6]
-	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:121) ~[spring-data-commons-2.5.6.jar:2.5.6]
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:159) ~[spring-data-commons-2.5.6.jar:2.5.6]
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:138) ~[spring-data-commons-2.5.6.jar:2.5.6]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.12.jar:5.3.12]
-	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-5.3.12.jar:5.3.12]
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388) ~[spring-tx-5.3.12.jar:5.3.12]
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.12.jar:5.3.12]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.12.jar:5.3.12]
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-5.3.12.jar:5.3.12]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.12.jar:5.3.12]
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:145) ~[spring-data-jpa-2.5.6.jar:2.5.6]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.12.jar:5.3.12]
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-5.3.12.jar:5.3.12]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.12.jar:5.3.12]
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215) ~[spring-aop-5.3.12.jar:5.3.12]
-	at com.sun.proxy.$Proxy242.confirmRendezVous(Unknown Source) ~[na:na]
-	at tn.esprit.spring.service.RendezVousService.confirm(RendezVousService.java:200) ~[classes/:na]
-	at tn.esprit.spring.controller.RendezVousController.confirm(RendezVousController.java:46) ~[classes/:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_301]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_301]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_301]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_301]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.12.jar:5.3.12]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.12.jar:5.3.12]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.12.jar:5.3.12]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.12.jar:5.3.12]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.12.jar:5.3.12]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.12.jar:5.3.12]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067) ~[spring-webmvc-5.3.12.jar:5.3.12]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.12.jar:5.3.12]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.12.jar:5.3.12]
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.12.jar:5.3.12]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655) ~[tomcat-embed-core-9.0.54.jar:4.0.FR]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.12.jar:5.3.12]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.54.jar:4.0.FR]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.54.jar:9.0.54]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:121) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:115) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:105) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:117) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.12.jar:5.3.12]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.12.jar:5.3.12]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.12.jar:5.3.12]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183) ~[spring-security-web-5.5.3.jar:5.5.3]
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) ~[spring-web-5.3.12.jar:5.3.12]
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) ~[spring-web-5.3.12.jar:5.3.12]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.12.jar:5.3.12]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.12.jar:5.3.12]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.12.jar:5.3.12]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.12.jar:5.3.12]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.12.jar:5.3.12]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.12.jar:5.3.12]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540) [tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) [tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) [tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382) [tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895) [tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1722) [tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) [tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-embed-core-9.0.54.jar:9.0.54]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.54.jar:9.0.54]
-	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_301]
-
-2022-03-06 19:46:11.283  INFO 15367 --- [Thread-37] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-03-06 19:46:11.283  INFO 15367 --- [Thread-37] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
-2022-03-06 19:46:11.289  INFO 15367 --- [Thread-37] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
-2022-03-06 19:46:26.580  WARN 15367 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5003 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
-2022-03-06 19:46:31.586  INFO 15367 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 15367 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
-2022-03-06 19:46:31.586  INFO 15367 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
-2022-03-06 19:46:31.910  INFO 15367 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-03-06 19:46:31.974  INFO 15367 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 13 JPA repository interfaces.
-2022-03-06 19:46:32.049  INFO 15367 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$bf6e791a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-03-06 19:46:32.052  INFO 15367 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2022-03-06 19:46:32.112  INFO 15367 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-03-06 19:46:32.113  INFO 15367 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-03-06 19:46:32.113  INFO 15367 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
-2022-03-06 19:46:32.119  INFO 15367 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
-2022-03-06 19:46:32.119  INFO 15367 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 531 ms
-2022-03-06 19:46:32.172  INFO 15367 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-03-06 19:46:32.176  INFO 15367 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
-2022-03-06 19:46:32.194  INFO 15367 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
-2022-03-06 19:46:32.195  INFO 15367 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-2022-03-06 19:46:33.334  INFO 15367 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-03-06 19:46:33.334  INFO 15367 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-03-06 19:46:33.655  WARN 15367 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-03-06 19:46:33.795  INFO 15367 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5b1dae79, org.springframework.security.web.context.SecurityContextPersistenceFilter@12b6eb80, org.springframework.security.web.header.HeaderWriterFilter@6074ffd7, org.springframework.security.web.csrf.CsrfFilter@298bc6b3, org.springframework.security.web.authentication.logout.LogoutFilter@24da1565, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5b049790, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c495160, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@d09262b, org.springframework.security.web.session.SessionManagementFilter@657f07c2, org.springframework.security.web.access.ExceptionTranslationFilter@65159dc3]
-2022-03-06 19:46:33.850  INFO 15367 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-03-06 19:46:33.965  INFO 15367 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
-2022-03-06 19:46:34.087  INFO 15367 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 22.542 seconds (JVM running for 1850.375)
-2022-03-06 19:46:34.089  INFO 15367 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2022-03-06 19:46:45.600  INFO 15367 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-03-06 19:46:45.601  INFO 15367 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-03-06 19:46:45.603  INFO 15367 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2022-03-06 19:48:53.298  INFO 15367 --- [Thread-43] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-03-06 19:48:53.299  INFO 15367 --- [Thread-43] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
-2022-03-06 19:48:53.305  INFO 15367 --- [Thread-43] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
-2022-03-06 19:49:08.556  WARN 15367 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5004 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
-2022-03-06 19:49:13.561  INFO 15367 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 15367 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
-2022-03-06 19:49:13.561  INFO 15367 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
-2022-03-06 19:49:13.856  INFO 15367 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-03-06 19:49:13.910  INFO 15367 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 53 ms. Found 13 JPA repository interfaces.
-2022-03-06 19:49:13.979  INFO 15367 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$bf6e791a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-03-06 19:49:13.980  INFO 15367 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2022-03-06 19:49:14.037  INFO 15367 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-03-06 19:49:14.038  INFO 15367 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-03-06 19:49:14.038  INFO 15367 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
-2022-03-06 19:49:14.043  INFO 15367 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
-2022-03-06 19:49:14.044  INFO 15367 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 481 ms
-2022-03-06 19:49:14.092  INFO 15367 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-03-06 19:49:14.096  INFO 15367 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
-2022-03-06 19:49:14.113  INFO 15367 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
-2022-03-06 19:49:14.114  INFO 15367 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-2022-03-06 19:49:15.226  INFO 15367 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-03-06 19:49:15.226  INFO 15367 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-03-06 19:49:15.551  WARN 15367 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-03-06 19:49:15.745  INFO 15367 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@68758194, org.springframework.security.web.context.SecurityContextPersistenceFilter@20119792, org.springframework.security.web.header.HeaderWriterFilter@6ae343bb, org.springframework.web.filter.CorsFilter@5d958569, org.springframework.security.web.authentication.logout.LogoutFilter@f30dd73, tn.esprit.spring.security.CustomAuthorizationFilter@4a6b0b10, tn.esprit.spring.security.CustomAuthentificationFilter@7bcbd3dc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@335e5f82, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@43502cc9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3f768410, org.springframework.security.web.session.SessionManagementFilter@7772ee75, org.springframework.security.web.access.ExceptionTranslationFilter@53d81092, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2bd35851]
-2022-03-06 19:49:15.777  INFO 15367 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-03-06 19:49:15.878  INFO 15367 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
-2022-03-06 19:49:16.023  INFO 15367 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 22.507 seconds (JVM running for 2012.296)
-2022-03-06 19:49:16.026  INFO 15367 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2022-03-06 19:49:23.604  INFO 15367 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-03-06 19:49:23.605  INFO 15367 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-03-06 19:49:23.607  INFO 15367 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2022-03-06 19:50:31.236  INFO 15367 --- [Thread-49] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-03-06 19:50:31.236  INFO 15367 --- [Thread-49] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
-2022-03-06 19:50:31.242  INFO 15367 --- [Thread-49] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
-2022-03-06 19:50:46.497  WARN 15367 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5004 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
-2022-03-06 19:50:51.501  INFO 15367 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 15367 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
-2022-03-06 19:50:51.502  INFO 15367 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
-2022-03-06 19:50:51.775  INFO 15367 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-03-06 19:50:51.831  INFO 15367 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 13 JPA repository interfaces.
-2022-03-06 19:50:51.896  INFO 15367 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$bf6e791a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-03-06 19:50:51.897  INFO 15367 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2022-03-06 19:50:51.947  INFO 15367 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-03-06 19:50:51.948  INFO 15367 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-03-06 19:50:51.948  INFO 15367 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
-2022-03-06 19:50:51.953  INFO 15367 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
-2022-03-06 19:50:51.953  INFO 15367 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 449 ms
-2022-03-06 19:50:51.998  INFO 15367 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-03-06 19:50:52.001  INFO 15367 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Starting...
-2022-03-06 19:50:52.020  INFO 15367 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Start completed.
-2022-03-06 19:50:52.020  INFO 15367 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-2022-03-06 19:50:53.108  INFO 15367 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-03-06 19:50:53.108  INFO 15367 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-03-06 19:50:53.422  WARN 15367 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-03-06 19:50:53.560  INFO 15367 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6a95a6d5, org.springframework.security.web.context.SecurityContextPersistenceFilter@1a0f0191, org.springframework.security.web.header.HeaderWriterFilter@543bd6e4, org.springframework.security.web.csrf.CsrfFilter@61d07254, org.springframework.security.web.authentication.logout.LogoutFilter@394c7463, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@55f0df40, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5f76afec, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@767da4, org.springframework.security.web.session.SessionManagementFilter@782f8e12, org.springframework.security.web.access.ExceptionTranslationFilter@139b956d]
-2022-03-06 19:50:53.611  INFO 15367 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-03-06 19:50:53.725  INFO 15367 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
-2022-03-06 19:50:53.845  INFO 15367 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 22.384 seconds (JVM running for 2110.117)
-2022-03-06 19:50:53.847  INFO 15367 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2022-03-06 19:50:56.032  INFO 15367 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-03-06 19:50:56.032  INFO 15367 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-03-06 19:50:56.034  INFO 15367 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2022-03-06 20:03:28.925  INFO 15367 --- [Thread-55] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-03-06 20:03:28.927  INFO 15367 --- [Thread-55] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown initiated...
-2022-03-06 20:03:28.938  INFO 15367 --- [Thread-55] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown completed.
-2022-03-06 20:03:44.219  WARN 15367 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5003 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
-2022-03-06 20:03:49.223  INFO 15367 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 15367 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
-2022-03-06 20:03:49.223  INFO 15367 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
-2022-03-06 20:03:49.640  INFO 15367 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-03-06 20:03:49.726  INFO 15367 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 85 ms. Found 13 JPA repository interfaces.
-2022-03-06 20:03:49.815  INFO 15367 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$bf6e791a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-03-06 20:03:49.817  INFO 15367 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2022-03-06 20:03:49.886  INFO 15367 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-03-06 20:03:49.887  INFO 15367 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-03-06 20:03:49.887  INFO 15367 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
-2022-03-06 20:03:49.893  INFO 15367 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
-2022-03-06 20:03:49.893  INFO 15367 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 668 ms
-2022-03-06 20:03:49.948  INFO 15367 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-03-06 20:03:49.953  INFO 15367 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Starting...
-2022-03-06 20:03:49.974  INFO 15367 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Start completed.
-2022-03-06 20:03:49.975  INFO 15367 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-2022-03-06 20:03:51.226  INFO 15367 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-03-06 20:03:51.227  INFO 15367 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-03-06 20:03:51.585  WARN 15367 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-03-06 20:03:51.789  INFO 15367 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7f6f36b8, org.springframework.security.web.context.SecurityContextPersistenceFilter@2a0113de, org.springframework.security.web.header.HeaderWriterFilter@6c6ad1b5, org.springframework.web.filter.CorsFilter@243d505, org.springframework.security.web.authentication.logout.LogoutFilter@1dc470f0, tn.esprit.spring.security.CustomAuthorizationFilter@55455573, tn.esprit.spring.security.CustomAuthentificationFilter@7cc19f37, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@60570a71, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5a0a98b7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7a1dbce1, org.springframework.security.web.session.SessionManagementFilter@67605eca, org.springframework.security.web.access.ExceptionTranslationFilter@31df687f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@22816581]
-2022-03-06 20:03:51.824  INFO 15367 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-03-06 20:03:51.943  INFO 15367 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
-2022-03-06 20:03:52.060  INFO 15367 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 22.887 seconds (JVM running for 2888.398)
-2022-03-06 20:03:52.063  INFO 15367 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2022-03-06 20:04:07.395  INFO 15367 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-03-06 20:04:07.397  INFO 15367 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-03-06 20:04:07.399  INFO 15367 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2022-03-06 21:02:42.763  WARN 15367 --- [HikariPool-10 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-10 - Thread starvation or clock leap detected (housekeeper delta=50m52s686ms).
-2022-03-06 21:20:23.528  INFO 15367 --- [RMI TCP Connection(117)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
-2022-03-06 21:20:23.548  INFO 15367 --- [RMI TCP Connection(117)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-03-06 21:20:23.549  INFO 15367 --- [RMI TCP Connection(117)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown initiated...
-2022-03-06 21:20:23.555  INFO 15367 --- [RMI TCP Connection(117)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown completed.
-2022-03-06 21:20:45.715  WARN 18889 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5005 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
-2022-03-06 21:20:50.720  INFO 18889 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 18889 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
-2022-03-06 21:20:50.721  INFO 18889 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
-2022-03-06 21:20:50.775  INFO 18889 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in /Users/mac/.m2/repository/javax/mail/mail/1.4/mail-1.4.jar referenced one or more files that do not exist: file:/Users/mac/.m2/repository/javax/mail/mail/1.4/activation.jar
-2022-03-06 21:20:50.776  INFO 18889 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-03-06 21:20:50.776  INFO 18889 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-03-06 21:20:51.759  INFO 18889 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-03-06 21:20:51.883  INFO 18889 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 116 ms. Found 13 JPA repository interfaces.
-2022-03-06 21:20:52.274  INFO 18889 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$993f7a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-03-06 21:20:52.321  INFO 18889 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2022-03-06 21:20:52.679  INFO 18889 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-03-06 21:20:52.690  INFO 18889 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-03-06 21:20:52.691  INFO 18889 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
-2022-03-06 21:20:52.844  INFO 18889 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
-2022-03-06 21:20:52.845  INFO 18889 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2068 ms
-2022-03-06 21:20:53.023  INFO 18889 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-03-06 21:20:53.074  INFO 18889 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
-2022-03-06 21:20:53.207  INFO 18889 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-03-06 21:20:53.314  INFO 18889 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-03-06 21:20:53.732  INFO 18889 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-03-06 21:20:53.748  INFO 18889 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-2022-03-06 21:20:56.016  INFO 18889 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-03-06 21:20:56.025  INFO 18889 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-03-06 21:20:56.856  WARN 18889 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-03-06 21:20:57.526  INFO 18889 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1f36e487, org.springframework.security.web.context.SecurityContextPersistenceFilter@d98f5bf, org.springframework.security.web.header.HeaderWriterFilter@7da3cc6, org.springframework.web.filter.CorsFilter@2c21d33d, org.springframework.security.web.authentication.logout.LogoutFilter@2dfe831b, tn.esprit.spring.security.CustomAuthorizationFilter@4d7e76f4, tn.esprit.spring.security.CustomAuthentificationFilter@2e64d9e3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@126bba70, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@328a7999, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6de1274, org.springframework.security.web.session.SessionManagementFilter@19091d16, org.springframework.security.web.access.ExceptionTranslationFilter@6636f3d0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2f83c2e6]
-2022-03-06 21:20:57.633  INFO 18889 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-03-06 21:20:57.899  INFO 18889 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
-2022-03-06 21:20:58.323  INFO 18889 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 28.004 seconds (JVM running for 33.828)
-2022-03-06 21:21:10.532  INFO 18889 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-03-06 21:21:10.532  INFO 18889 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-03-06 21:21:10.535  INFO 18889 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
-2022-03-06 21:23:49.692  INFO 18889 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-03-06 21:23:49.696  INFO 18889 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-03-06 21:23:49.703  INFO 18889 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2022-03-06 21:24:04.928  WARN 18889 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5003 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
-2022-03-06 21:24:09.932  INFO 18889 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 18889 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
-2022-03-06 21:24:09.932  INFO 18889 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
-2022-03-06 21:24:10.295  INFO 18889 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-03-06 21:24:10.361  INFO 18889 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 66 ms. Found 13 JPA repository interfaces.
-2022-03-06 21:24:10.447  INFO 18889 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$993f7a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-03-06 21:24:10.449  INFO 18889 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2022-03-06 21:24:10.512  INFO 18889 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-03-06 21:24:10.513  INFO 18889 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-03-06 21:24:10.513  INFO 18889 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
-2022-03-06 21:24:10.520  INFO 18889 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
-2022-03-06 21:24:10.520  INFO 18889 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 584 ms
-2022-03-06 21:24:10.574  INFO 18889 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-03-06 21:24:10.579  INFO 18889 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2022-03-06 21:24:10.601  INFO 18889 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2022-03-06 21:24:10.602  INFO 18889 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-2022-03-06 21:24:11.829  INFO 18889 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-03-06 21:24:11.829  INFO 18889 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-03-06 21:24:12.190  WARN 18889 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-03-06 21:24:12.392  INFO 18889 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@55ad16e8, org.springframework.security.web.context.SecurityContextPersistenceFilter@2d4e68b1, org.springframework.security.web.header.HeaderWriterFilter@5af3627d, org.springframework.web.filter.CorsFilter@1e1104d4, org.springframework.security.web.authentication.logout.LogoutFilter@2f54c00f, tn.esprit.spring.security.CustomAuthorizationFilter@35e2ba36, tn.esprit.spring.security.CustomAuthentificationFilter@31be132e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@51f1fbbc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@10508b75, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@c9959a7, org.springframework.security.web.session.SessionManagementFilter@4214649d, org.springframework.security.web.access.ExceptionTranslationFilter@1eac4de1, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@37267fc3]
-2022-03-06 21:24:12.426  INFO 18889 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-03-06 21:24:12.533  INFO 18889 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
-2022-03-06 21:24:12.692  INFO 18889 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 22.807 seconds (JVM running for 228.201)
-2022-03-06 21:24:12.695  INFO 18889 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2022-03-06 21:24:23.668  INFO 18889 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-03-06 21:24:23.669  INFO 18889 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-03-06 21:24:23.672  INFO 18889 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
-2022-03-06 21:25:43.138  INFO 18889 --- [Thread-13] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-03-06 21:25:43.139  INFO 18889 --- [Thread-13] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
-2022-03-06 21:25:43.145  INFO 18889 --- [Thread-13] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
-2022-03-06 21:25:58.353  WARN 18889 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5004 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
-2022-03-06 21:26:03.357  INFO 18889 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 18889 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
-2022-03-06 21:26:03.358  INFO 18889 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
-2022-03-06 21:26:03.696  INFO 18889 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-03-06 21:26:03.760  INFO 18889 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 13 JPA repository interfaces.
-2022-03-06 21:26:03.841  INFO 18889 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$993f7a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-03-06 21:26:03.842  INFO 18889 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2022-03-06 21:26:03.903  INFO 18889 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-03-06 21:26:03.904  INFO 18889 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-03-06 21:26:03.904  INFO 18889 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
-2022-03-06 21:26:03.910  INFO 18889 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
-2022-03-06 21:26:03.910  INFO 18889 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 550 ms
-2022-03-06 21:26:03.959  INFO 18889 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-03-06 21:26:03.964  INFO 18889 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
-2022-03-06 21:26:03.983  INFO 18889 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
-2022-03-06 21:26:03.983  INFO 18889 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-2022-03-06 21:26:05.162  INFO 18889 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-03-06 21:26:05.162  INFO 18889 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-03-06 21:26:05.524  WARN 18889 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-03-06 21:26:05.738  INFO 18889 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2ce95c35, org.springframework.security.web.context.SecurityContextPersistenceFilter@4fa40300, org.springframework.security.web.header.HeaderWriterFilter@3da2efcf, org.springframework.web.filter.CorsFilter@7d8d11c8, org.springframework.security.web.authentication.logout.LogoutFilter@461c3215, tn.esprit.spring.security.CustomAuthorizationFilter@110558fb, tn.esprit.spring.security.CustomAuthentificationFilter@5f28508c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@248cb144, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@efaee8d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@39c6a7a8, org.springframework.security.web.session.SessionManagementFilter@56be2598, org.springframework.security.web.access.ExceptionTranslationFilter@420538c8, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3aae89ae]
-2022-03-06 21:26:05.775  INFO 18889 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-03-06 21:26:05.881  INFO 18889 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
-2022-03-06 21:26:06.022  INFO 18889 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 22.709 seconds (JVM running for 341.533)
-2022-03-06 21:26:06.025  INFO 18889 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2022-03-06 21:26:53.009  INFO 18889 --- [Thread-19] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-03-06 21:26:53.010  INFO 18889 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
-2022-03-06 21:26:53.016  INFO 18889 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
-2022-03-06 21:27:08.315  WARN 18889 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5003 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
-2022-03-06 21:27:13.319  INFO 18889 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 18889 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
-2022-03-06 21:27:13.319  INFO 18889 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
-2022-03-06 21:27:13.653  INFO 18889 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-03-06 21:27:13.715  INFO 18889 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61 ms. Found 13 JPA repository interfaces.
-2022-03-06 21:27:13.794  INFO 18889 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$993f7a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-03-06 21:27:13.795  INFO 18889 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2022-03-06 21:27:13.857  INFO 18889 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-03-06 21:27:13.858  INFO 18889 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-03-06 21:27:13.858  INFO 18889 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
-2022-03-06 21:27:13.864  INFO 18889 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
-2022-03-06 21:27:13.864  INFO 18889 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 542 ms
-2022-03-06 21:27:13.918  INFO 18889 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-03-06 21:27:13.922  INFO 18889 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
-2022-03-06 21:27:13.941  INFO 18889 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
-2022-03-06 21:27:13.942  INFO 18889 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-2022-03-06 21:27:15.124  INFO 18889 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-03-06 21:27:15.125  INFO 18889 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-03-06 21:27:15.455  WARN 18889 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-03-06 21:27:15.665  INFO 18889 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3be99e9e, org.springframework.security.web.context.SecurityContextPersistenceFilter@6b03086, org.springframework.security.web.header.HeaderWriterFilter@7270fb4a, org.springframework.web.filter.CorsFilter@45eafa2a, org.springframework.security.web.authentication.logout.LogoutFilter@1080f3ed, tn.esprit.spring.security.CustomAuthorizationFilter@1d28afcb, tn.esprit.spring.security.CustomAuthentificationFilter@17e7fdd, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@16421838, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@639d0b11, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@76140c02, org.springframework.security.web.session.SessionManagementFilter@39d9b067, org.springframework.security.web.access.ExceptionTranslationFilter@ab35a22, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2207d9ba]
-2022-03-06 21:27:15.705  INFO 18889 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-03-06 21:27:15.806  INFO 18889 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
-2022-03-06 21:27:15.942  INFO 18889 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 22.672 seconds (JVM running for 411.454)
-2022-03-06 21:27:15.944  INFO 18889 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2022-03-06 21:27:23.056  INFO 18889 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-03-06 21:27:23.057  INFO 18889 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-03-06 21:27:23.059  INFO 18889 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-03-06 21:49:00.677  WARN 18889 --- [HikariPool-4 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Thread starvation or clock leap detected (housekeeper delta=18m46s618ms).
+2022-03-07 00:31:31.958  WARN 35159 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5005 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-03-07 00:31:36.972  INFO 35159 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 35159 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
+2022-03-07 00:31:36.973  INFO 35159 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
+2022-03-07 00:31:37.026  INFO 35159 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in /Users/mac/.m2/repository/javax/mail/mail/1.4/mail-1.4.jar referenced one or more files that do not exist: file:/Users/mac/.m2/repository/javax/mail/mail/1.4/activation.jar
+2022-03-07 00:31:37.026  INFO 35159 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-03-07 00:31:37.027  INFO 35159 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-03-07 00:31:38.045  INFO 35159 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-07 00:31:38.181  INFO 35159 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 126 ms. Found 13 JPA repository interfaces.
+2022-03-07 00:31:38.596  INFO 35159 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$859296b7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-07 00:31:38.644  INFO 35159 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2022-03-07 00:31:39.019  INFO 35159 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-03-07 00:31:39.031  INFO 35159 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-07 00:31:39.031  INFO 35159 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2022-03-07 00:31:39.193  INFO 35159 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
+2022-03-07 00:31:39.194  INFO 35159 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2167 ms
+2022-03-07 00:31:39.380  INFO 35159 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-07 00:31:39.442  INFO 35159 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2022-03-07 00:31:39.592  INFO 35159 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-03-07 00:31:39.714  INFO 35159 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-07 00:31:40.172  INFO 35159 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-07 00:31:40.191  INFO 35159 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-03-07 00:31:42.654  INFO 35159 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-07 00:31:42.664  INFO 35159 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 00:31:43.540  WARN 35159 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-07 00:31:44.218  INFO 35159 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@31a16326, org.springframework.security.web.context.SecurityContextPersistenceFilter@3e9f2b68, org.springframework.security.web.header.HeaderWriterFilter@1f16a5cd, org.springframework.web.filter.CorsFilter@5909d540, org.springframework.security.web.authentication.logout.LogoutFilter@5f0a08a7, tn.esprit.spring.security.CustomAuthorizationFilter@784d7b6, tn.esprit.spring.security.CustomAuthentificationFilter@190e3517, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@65af1972, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7c95d7f2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@230cdd43, org.springframework.security.web.session.SessionManagementFilter@5d145010, org.springframework.security.web.access.ExceptionTranslationFilter@116cf3f5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@29c32374]
+2022-03-07 00:31:44.314  INFO 35159 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-07 00:31:44.602  INFO 35159 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
+2022-03-07 00:31:45.030  INFO 35159 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 28.484 seconds (JVM running for 34.415)
+2022-03-07 00:32:02.378  INFO 35159 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-07 00:32:02.379  INFO 35159 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-07 00:32:02.381  INFO 35159 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-03-07 00:52:08.591  INFO 35159 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 00:52:08.597  INFO 35159 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-03-07 00:52:08.606  INFO 35159 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-03-07 01:03:32.182  WARN 38520 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5004 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-03-07 01:03:37.194  INFO 38520 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 38520 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
+2022-03-07 01:03:37.195  INFO 38520 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
+2022-03-07 01:03:37.246  INFO 38520 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in /Users/mac/.m2/repository/javax/mail/mail/1.4/mail-1.4.jar referenced one or more files that do not exist: file:/Users/mac/.m2/repository/javax/mail/mail/1.4/activation.jar
+2022-03-07 01:03:37.246  INFO 38520 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-03-07 01:03:37.246  INFO 38520 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-03-07 01:03:38.290  INFO 38520 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-07 01:03:38.422  INFO 38520 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 124 ms. Found 13 JPA repository interfaces.
+2022-03-07 01:03:38.878  INFO 38520 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$92788ee6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-07 01:03:38.931  INFO 38520 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2022-03-07 01:03:39.354  INFO 38520 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-03-07 01:03:39.369  INFO 38520 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-07 01:03:39.369  INFO 38520 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2022-03-07 01:03:39.574  INFO 38520 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
+2022-03-07 01:03:39.574  INFO 38520 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2327 ms
+2022-03-07 01:03:39.781  INFO 38520 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-07 01:03:39.843  INFO 38520 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2022-03-07 01:03:40.000  INFO 38520 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-03-07 01:03:40.123  INFO 38520 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-07 01:03:40.622  INFO 38520 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-07 01:03:40.640  INFO 38520 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-03-07 01:03:43.494  INFO 38520 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-07 01:03:43.506  INFO 38520 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 01:03:44.321  WARN 38520 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-07 01:03:45.163  INFO 38520 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@726cf7b5, org.springframework.security.web.context.SecurityContextPersistenceFilter@4dc043eb, org.springframework.security.web.header.HeaderWriterFilter@3e9697aa, org.springframework.web.filter.CorsFilter@51003df6, org.springframework.security.web.authentication.logout.LogoutFilter@2b4dfafe, tn.esprit.spring.security.CustomAuthorizationFilter@726baf95, tn.esprit.spring.security.CustomAuthentificationFilter@8827892, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@a371bd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7151b06f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1d46f768, org.springframework.security.web.session.SessionManagementFilter@6dff8e3f, org.springframework.security.web.access.ExceptionTranslationFilter@7d16e98a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@15001832]
+2022-03-07 01:03:45.279  INFO 38520 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-07 01:03:45.601  INFO 38520 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
+2022-03-07 01:03:46.094  INFO 38520 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 29.371 seconds (JVM running for 35.359)
+2022-03-07 01:05:15.113  INFO 38520 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 01:05:15.118  INFO 38520 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-03-07 01:05:15.128  INFO 38520 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-03-07 01:05:30.361  WARN 38520 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 4999 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-03-07 01:05:35.362  INFO 38520 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 38520 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
+2022-03-07 01:05:35.363  INFO 38520 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
+2022-03-07 01:05:35.778  INFO 38520 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-07 01:05:35.846  INFO 38520 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 13 JPA repository interfaces.
+2022-03-07 01:05:35.942  INFO 38520 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$92788ee6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-07 01:05:35.944  INFO 38520 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2022-03-07 01:05:36.015  INFO 38520 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-03-07 01:05:36.015  INFO 38520 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-07 01:05:36.016  INFO 38520 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2022-03-07 01:05:36.022  INFO 38520 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
+2022-03-07 01:05:36.023  INFO 38520 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 656 ms
+2022-03-07 01:05:36.077  INFO 38520 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-07 01:05:36.082  INFO 38520 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2022-03-07 01:05:36.102  INFO 38520 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2022-03-07 01:05:36.102  INFO 38520 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-03-07 01:05:37.399  INFO 38520 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-07 01:05:37.399  INFO 38520 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 01:05:37.751  WARN 38520 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-07 01:05:37.953  INFO 38520 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@62549c7d, org.springframework.security.web.context.SecurityContextPersistenceFilter@46602586, org.springframework.security.web.header.HeaderWriterFilter@252298e, org.springframework.web.filter.CorsFilter@2306b2c8, org.springframework.security.web.authentication.logout.LogoutFilter@78ce93a6, tn.esprit.spring.security.CustomAuthorizationFilter@1b49ea7d, tn.esprit.spring.security.CustomAuthentificationFilter@44ce2769, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6c20ef7b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7fada528, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@23fecf9, org.springframework.security.web.session.SessionManagementFilter@7596a7cf, org.springframework.security.web.access.ExceptionTranslationFilter@596e6099, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5ab4e6b]
+2022-03-07 01:05:37.989  INFO 38520 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-07 01:05:38.120  INFO 38520 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
+2022-03-07 01:05:38.356  INFO 38520 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 23.043 seconds (JVM running for 147.636)
+2022-03-07 01:05:38.359  INFO 38520 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-03-07 01:07:24.585  INFO 38520 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-07 01:07:24.586  INFO 38520 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-07 01:07:24.589  INFO 38520 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2022-03-07 01:11:20.004  INFO 38520 --- [Thread-13] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 01:11:20.010  INFO 38520 --- [Thread-13] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2022-03-07 01:11:20.020  INFO 38520 --- [Thread-13] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2022-03-07 01:11:35.262  WARN 38520 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5005 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-03-07 01:11:40.266  INFO 38520 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 38520 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
+2022-03-07 01:11:40.266  INFO 38520 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
+2022-03-07 01:11:40.659  INFO 38520 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-07 01:11:40.737  INFO 38520 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 77 ms. Found 13 JPA repository interfaces.
+2022-03-07 01:11:40.846  INFO 38520 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$92788ee6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-07 01:11:40.848  INFO 38520 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2022-03-07 01:11:40.924  INFO 38520 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-03-07 01:11:40.925  INFO 38520 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-07 01:11:40.925  INFO 38520 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2022-03-07 01:11:40.931  INFO 38520 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
+2022-03-07 01:11:40.931  INFO 38520 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 661 ms
+2022-03-07 01:11:40.995  INFO 38520 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-07 01:11:41.000  INFO 38520 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2022-03-07 01:11:41.023  INFO 38520 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2022-03-07 01:11:41.024  INFO 38520 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-03-07 01:11:42.482  INFO 38520 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-07 01:11:42.483  INFO 38520 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 01:11:42.877  WARN 38520 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-07 01:11:43.116  INFO 38520 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@41f58985, org.springframework.security.web.context.SecurityContextPersistenceFilter@2cb5399f, org.springframework.security.web.header.HeaderWriterFilter@6ab5f8eb, org.springframework.web.filter.CorsFilter@2e199eef, org.springframework.security.web.authentication.logout.LogoutFilter@5e2b5a6, tn.esprit.spring.security.CustomAuthorizationFilter@5911dd87, tn.esprit.spring.security.CustomAuthentificationFilter@45ed172c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@31cc14bc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@747bc0ce, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@28b917b5, org.springframework.security.web.session.SessionManagementFilter@400692f8, org.springframework.security.web.access.ExceptionTranslationFilter@21479469, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@736df1b8]
+2022-03-07 01:11:43.154  INFO 38520 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-07 01:11:43.276  INFO 38520 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
+2022-03-07 01:11:43.443  INFO 38520 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 23.22 seconds (JVM running for 512.733)
+2022-03-07 01:11:43.446  INFO 38520 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-03-07 01:12:32.264  INFO 38520 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-07 01:12:32.264  INFO 38520 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-07 01:12:32.266  INFO 38520 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-03-07 01:13:39.284  INFO 38520 --- [Thread-19] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 01:13:39.285  INFO 38520 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2022-03-07 01:13:39.293  INFO 38520 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2022-03-07 01:13:54.618  WARN 38520 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5004 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-03-07 01:13:59.622  INFO 38520 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 38520 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
+2022-03-07 01:13:59.622  INFO 38520 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
+2022-03-07 01:14:00.013  INFO 38520 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-07 01:14:00.086  INFO 38520 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 72 ms. Found 13 JPA repository interfaces.
+2022-03-07 01:14:00.173  INFO 38520 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$92788ee6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-07 01:14:00.174  INFO 38520 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2022-03-07 01:14:00.243  INFO 38520 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-03-07 01:14:00.244  INFO 38520 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-07 01:14:00.244  INFO 38520 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2022-03-07 01:14:00.250  INFO 38520 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
+2022-03-07 01:14:00.250  INFO 38520 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 626 ms
+2022-03-07 01:14:00.303  INFO 38520 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-07 01:14:00.307  INFO 38520 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2022-03-07 01:14:00.327  INFO 38520 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2022-03-07 01:14:00.328  INFO 38520 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-03-07 01:14:01.574  INFO 38520 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-07 01:14:01.574  INFO 38520 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 01:14:01.923  WARN 38520 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-07 01:14:02.112  INFO 38520 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5b666526, org.springframework.security.web.context.SecurityContextPersistenceFilter@6ced886b, org.springframework.security.web.header.HeaderWriterFilter@1ebfffa2, org.springframework.web.filter.CorsFilter@5d2f3a7c, org.springframework.security.web.authentication.logout.LogoutFilter@4d707b9e, tn.esprit.spring.security.CustomAuthorizationFilter@7d7faf85, tn.esprit.spring.security.CustomAuthentificationFilter@3e509a50, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2991e91b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@48b25164, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@567787e9, org.springframework.security.web.session.SessionManagementFilter@38c7b5d1, org.springframework.security.web.access.ExceptionTranslationFilter@45101538, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@ad926bc]
+2022-03-07 01:14:02.147  INFO 38520 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-07 01:14:02.259  INFO 38520 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
+2022-03-07 01:14:02.452  INFO 38520 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 22.877 seconds (JVM running for 651.742)
+2022-03-07 01:14:02.455  INFO 38520 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-03-07 01:14:54.536  INFO 38520 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-07 01:14:54.537  INFO 38520 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-07 01:14:54.539  INFO 38520 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-03-07 01:19:29.041  INFO 38520 --- [Thread-25] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 01:19:29.042  INFO 38520 --- [Thread-25] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2022-03-07 01:19:29.051  INFO 38520 --- [Thread-25] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2022-03-07 01:30:12.329  WARN 41378 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5005 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-03-07 01:30:17.338  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 41378 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
+2022-03-07 01:30:17.338  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
+2022-03-07 01:30:17.383  INFO 41378 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in /Users/mac/.m2/repository/javax/mail/mail/1.4/mail-1.4.jar referenced one or more files that do not exist: file:/Users/mac/.m2/repository/javax/mail/mail/1.4/activation.jar
+2022-03-07 01:30:17.383  INFO 41378 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-03-07 01:30:17.383  INFO 41378 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-03-07 01:30:18.432  INFO 41378 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-07 01:30:18.569  INFO 41378 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 126 ms. Found 13 JPA repository interfaces.
+2022-03-07 01:30:19.068  INFO 41378 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$7e0d70a5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-07 01:30:19.114  INFO 41378 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2022-03-07 01:30:19.484  INFO 41378 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-03-07 01:30:19.496  INFO 41378 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-07 01:30:19.497  INFO 41378 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2022-03-07 01:30:19.679  INFO 41378 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
+2022-03-07 01:30:19.680  INFO 41378 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2297 ms
+2022-03-07 01:30:19.869  INFO 41378 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-07 01:30:19.919  INFO 41378 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2022-03-07 01:30:20.054  INFO 41378 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-03-07 01:30:20.167  INFO 41378 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-07 01:30:20.609  INFO 41378 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-07 01:30:20.626  INFO 41378 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-03-07 01:30:22.998  INFO 41378 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-07 01:30:23.010  INFO 41378 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 01:30:23.871  WARN 41378 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-07 01:30:24.541  INFO 41378 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@dbe29a4, org.springframework.security.web.context.SecurityContextPersistenceFilter@55d2e05c, org.springframework.security.web.header.HeaderWriterFilter@4f9c0ae0, org.springframework.web.filter.CorsFilter@168f5e25, org.springframework.security.web.authentication.logout.LogoutFilter@54644516, tn.esprit.spring.security.CustomAuthorizationFilter@485b4405, tn.esprit.spring.security.CustomAuthentificationFilter@55f9107f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@21f594dc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5421b6be, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@29f6e06d, org.springframework.security.web.session.SessionManagementFilter@30e3e140, org.springframework.security.web.access.ExceptionTranslationFilter@7645e527, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2a87484c]
+2022-03-07 01:30:24.693  INFO 41378 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-07 01:30:25.005  INFO 41378 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
+2022-03-07 01:30:25.443  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 28.517 seconds (JVM running for 34.407)
+2022-03-07 01:31:32.440  INFO 41378 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-07 01:31:32.441  INFO 41378 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-07 01:31:32.444  INFO 41378 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-03-07 01:40:05.238  INFO 41378 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 01:40:05.245  INFO 41378 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-03-07 01:40:05.255  INFO 41378 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-03-07 01:40:20.542  WARN 41378 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5004 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-03-07 01:40:25.546  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 41378 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
+2022-03-07 01:40:25.547  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
+2022-03-07 01:40:25.920  INFO 41378 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-07 01:40:25.996  INFO 41378 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 75 ms. Found 13 JPA repository interfaces.
+2022-03-07 01:40:26.101  INFO 41378 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$7e0d70a5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-07 01:40:26.103  INFO 41378 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2022-03-07 01:40:26.176  INFO 41378 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-03-07 01:40:26.176  INFO 41378 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-07 01:40:26.177  INFO 41378 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2022-03-07 01:40:26.183  INFO 41378 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
+2022-03-07 01:40:26.183  INFO 41378 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 633 ms
+2022-03-07 01:40:26.238  INFO 41378 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-07 01:40:26.243  INFO 41378 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2022-03-07 01:40:26.269  INFO 41378 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2022-03-07 01:40:26.270  INFO 41378 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-03-07 01:40:27.625  INFO 41378 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-07 01:40:27.626  INFO 41378 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 01:40:28.034  WARN 41378 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-07 01:40:28.249  INFO 41378 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@ae4624, org.springframework.security.web.context.SecurityContextPersistenceFilter@20b28787, org.springframework.security.web.header.HeaderWriterFilter@38599cd4, org.springframework.web.filter.CorsFilter@4dc36b7b, org.springframework.security.web.authentication.logout.LogoutFilter@5064dc3e, tn.esprit.spring.security.CustomAuthorizationFilter@6ff29724, tn.esprit.spring.security.CustomAuthentificationFilter@4f59d4f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@331186b6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@475a033c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@76186493, org.springframework.security.web.session.SessionManagementFilter@780b6597, org.springframework.security.web.access.ExceptionTranslationFilter@52983502, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@77b39bfe]
+2022-03-07 01:40:28.287  INFO 41378 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-07 01:40:28.401  INFO 41378 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
+2022-03-07 01:40:28.577  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 23.079 seconds (JVM running for 637.513)
+2022-03-07 01:40:28.580  INFO 41378 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-03-07 01:41:32.642  INFO 41378 --- [Thread-13] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 01:41:32.649  INFO 41378 --- [Thread-13] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2022-03-07 01:41:32.660  INFO 41378 --- [Thread-13] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2022-03-07 01:41:47.913  WARN 41378 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5003 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-03-07 01:41:52.916  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 41378 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
+2022-03-07 01:41:52.916  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
+2022-03-07 01:41:53.387  INFO 41378 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-07 01:41:53.468  INFO 41378 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 81 ms. Found 13 JPA repository interfaces.
+2022-03-07 01:41:53.567  INFO 41378 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$7e0d70a5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-07 01:41:53.569  INFO 41378 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2022-03-07 01:41:53.647  INFO 41378 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-03-07 01:41:53.648  INFO 41378 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-07 01:41:53.648  INFO 41378 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2022-03-07 01:41:53.654  INFO 41378 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
+2022-03-07 01:41:53.655  INFO 41378 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 733 ms
+2022-03-07 01:41:53.715  INFO 41378 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-07 01:41:53.719  INFO 41378 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2022-03-07 01:41:53.740  INFO 41378 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2022-03-07 01:41:53.741  INFO 41378 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-03-07 01:41:55.229  INFO 41378 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-07 01:41:55.229  INFO 41378 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 01:41:55.606  WARN 41378 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-07 01:41:55.789  INFO 41378 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@35ec60f3, org.springframework.security.web.context.SecurityContextPersistenceFilter@5d5481d1, org.springframework.security.web.header.HeaderWriterFilter@58e3cc9, org.springframework.web.filter.CorsFilter@7c23e083, org.springframework.security.web.authentication.logout.LogoutFilter@535458f1, tn.esprit.spring.security.CustomAuthorizationFilter@7ceff73e, tn.esprit.spring.security.CustomAuthentificationFilter@6c2ab867, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@583eef0c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2ca2f8b6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3a97b6e9, org.springframework.security.web.session.SessionManagementFilter@269418f5, org.springframework.security.web.access.ExceptionTranslationFilter@4278f2ed, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4cbb9dd1]
+2022-03-07 01:41:55.822  INFO 41378 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-07 01:41:55.924  INFO 41378 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
+2022-03-07 01:41:56.078  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 23.205 seconds (JVM running for 725.013)
+2022-03-07 01:41:56.080  INFO 41378 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-03-07 01:44:06.969  INFO 41378 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-07 01:44:06.970  INFO 41378 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-07 01:44:06.972  INFO 41378 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-03-07 01:56:57.767  INFO 41378 --- [Thread-19] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 01:56:57.768  INFO 41378 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2022-03-07 01:56:57.773  INFO 41378 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2022-03-07 01:57:13.079  WARN 41378 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5004 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-03-07 01:57:18.084  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 41378 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
+2022-03-07 01:57:18.084  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
+2022-03-07 01:57:18.448  INFO 41378 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-07 01:57:18.514  INFO 41378 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 66 ms. Found 13 JPA repository interfaces.
+2022-03-07 01:57:18.602  INFO 41378 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$7e0d70a5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-07 01:57:18.604  INFO 41378 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2022-03-07 01:57:18.680  INFO 41378 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-03-07 01:57:18.680  INFO 41378 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-07 01:57:18.680  INFO 41378 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2022-03-07 01:57:18.687  INFO 41378 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
+2022-03-07 01:57:18.687  INFO 41378 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 600 ms
+2022-03-07 01:57:18.738  INFO 41378 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-07 01:57:18.742  INFO 41378 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2022-03-07 01:57:18.761  INFO 41378 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2022-03-07 01:57:18.761  INFO 41378 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-03-07 01:57:20.017  INFO 41378 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-07 01:57:20.017  INFO 41378 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 01:57:20.360  WARN 41378 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-07 01:57:20.539  INFO 41378 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@78a4bfdf, org.springframework.security.web.context.SecurityContextPersistenceFilter@5526b058, org.springframework.security.web.header.HeaderWriterFilter@13e7ed04, org.springframework.web.filter.CorsFilter@15403f55, org.springframework.security.web.authentication.logout.LogoutFilter@301a3903, tn.esprit.spring.security.CustomAuthorizationFilter@1cdb007f, tn.esprit.spring.security.CustomAuthentificationFilter@638fdd6a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@753589e8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5996c587, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3e88dc83, org.springframework.security.web.session.SessionManagementFilter@39c610ed, org.springframework.security.web.access.ExceptionTranslationFilter@1d37b084, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7ac0bd6b]
+2022-03-07 01:57:20.574  INFO 41378 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-07 01:57:20.676  INFO 41378 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
+2022-03-07 01:57:20.817  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 22.779 seconds (JVM running for 1649.77)
+2022-03-07 01:57:20.819  INFO 41378 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-03-07 01:57:59.780  INFO 41378 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-07 01:57:59.781  INFO 41378 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-07 01:57:59.785  INFO 41378 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2022-03-07 02:01:55.350  INFO 41378 --- [Thread-25] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 02:01:55.356  INFO 41378 --- [Thread-25] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2022-03-07 02:01:55.363  INFO 41378 --- [Thread-25] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2022-03-07 02:02:10.610  WARN 41378 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5004 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-03-07 02:02:15.614  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 41378 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
+2022-03-07 02:02:15.614  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
+2022-03-07 02:02:15.946  INFO 41378 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-07 02:02:16.009  INFO 41378 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 62 ms. Found 13 JPA repository interfaces.
+2022-03-07 02:02:16.089  INFO 41378 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$7e0d70a5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-07 02:02:16.090  INFO 41378 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2022-03-07 02:02:16.169  INFO 41378 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-03-07 02:02:16.170  INFO 41378 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-07 02:02:16.170  INFO 41378 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2022-03-07 02:02:16.178  INFO 41378 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
+2022-03-07 02:02:16.178  INFO 41378 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 562 ms
+2022-03-07 02:02:16.241  INFO 41378 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-07 02:02:16.246  INFO 41378 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2022-03-07 02:02:16.268  INFO 41378 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2022-03-07 02:02:16.268  INFO 41378 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-03-07 02:02:17.429  INFO 41378 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-07 02:02:17.429  INFO 41378 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 02:02:17.765  WARN 41378 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-07 02:02:17.941  INFO 41378 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7a4e3b8d, org.springframework.security.web.context.SecurityContextPersistenceFilter@32fc7168, org.springframework.security.web.header.HeaderWriterFilter@3c6187a1, org.springframework.web.filter.CorsFilter@5c11fb70, org.springframework.security.web.authentication.logout.LogoutFilter@7e33431, tn.esprit.spring.security.CustomAuthorizationFilter@2207da4e, tn.esprit.spring.security.CustomAuthentificationFilter@61924f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@420d62df, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@72e1b9b0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@b78439d, org.springframework.security.web.session.SessionManagementFilter@66b84703, org.springframework.security.web.access.ExceptionTranslationFilter@432664ec, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@34c2c0c9]
+2022-03-07 02:02:17.975  INFO 41378 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-07 02:02:18.082  INFO 41378 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
+2022-03-07 02:02:18.248  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 22.676 seconds (JVM running for 1947.2)
+2022-03-07 02:02:18.254  INFO 41378 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-03-07 02:02:19.499  INFO 41378 --- [Thread-31] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 02:02:19.500  INFO 41378 --- [Thread-31] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2022-03-07 02:02:19.512  INFO 41378 --- [Thread-31] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2022-03-07 02:02:34.752  WARN 41378 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5002 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-03-07 02:02:39.755  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 41378 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
+2022-03-07 02:02:39.755  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
+2022-03-07 02:02:40.113  INFO 41378 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-07 02:02:40.187  INFO 41378 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74 ms. Found 13 JPA repository interfaces.
+2022-03-07 02:02:40.295  INFO 41378 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$7e0d70a5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-07 02:02:40.297  INFO 41378 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2022-03-07 02:02:40.369  INFO 41378 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-03-07 02:02:40.369  INFO 41378 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-07 02:02:40.370  INFO 41378 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2022-03-07 02:02:40.376  INFO 41378 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
+2022-03-07 02:02:40.376  INFO 41378 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 618 ms
+2022-03-07 02:02:40.437  INFO 41378 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-07 02:02:40.441  INFO 41378 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2022-03-07 02:02:40.460  INFO 41378 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2022-03-07 02:02:40.460  INFO 41378 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-03-07 02:02:41.685  INFO 41378 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-07 02:02:41.685  INFO 41378 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 02:02:42.080  WARN 41378 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-07 02:02:42.315  INFO 41378 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@73d5511, org.springframework.security.web.context.SecurityContextPersistenceFilter@14f4c110, org.springframework.security.web.header.HeaderWriterFilter@7b54789, org.springframework.web.filter.CorsFilter@47c736bd, org.springframework.security.web.authentication.logout.LogoutFilter@7dd16c39, tn.esprit.spring.security.CustomAuthorizationFilter@4393c943, tn.esprit.spring.security.CustomAuthentificationFilter@4f6d7d02, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1d359820, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@30111d00, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@22953c23, org.springframework.security.web.session.SessionManagementFilter@5ca46aab, org.springframework.security.web.access.ExceptionTranslationFilter@2117b3d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1c1a67d]
+2022-03-07 02:02:42.374  INFO 41378 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-07 02:02:42.499  INFO 41378 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
+2022-03-07 02:02:42.681  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 22.968 seconds (JVM running for 1971.632)
+2022-03-07 02:02:42.683  INFO 41378 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-03-07 02:06:17.892  INFO 41378 --- [Thread-37] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 02:06:17.897  INFO 41378 --- [Thread-37] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2022-03-07 02:06:17.908  INFO 41378 --- [Thread-37] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2022-03-07 02:06:33.236  WARN 41378 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5004 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-03-07 02:06:38.240  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 41378 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
+2022-03-07 02:06:38.240  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
+2022-03-07 02:06:38.580  INFO 41378 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-07 02:06:38.648  INFO 41378 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 67 ms. Found 13 JPA repository interfaces.
+2022-03-07 02:06:38.732  INFO 41378 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$7e0d70a5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-07 02:06:38.733  INFO 41378 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2022-03-07 02:06:38.795  INFO 41378 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-03-07 02:06:38.795  INFO 41378 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-07 02:06:38.796  INFO 41378 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2022-03-07 02:06:38.801  INFO 41378 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
+2022-03-07 02:06:38.801  INFO 41378 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 559 ms
+2022-03-07 02:06:38.850  INFO 41378 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-07 02:06:38.854  INFO 41378 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2022-03-07 02:06:38.873  INFO 41378 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2022-03-07 02:06:38.873  INFO 41378 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-03-07 02:06:40.107  INFO 41378 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-07 02:06:40.108  INFO 41378 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 02:06:40.436  WARN 41378 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-07 02:06:40.611  INFO 41378 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3a6be421, org.springframework.security.web.context.SecurityContextPersistenceFilter@22a2fd38, org.springframework.security.web.header.HeaderWriterFilter@50e7f931, org.springframework.web.filter.CorsFilter@308fdd0b, org.springframework.security.web.authentication.logout.LogoutFilter@639d132b, tn.esprit.spring.security.CustomAuthorizationFilter@7c428f98, tn.esprit.spring.security.CustomAuthentificationFilter@86d90b3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4cf268ca, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@23332e14, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6d422773, org.springframework.security.web.session.SessionManagementFilter@6222e0f0, org.springframework.security.web.access.ExceptionTranslationFilter@5d867719, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@70808b68]
+2022-03-07 02:06:40.640  INFO 41378 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-07 02:06:40.729  INFO 41378 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
+2022-03-07 02:06:40.836  INFO 41378 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 22.634 seconds (JVM running for 2209.801)
+2022-03-07 02:06:40.838  INFO 41378 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-03-07 02:11:13.483  INFO 41378 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-07 02:11:13.490  INFO 41378 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-07 02:11:13.491  INFO 41378 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-03-07 02:11:13.560  WARN 41378 --- [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1364, SQLState: HY000
+2022-03-07 02:11:13.560 ERROR 41378 --- [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : Field 'recived_link' doesn't have a default value
+2022-03-07 02:11:13.568 ERROR 41378 --- [http-nio-8080-exec-2] t.e.s.s.CustomAuthorizationFilter        : error loging in
+2022-03-07 02:12:37.276  INFO 41378 --- [RMI TCP Connection(72)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-03-07 02:12:37.295  INFO 41378 --- [RMI TCP Connection(72)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 02:12:37.295  INFO 41378 --- [RMI TCP Connection(72)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2022-03-07 02:12:37.302  INFO 41378 --- [RMI TCP Connection(72)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2022-03-07 02:12:59.441  WARN 45926 --- [restartedMain] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5003 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-03-07 02:13:04.447  INFO 45926 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Starting PiProjectBackendApplication using Java 1.8.0_301 on MacBook-Pro-de-Medali.local with PID 45926 (/Users/mac/Documents/GitHub/PIProjectBackend/target/classes started by mac in /Users/mac/Documents/GitHub/PIProjectBackend)
+2022-03-07 02:13:04.448  INFO 45926 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : No active profile set, falling back to default profiles: default
+2022-03-07 02:13:04.527  INFO 45926 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in /Users/mac/.m2/repository/javax/mail/mail/1.4/mail-1.4.jar referenced one or more files that do not exist: file:/Users/mac/.m2/repository/javax/mail/mail/1.4/activation.jar
+2022-03-07 02:13:04.527  INFO 45926 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-03-07 02:13:04.527  INFO 45926 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-03-07 02:13:05.563  INFO 45926 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-07 02:13:05.690  INFO 45926 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 117 ms. Found 13 JPA repository interfaces.
+2022-03-07 02:13:06.083  INFO 45926 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$df8e5964] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-07 02:13:06.132  INFO 45926 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2022-03-07 02:13:06.517  INFO 45926 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-03-07 02:13:06.530  INFO 45926 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-07 02:13:06.531  INFO 45926 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2022-03-07 02:13:06.696  INFO 45926 --- [restartedMain] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring embedded WebApplicationContext
+2022-03-07 02:13:06.696  INFO 45926 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2168 ms
+2022-03-07 02:13:06.877  INFO 45926 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-07 02:13:06.931  INFO 45926 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2022-03-07 02:13:07.075  INFO 45926 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-03-07 02:13:07.188  INFO 45926 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-07 02:13:07.629  INFO 45926 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-07 02:13:07.646  INFO 45926 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-03-07 02:13:10.032  INFO 45926 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-07 02:13:10.041  INFO 45926 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-07 02:13:10.922  WARN 45926 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-07 02:13:11.592  INFO 45926 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1f681846, org.springframework.security.web.context.SecurityContextPersistenceFilter@7980694c, org.springframework.security.web.header.HeaderWriterFilter@2d32cd80, org.springframework.web.filter.CorsFilter@21001e50, org.springframework.security.web.authentication.logout.LogoutFilter@2274aff5, tn.esprit.spring.security.CustomAuthorizationFilter@646d08a7, tn.esprit.spring.security.CustomAuthentificationFilter@447f1f5f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@314aa28d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5e43a676, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1b8a85be, org.springframework.security.web.session.SessionManagementFilter@481142ac, org.springframework.security.web.access.ExceptionTranslationFilter@392ea446, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@ce21fa3]
+2022-03-07 02:13:11.685  INFO 45926 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-07 02:13:11.927  INFO 45926 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/WomenEmpowerment'
+2022-03-07 02:13:12.319  INFO 45926 --- [restartedMain] t.e.spring.PiProjectBackendApplication   : Started PiProjectBackendApplication in 28.383 seconds (JVM running for 34.255)
+2022-03-07 02:15:11.902  INFO 45926 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/WomenEmpowerment]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-07 02:15:11.903  INFO 45926 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-07 02:15:11.905  INFO 45926 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-03-07 03:50:08.292  WARN 45926 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=20m29s920ms).
+2022-03-07 04:04:45.450  WARN 45926 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m7s144ms).
+2022-03-07 06:05:17.883  WARN 45926 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h32s410ms).
+2022-03-07 08:18:34.368  WARN 45926 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h13m16s218ms).
+2022-03-07 16:23:33.709  WARN 45926 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8h4m59s630ms).
+2022-03-07 16:47:35.812  WARN 45926 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Retrograde clock change detected (housekeeper delta=28s221ms), soft-evicting connections from pool.
+2022-03-07 16:53:43.633  WARN 45926 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m7s821ms).
+2022-03-07 16:59:44.470  WARN 45926 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m837ms).
+2022-03-07 17:08:41.042  WARN 45926 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m56s572ms).
+2022-03-07 17:15:40.234  WARN 45926 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m28s544ms).
+2022-03-07 17:42:36.741  WARN 45926 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=26m56s507ms).
+2022-03-07 17:59:13.348  WARN 45926 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m36s607ms).
+2022-03-07 18:17:04.099  WARN 45926 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m36s585ms).
+2022-03-07 19:38:18.643  WARN 45926 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h21m14s544ms).
+2022-03-07 19:41:20.670  WARN 45926 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Retrograde clock change detected (housekeeper delta=29s857ms), soft-evicting connections from pool.
+2022-03-07 21:53:24.581  WARN 45926 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h12m3s911ms).
+2022-03-07 22:01:22.495  WARN 45926 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m57s914ms).
+2022-03-07 22:15:22.553  WARN 45926 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Retrograde clock change detected (housekeeper delta=29s627ms), soft-evicting connections from pool.
