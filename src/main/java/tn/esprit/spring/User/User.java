@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tn.esprit.spring.entity.Blacklist;
 import tn.esprit.spring.entity.Calendrier;
 import tn.esprit.spring.entity.Chat;
 import tn.esprit.spring.entity.FacebookData;
@@ -113,6 +114,10 @@ public class User implements UserDetails,Serializable {
     @JsonIgnore
     @OneToOne(mappedBy="user")
     private SuspiciousAccount suspiciousAccounts;
+    
+    @JsonIgnore
+    @OneToOne(mappedBy="user")
+    private Blacklist blacklist;
     
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
