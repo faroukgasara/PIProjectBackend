@@ -18,6 +18,7 @@ import tn.esprit.spring.entity.RendezVous;
 import tn.esprit.spring.entity.Reporting;
 import tn.esprit.spring.entity.Subscriber;
 import tn.esprit.spring.entity.SuspiciousAccount;
+import tn.esprit.spring.entity.ToDoList;
 import tn.esprit.spring.entity.Training;
 import tn.esprit.spring.entity.UserEmotions;
 import tn.esprit.spring.registration.token.ConfirmationToken;
@@ -100,6 +101,10 @@ public class User implements UserDetails,Serializable {
     private Set<FacebookData> facebookData;
     
     @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy="user")
+    private Set<ToDoList> todolist;
+    
+    @JsonIgnore
     @ManyToMany(mappedBy="users", cascade = CascadeType.ALL)
     private Set<Training> trainings;
     
@@ -115,9 +120,6 @@ public class User implements UserDetails,Serializable {
     @OneToOne(mappedBy="user")
     private SuspiciousAccount suspiciousAccounts;
     
-    @JsonIgnore
-    @OneToOne(mappedBy="user")
-    private Blacklist blacklist;
     
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")

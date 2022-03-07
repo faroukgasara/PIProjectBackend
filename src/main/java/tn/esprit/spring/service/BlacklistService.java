@@ -1,5 +1,7 @@
 package tn.esprit.spring.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +21,22 @@ public class BlacklistService implements IBlacklistService{
 	
 	@Override
 	public void addUserToBlacklist(String email) {
-		User u = userRepository.findByEmail(email).orElse(null);
+		
 		Blacklist b = new Blacklist();
-		b.setUser(u);
+		b.setEmail(email);
 		blacklistRepository.save(b);
 		
+	}
+
+	@Override
+	public void deleteUserFromBlacklist(Long id) {
+		blacklistRepository.deleteById(id);
+		
+	}
+
+	@Override
+	public List<Blacklist> getAllBlacklist() {
+		return blacklistRepository.findAll();
 	}
 
 }
