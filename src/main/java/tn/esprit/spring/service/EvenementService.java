@@ -41,7 +41,6 @@ public class EvenementService implements IEvenementService  {
 	UserRepository userRepository;
 	
 	
-	
 	@Override
 	public Evenement addEventonly(Evenement event){
 		
@@ -49,7 +48,6 @@ public class EvenementService implements IEvenementService  {
 		
 		return event;
 	}
-	
 	
 	@Override
 	public Evenement effectuer(Long idevent,Long idres,Long idcag){
@@ -136,7 +134,5 @@ public class EvenementService implements IEvenementService  {
 		eventRepository.save(evenement);
 		
 	}
-	
-	
 }
    
