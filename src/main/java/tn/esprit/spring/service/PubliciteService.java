@@ -37,9 +37,9 @@ public class PubliciteService implements IPubliciteService{
 		popRepo.save(pcaded);
 		pubRepo.save(paded);
 		
-		//Publicite PA = pubRepo.findById(p.getId());
 		
-		return "aa";
+		
+		return "Publicite aded";
 	}
 
 	@Override
