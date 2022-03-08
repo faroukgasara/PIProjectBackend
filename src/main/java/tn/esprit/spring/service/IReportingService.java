@@ -8,6 +8,7 @@ import tn.esprit.spring.entity.ReportingReason;
 
 public interface IReportingService {
 	public void addReport(String reported,String reportedby,String reason);
+
 	public void deleteReport(Long id);
 	public List<Reporting> getReports();
 	List<Reporting> findByUserFirstNameContains(String firstName);

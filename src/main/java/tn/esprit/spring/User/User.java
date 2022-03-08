@@ -10,6 +10,11 @@ import tn.esprit.spring.entity.Calendrier;
 import tn.esprit.spring.entity.Chat;
 import tn.esprit.spring.entity.FacebookData;
 import tn.esprit.spring.entity.NotificationUser;
+import tn.esprit.spring.entity.Cagnotte;
+import tn.esprit.spring.entity.Calendrier;
+import tn.esprit.spring.entity.Chat;
+import tn.esprit.spring.entity.Don;
+import tn.esprit.spring.entity.Evenement;
 import tn.esprit.spring.entity.Offer;
 import tn.esprit.spring.entity.Publication;
 import tn.esprit.spring.entity.Publicite;
@@ -141,6 +146,14 @@ public class User implements UserDetails,Serializable {
     @JsonIgnore
     @ManyToMany( cascade = CascadeType.ALL, mappedBy="user")
     private Set<Calendrier> calendriers;
+    
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<Don> dons;
+    
+    @JsonIgnore
+    @ManyToMany(mappedBy="participants", cascade = CascadeType.ALL)
+    private Set<Evenement> evenements;
     
     
 	public User(Long id, String firstName, String lastName, String email, String password, UserRole appUserRole,
