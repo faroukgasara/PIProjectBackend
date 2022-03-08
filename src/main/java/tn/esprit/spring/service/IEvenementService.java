@@ -18,7 +18,7 @@ public interface IEvenementService {
 
 	Evenement getevent(Long idevent);
 
-	List<Evenement> getallevent(Long idevent);
+	List<Evenement> getallevent();
 
 	Evenement addEventonly(Evenement event);
 

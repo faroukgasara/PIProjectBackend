@@ -92,9 +92,13 @@ public class evenementController {
 	public List<Evenement> recommend()
 	{
 		User currentUser =myRepository.findByEmail("pngdali@gmail.com").orElse(null);
-		//String lieux = "tunis"; //UserService.GetCurrentUser.GetAdress
+		
 		String lieu = currentUser.getAdress();
-		return EventService.getEventByAdress(lieu);
+		List<Evenement> listFinal = EventService.getEventByAdress(lieu);
+		List<Evenement> therest = EventService.getallevent();
+		listFinal.addAll(therest);
+		
+		return  listFinal;
 	}
 
 }
