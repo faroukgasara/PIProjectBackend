@@ -88,8 +88,6 @@ public class User implements UserDetails,Serializable {
     private String niveauetude ;
 
 
-    private String profession;
-    private String niveauetude ;
 
     private LocalDateTime birthdate;
     

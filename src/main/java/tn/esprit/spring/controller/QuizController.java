@@ -1,6 +1,6 @@
 package tn.esprit.spring.controller;
 
-public class QuizController {
+
 	
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
