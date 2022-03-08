@@ -64,7 +64,7 @@ LikesRepository likrepo;
 	@Override
 	public List<Likes> getLikes() {
 		// TODO Auto-generated method stub
-		return null;
+		return likrepo.findAll();
 	}
 
 

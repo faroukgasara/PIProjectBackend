@@ -64,14 +64,14 @@ public class EmojisService implements IEmojisService {
 	}
 	@Override
 	public List<Emojis> getEmojis() {
-		// TODO Auto-generated method stub
-		return null;
+		return emorepo.findAll();
+		
 	}
 
 	@Override
 	public void deleteEmojis(Long id) {
-		// TODO Auto-generated method stub
-		
+		Emojis p = emorepo.findById(id).orElse(null);
+	emorepo.delete(p);	
 	}
 
 }

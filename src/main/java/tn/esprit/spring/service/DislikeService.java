@@ -61,8 +61,7 @@ public class DislikeService implements IDislikeService {
 	
 	@Override
 	public List<Dislike> getDislikes() {
-		// TODO Auto-generated method stub
-		return null;
+	return dislikrepo.findAll();
 	}
 	@Override
 	public void deleteDislikes(Long id) {

@@ -39,6 +39,23 @@ ILikesService likser;
 		return likser.getlikpar(pub);
 		
 	}
+
+	@GetMapping("/delete/{id}")
+	@ResponseBody
+	public void delete(@PathVariable("id") Long id){
+		 likser.deleteLikes(id);;
+		
+	}
+	
+
+
+
+	@GetMapping("/")
+	@ResponseBody
+	public ResponseEntity<List<Likes>> getUsers(){
+		return ResponseEntity.ok().body(likser.getLikes());
+		
+	}
 	
 	
 	

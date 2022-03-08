@@ -8,6 +8,7 @@ import com.vdurmont.emoji.EmojiParser;
 
 import tn.esprit.spring.User.User;
 import tn.esprit.spring.User.UserRepository;
+import tn.esprit.spring.User.UserRole;
 import tn.esprit.spring.entity.*;
 import tn.esprit.spring.repository.*;
 
@@ -76,6 +77,12 @@ public class PublicationService implements IPublicationService {
 		pubrepo.save(pub);
 	
 		
+	}
+	
+	@Override
+	public List<Publication> suggpub(String  description,String  companyname,String  assoc,UserRole  role,int age,String descriptionCom) {
+		// TODO Auto-generated method stub
+		return pubrepo.suggestedPub(description, companyname, assoc, role, age, descriptionCom);
 	}
 
 	

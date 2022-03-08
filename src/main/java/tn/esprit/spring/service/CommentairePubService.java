@@ -12,6 +12,7 @@ import tn.esprit.spring.User.UserRepository;
 import tn.esprit.spring.entity.CommentairePub;
 import tn.esprit.spring.entity.Likes;
 import tn.esprit.spring.entity.Publication;
+import tn.esprit.spring.entity.TypePub;
 import tn.esprit.spring.registration.token.ConfirmationToken;
 import tn.esprit.spring.repository.CommentairePubRepository;
 import tn.esprit.spring.repository.LikesRepository;
@@ -94,6 +95,17 @@ public class CommentairePubService implements ICommentairePubService {
 		
 	
 		return comrepo.egwfwwef(id);
+
+	
+	
+	}
+	
+
+	@Override
+	public List<CommentairePub> dasd(String title,String description,TypePub type,String users) {
+		
+	
+		return comrepo.suggestedCom(title, description, type,users);
 
 	
 	

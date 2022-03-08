@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import tn.esprit.spring.User.User;
 import tn.esprit.spring.entity.Likes;
+import tn.esprit.spring.entity.Offer;
 
 import javax.persistence.Entity;
 
@@ -30,7 +31,12 @@ public interface LikesRepository extends JpaRepository<Likes, Long>{
 	@Query(value="select liked_by from Likes l where l.commentaires_pubs_id=:publ", nativeQuery = true)
 	List<String> displaylikedby(@Param("publ")long publ);
 	
+	
 
+	
+
+	
+	
 	
     Likes findByCommentairesPubs(Long id);
     

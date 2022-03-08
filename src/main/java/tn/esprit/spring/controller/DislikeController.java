@@ -31,5 +31,21 @@ public class DislikeController {
 		dislikser.AjouterDislik(dislik, idCo, email);
 		}
 			
+		@GetMapping("/delete/{id}")
+		@ResponseBody
+		public void delete(@PathVariable("id") Long id){
+			 dislikser.deleteDislikes(id);
+			
+		}
+		
 
+
+
+		@GetMapping("/")
+		@ResponseBody
+		public ResponseEntity<List<Dislike>> getUsers(){
+			return ResponseEntity.ok().body(dislikser.getDislikes());
+			
+		}
+		
 	}

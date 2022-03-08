@@ -30,6 +30,23 @@ public class EmojisController {
 		public void ajoutercategorie(@ RequestBody  Emojis emoj,@PathVariable("idCo")  Long idCo,@PathVariable("email") String email){
 	emoserv.AjouterEmo(emoj, idCo, email);
 		}
+		
+		
+		
+		@GetMapping("/")
+		@ResponseBody
+		public ResponseEntity<List<Emojis>> getUsers(){
+			return ResponseEntity.ok().body(emoserv.getEmojis());
+			
+		}
+		
+		// http://localhost:8089/WomenEmpowerment/publication/delete/
+		@DeleteMapping("/delete/{id}")
+		@ResponseBody
+		public void deleteUser(@PathVariable("id") Long id){
+			emoserv.deleteEmojis(id);
+			
+		}
 			
 
 	}

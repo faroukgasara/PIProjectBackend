@@ -62,6 +62,9 @@ public class User implements UserDetails,Serializable {
     private String CIN ;
     private String availability ;
     private int age ;
+    private String profession;
+    private String niveauetude ;
+    
     
     @ManyToMany(mappedBy="user", cascade = CascadeType.ALL)
     private Set<Offer> offers;

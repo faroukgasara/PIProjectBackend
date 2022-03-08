@@ -1,5 +1,6 @@
 package tn.esprit.spring.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.esprit.spring.User.UserRole;
 import tn.esprit.spring.entity.CommentairePub;
 import tn.esprit.spring.entity.Publication;
+import tn.esprit.spring.entity.TypePub;
 import tn.esprit.spring.service.ICommentairePubService;
 import tn.esprit.spring.service.IPublicationService;
 
@@ -64,5 +67,11 @@ public class CommentairePubController {
 		
 	}
 
+	
+	@GetMapping("/sug/{title}/{description}/{type}/{users}")
+	public List<CommentairePub> search(@PathVariable("title") String title,@PathVariable("description") String description,@PathVariable("type") TypePub type,@PathVariable("users") String users) {
+       return  comserv.dasd(title, description, type,users);
+   }
+	
 }
 

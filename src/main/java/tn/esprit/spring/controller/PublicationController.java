@@ -29,6 +29,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import tn.esprit.spring.service.*;
 import tn.esprit.spring.User.User;
+import tn.esprit.spring.User.UserRole;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -81,5 +83,19 @@ public class PublicationController {
 		public List<Publication> search(@PathVariable("keyword") String keyword) {
 	       return  this.pubserv.search (keyword); 
 	    }
+		
+		
+		@GetMapping("/sug/{description}/{companyname}/{assoc}/{role}/{age}/{descriptionCom}")
+		public List<Publication> search(@PathVariable("description") String description,@PathVariable("companyname") String companyname,@PathVariable("assoc") String assoc,@PathVariable("role") UserRole role,@PathVariable("age") int age,@PathVariable("descriptionCom") String descriptionCom) {
+	       return  this.pubserv.suggpub(description, companyname, assoc, role, age, descriptionCom);
+	    }
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
