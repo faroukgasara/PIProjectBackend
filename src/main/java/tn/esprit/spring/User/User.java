@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import tn.esprit.spring.entity.Calendrier;
 import tn.esprit.spring.entity.Chat;
+import tn.esprit.spring.entity.Interest;
 import tn.esprit.spring.entity.Offer;
 import tn.esprit.spring.entity.Publication;
 import tn.esprit.spring.entity.Publicite;
@@ -27,6 +28,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -85,6 +87,10 @@ public class User implements UserDetails,Serializable {
     @JsonIgnore
     @ManyToMany(mappedBy="users", cascade = CascadeType.ALL)
     private Set<Training> trainings;
+    
+    @ManyToMany()
+    private List<Interest> interests;
+    
     
     @JsonIgnore
     @OneToOne
