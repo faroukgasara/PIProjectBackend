@@ -41,7 +41,6 @@ public class Subscriber implements Serializable{
 	
 	@OneToOne(mappedBy="subscriber")
 	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
 
 }
