@@ -7,12 +7,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import tn.esprit.spring.entity.Result;
+
+
+import nu.pattern.OpenCV;
 @EnableScheduling
 @Configuration
 @SpringBootApplication
@@ -20,6 +24,7 @@ import tn.esprit.spring.entity.Result;
 public class PiProjectBackendApplication {
 
 	public static void main(String[] args) {
+		OpenCV.loadShared();
 		SpringApplication.run(PiProjectBackendApplication.class, args);
 	}
 	@GetMapping("/youtube-data")

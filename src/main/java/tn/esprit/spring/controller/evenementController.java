@@ -25,7 +25,7 @@ public class evenementController {
 	@Autowired
 	IEvenementService EventService;
 	
-	
+/*	
 	// http://localhost:8089/WomenEmpowerment/reporting/addReport/
 	@PostMapping("/addevent/{dd}/{df}")
 	@ResponseBody
@@ -33,7 +33,7 @@ public class evenementController {
 		return	EventService.addEvent(event,res, dd ,  df);
 		
 	}
-	
+	*/
 	
 	
 	

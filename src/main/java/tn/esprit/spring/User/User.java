@@ -5,6 +5,11 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tn.esprit.spring.entity.Blacklist;
+import tn.esprit.spring.entity.Calendrier;
+import tn.esprit.spring.entity.Chat;
+import tn.esprit.spring.entity.FacebookData;
+import tn.esprit.spring.entity.NotificationUser;
 import tn.esprit.spring.entity.Cagnotte;
 import tn.esprit.spring.entity.Calendrier;
 import tn.esprit.spring.entity.Chat;
@@ -17,7 +22,11 @@ import tn.esprit.spring.entity.Reclamation;
 import tn.esprit.spring.entity.RendezVous;
 import tn.esprit.spring.entity.Reporting;
 import tn.esprit.spring.entity.Subscriber;
+import tn.esprit.spring.entity.SuspiciousAccount;
+import tn.esprit.spring.entity.ToDoList;
 import tn.esprit.spring.entity.Training;
+import tn.esprit.spring.entity.UserEmotions;
+import tn.esprit.spring.registration.token.ConfirmationToken;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
@@ -69,8 +79,11 @@ public class User implements UserDetails,Serializable {
     private String CIN ;
     private String availability ;
     private int age ;
+
     private String profession;
     private String niveauetude ;
+
+    private LocalDateTime birthdate;
     
     
     @ManyToMany(mappedBy="user", cascade = CascadeType.ALL)
@@ -85,8 +98,20 @@ public class User implements UserDetails,Serializable {
     private Set<Publication> publications;
     
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy="user")
     private Set<Reporting> reporting;
+    
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy="user")
+    private Set<NotificationUser> notificationUser;
+    
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy="user")
+    private Set<FacebookData> facebookData;
+    
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy="user")
+    private Set<ToDoList> todolist;
     
     @JsonIgnore
     @ManyToMany(mappedBy="users", cascade = CascadeType.ALL)
@@ -97,12 +122,26 @@ public class User implements UserDetails,Serializable {
     private Subscriber subscriber;
     
     @JsonIgnore
+    @OneToOne
+    private UserEmotions userEmotions;
+    
+    @JsonIgnore
+    @OneToOne(mappedBy="user")
+    private SuspiciousAccount suspiciousAccounts;
+    
+    
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<RendezVous> rendezVous;
     
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<Reclamation> reclamations;
+    
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<ConfirmationToken> confirmationTokens;
+    
     
     @JsonIgnore
     @ManyToMany( cascade = CascadeType.ALL, mappedBy="user")
