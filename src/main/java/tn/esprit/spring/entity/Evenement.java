@@ -27,8 +27,6 @@ import tn.esprit.spring.User.User;
 @Entity
 
 public class Evenement implements Serializable {
-
-	
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)

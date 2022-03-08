@@ -122,4 +122,11 @@ public class EvenementService implements IEvenementService  {
 		return e;
 
 	}
+	@Override
+	public List<Evenement> getEventByAdress(String adresse){
+		return eventRepository.findByLieux(adresse);
+	}
+	
+	
 }
+   

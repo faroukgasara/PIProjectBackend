@@ -23,6 +23,8 @@ public interface IEvenementService {
 	Evenement addEventonly(Evenement event);
 
 	Evenement effectuer(Long idevent, Long idres, Long idcag);
+
+	List<Evenement> getEventByAdress(String adresse);
 	
 
 }
