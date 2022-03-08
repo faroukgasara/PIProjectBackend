@@ -28,11 +28,22 @@ UserRepository userrepo;
 		boolean ratedbyExists = ratrepo
                 .findByRateBy(email)
                 .isPresent();
+		boolean pub = pubrepo
+                .findById(idPub)
+                .isPresent();
+		
 
-		  if (userExists) {
+		if((pub)){
+			
+			if(ratedbyExists){
+				
+			}
+			
+			
+			
+		
 			  
-			  if(ratedbyExists){}
-			  else{
+			
 		
 Publication p = pubrepo.findById(idPub).orElse(null);
 		
@@ -42,7 +53,7 @@ Publication p = pubrepo.findById(idPub).orElse(null);
 		ratrepo.save(r);
 	}
 
-}}
+}
 	
 	@Override
 	public void deleteRate(Long id) {
