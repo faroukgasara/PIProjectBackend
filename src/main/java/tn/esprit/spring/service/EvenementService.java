@@ -96,11 +96,8 @@ public class EvenementService implements IEvenementService  {
 	@Override
 	public String deleteevent(Long  idevent){
 		Evenement e =  eventRepository.findById(idevent).orElse(null);
-		
 		reservationService.deleteReservation(e.getReservation().getId());
-		
 		cagnotteService.deletecagnotte(e.getCagnotte().getId());
-
 		eventRepository.delete(e);
 		
 		return " Event deleted "+ idevent;
@@ -110,7 +107,6 @@ public class EvenementService implements IEvenementService  {
 	@Override
 	public Evenement getevent(Long  idevent){
 		Evenement e =  eventRepository.findById(idevent).orElse(null);
-		
 		return e;
 
 	}
@@ -118,7 +114,6 @@ public class EvenementService implements IEvenementService  {
 	@Override
 	public List<Evenement> getallevent(){
 		List<Evenement> e =  eventRepository.findAll();
-		
 		return e;
 
 	}

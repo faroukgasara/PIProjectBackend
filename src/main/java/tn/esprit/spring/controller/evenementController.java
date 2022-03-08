@@ -88,11 +88,10 @@ public class evenementController {
 		return EventService.getEventByAdress(lieu);
 	}
 	
-	@GetMapping("/Recommend")
-	public List<Evenement> recommend()
+	@GetMapping("/Recommend/{email}")
+	public List<Evenement> recommend(@PathVariable("email") String email)
 	{
-		User currentUser =myRepository.findByEmail("pngdali@gmail.com").orElse(null);
-		
+		User currentUser = myRepository.findByEmail(email).orElse(null);
 		String lieu = currentUser.getAdress();
 		List<Evenement> listFinal = EventService.getEventByAdress(lieu);
 		List<Evenement> therest = EventService.getallevent();
