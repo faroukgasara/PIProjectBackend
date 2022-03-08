@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.esprit.spring.User.User;
+import tn.esprit.spring.User.UserRepository;
 import tn.esprit.spring.entity.Cagnotte;
 import tn.esprit.spring.entity.Evenement;
 import tn.esprit.spring.entity.Reservation;
@@ -34,6 +36,9 @@ public class EvenementService implements IEvenementService  {
 	
 	@Autowired
 	IReservationService reservationService ;
+	
+	@Autowired
+	UserRepository userRepository;
 	
 	
 	
@@ -120,6 +125,16 @@ public class EvenementService implements IEvenementService  {
 	@Override
 	public List<Evenement> getEventByAdress(String adresse){
 		return eventRepository.findByLieux(adresse);
+	}
+	
+	@Override
+	public void addParticipant (Long idEvent, String email){
+		
+		User user = userRepository.findByEmail(email).orElse(null);
+		Evenement evenement = eventRepository.findById(idEvent).orElse(null);
+		evenement.getParticipants().add(user);
+		eventRepository.save(evenement);
+		
 	}
 	
 	

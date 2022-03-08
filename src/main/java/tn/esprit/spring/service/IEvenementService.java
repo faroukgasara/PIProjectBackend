@@ -25,6 +25,8 @@ public interface IEvenementService {
 	Evenement effectuer(Long idevent, Long idres, Long idcag);
 
 	List<Evenement> getEventByAdress(String adresse);
+
+	void addParticipant(Long idEvent, String email);
 	
 
 }

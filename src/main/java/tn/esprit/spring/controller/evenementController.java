@@ -99,5 +99,11 @@ public class evenementController {
 		
 		return  listFinal;
 	}
-
+	
+	@PostMapping("/addparticipant/{idEvent}/{email}")
+	@ResponseBody
+	public void addParticipant(@PathVariable("idEvent") Long idEvent, @PathVariable("email") String email)
+	{
+		EventService.addParticipant(idEvent, email);
+	}
 }
