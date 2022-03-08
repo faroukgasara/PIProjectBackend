@@ -51,15 +51,7 @@ public class OfferController {
 	{
 		offerService.UpdateOffer(f);	
 	}
-	
-	//Recherche not sure one or two
-	
-	//@RequestMapping(value="/offers/{IdOffer}")
-	//public Offer FindOfferById(@PathVariable Offer f){  //Not Sure !!!!!!!!!!!!!!!
-		
-		//return offerService.FindOfferById(f);
-	//}
-	
+	//Filter
 	
 	@GetMapping("/search/{keyword}")
 	public List<Offer> search(@PathVariable("keyword") String keyword) {
@@ -72,12 +64,13 @@ public class OfferController {
 	{
 		return  this.offerService.FindOfferByTitle(Title);
 	}
-	
-	@PostMapping("/apply/{IdOffer}/{email}")
+	//JobApplication
+	@PostMapping("/apply/{IdOffer}/{email}") //*******************************************************************
 	@ResponseBody
 	public void JobApplication(@PathVariable("IdOffer") Long IdOffer,@PathVariable("email") String email){
 		offerService.JobApplication(IdOffer, email);
 	}
+	
 	@GetMapping("/suggestedOffer/{idUser}")
 	@ResponseBody
 	public List<Offer> suggestedOffer(@PathVariable("idUser")Long idUser){
@@ -85,12 +78,20 @@ public class OfferController {
 		
 	}
 	
-	@PostMapping("/AffecterOfferByUserId/{IdOffer}/{Id}")
+	@PostMapping("/AffecterOfferByUserId/{IdOffer}/{email}")//***************************************************
 	@ResponseBody
-	public void AffecterOfferByUserId(@PathVariable("IdOffer") Long IdOffer,@PathVariable("Id") Long Id){
-		offerService.AffecterOfferByUserId(IdOffer,Id);
+	public void AffecterOfferByUserId(@PathVariable("IdOffer") Long IdOffer,@PathVariable("email") String email){
+		offerService.AffecterOfferByUserId(IdOffer,email);
 		
 	}
+
+	//Recherche not sure one or two
+	
+	//@RequestMapping(value="/offers/{IdOffer}")
+	//public Offer FindOfferById(@PathVariable Offer f){  //Not Sure !!!!!!!!!!!!!!!
+		
+		//return offerService.FindOfferById(f);
+	//}
 	
 	/*  private String saveDirectory = "E:/Test/Upload/";
 	     
@@ -114,11 +115,4 @@ public class OfferController {
 	        // returns to the view "Result"
 	        return "Result";
 	    }*/
-	
-	
-	
-	
-	
-	
-
 }

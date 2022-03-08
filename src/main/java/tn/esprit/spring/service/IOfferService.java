@@ -13,7 +13,7 @@ public interface IOfferService {
 	public List<Offer> getAllOffers();
 	public void UpdateOffer(Offer f);
 	
-	public void AffecterOfferByUserId(Long IdOffer, Long Id);
+	public void AffecterOfferByUserId(Long IdOffer, String email);
 	//Recherche:
 	
 	List<Offer> FindOfferByTitle(String Title); //les candidats filtre les offre is that true mouch el compo

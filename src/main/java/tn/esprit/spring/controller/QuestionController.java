@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import tn.esprit.spring.entity.Question;
-import tn.esprit.spring.service.IAnswerService;
 import tn.esprit.spring.service.IQuestionService;
 
 
@@ -25,16 +24,12 @@ public class QuestionController {
 	
 	@Autowired
 	IQuestionService questionService;
-	@Autowired
-	IAnswerService AnswerService;
 	
 	
-	@PostMapping("/add-question")
+	@PostMapping("/add-question/{text}/{answer}")
 	@ResponseBody
-	public void Add(@PathVariable("Idquestion") Question q,@PathVariable("email") String email) { 
-		
-		
-		questionService.Add(q,email);	
+	public void Add(@PathVariable String text,@PathVariable String answer) { 
+		questionService.Add(text,answer);	
 	}
 	
 	@GetMapping("/questions")
@@ -56,17 +51,11 @@ public class QuestionController {
 		questionService.update(q);	
 	}
 	
-	@PutMapping("/Affecter/{Idanswer}/{Idquestion}")
-	@ResponseBody
-	public void AffectAnswerToQuestion(@PathVariable("IdQuestion") Long IdQuestion,@PathVariable("IdAnswer")Long IdAnswer){
-		
-		questionService.AffectAnswerToQuestion(IdQuestion, IdAnswer);
-		
-	}
+
 	@PutMapping("/Affecter/{IdQuiz}/{Idquestion}")
 	@ResponseBody
-	public void AffectQuestionToQuiz(@PathVariable("IdQuestion")Long IdQuestion,@PathVariable("IdQuiz") Long IdQuiz){
-		questionService.AffectAnswerToQuestion(IdQuestion, IdQuiz);
+	public void AffectQuestionToQuiz(@PathVariable("IdQuiz")Long IdQuiz,@PathVariable("Idquestion") Long Idquestion){
+		questionService.AffectQuestionToQuiz(IdQuiz, Idquestion);
 	}
 	
 

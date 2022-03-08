@@ -20,9 +20,8 @@ public class OfferService implements IOfferService{
 	UserRepository userRepository;
 
 	@Override
-	public void AddOffer(Offer f/*,String email*/) {
-		//User u = userRepository.findByEmail(email).orElse(null);
-		//f.setUser(u);
+	public void AddOffer(Offer f) {
+		
 		offerRepository.save(f);
 		}
 
@@ -69,16 +68,11 @@ public class OfferService implements IOfferService{
 	}
 
 	@Override 
-	public void AffecterOfferByUserId(Long IdOffer, Long Id) { //publier les offer par Identreprise
-		User u = userRepository.findById(Id).orElse(null);
-		Offer o = offerRepository.getById(IdOffer);
-		Set<User> lu = o.getUser();
-		lu.add(u);
-		o.setUser(lu);
-		offerRepository.save(o);
-		
-		
-		
+	public void AffecterOfferByUserId(Long IdOffer, String email) { //publier les offer par Identreprise
+		User u = userRepository.findByEmail(email).orElse(null);
+		Offer o = offerRepository.findById(IdOffer).orElse(null);
+		o.getUser().add(u);
+		offerRepository.save(o);	
 	}
 	
 	public List<Offer> suggestedOffer(Long idUser){
@@ -86,6 +80,7 @@ public class OfferService implements IOfferService{
 		return offerRepository.suggestedOffer(u.getProfession() , u.getNiveauetude() , u.getDescription() , u.getAdress() );
 
 	}
+}
 	
 	
 	
@@ -115,4 +110,4 @@ public class OfferService implements IOfferService{
 	
 
 
-}
+

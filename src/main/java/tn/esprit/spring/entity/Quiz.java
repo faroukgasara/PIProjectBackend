@@ -34,7 +34,7 @@ public class Quiz implements Serializable{
     @OneToOne
     private Training trainings;
     
-    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JsonIgnore
-	private List<Question> questions;
+    //@OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    //@JsonIgnore
+    //private List<Question> questions;
 }

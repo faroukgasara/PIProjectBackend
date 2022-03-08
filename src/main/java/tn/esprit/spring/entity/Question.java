@@ -31,19 +31,17 @@ public class Question  implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //(strategy = GenerationType.AUTO)
-	private long idQuestion;
+	private long id;
 	
 	//@Size(min=2, max=20)
-	@NotNull //(message="Question body not provided")
+	//@NotNull //(message="Question body not provided")
 	private String text;
 	
-	@ManyToOne
-	@JsonIgnore
-	private Quiz quiz;
-	
-	@OneToMany(mappedBy="question", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JsonIgnore
-	private List<Answer> answers;
+	//@ManyToOne
+	//@JsonIgnore
+	//private Quiz quiz;
+
+	private String answers;
 
 	//@ManyToMany(cascade = CascadeType.ALL)
 	//private Set<Answer> answers;

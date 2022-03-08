@@ -1,40 +1,40 @@
-package tn.esprit.spring.controller;
+//package tn.esprit.spring.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
-import java.io.File;
+//import javax.servlet.http.HttpServletRequest;
+//import org.springframework.stereotype.Controller;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestMethod;
+//import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.web.multipart.commons.CommonsMultipartFile;
+//import java.io.File;
 
 
  
 
-@Controller
-@RequestMapping("/uploadFile.do")
-public class FileUploadController {
+//@Controller
+//@RequestMapping("/uploadFile.do")
+//public class FileUploadController {
      
-    private String saveDirectory = "E:/Test/Upload/";
+	//private String saveDirectory = "E:/Test/Upload/";
      
-    @RequestMapping(method = RequestMethod.POST)
-    public String handleFileUpload(HttpServletRequest request,
-            @RequestParam CommonsMultipartFile[] fileUpload) throws Exception {
+    // @RequestMapping(method = RequestMethod.POST)
+    //public String handleFileUpload(HttpServletRequest request,
+    		//  @RequestParam CommonsMultipartFile[] fileUpload) throws Exception {
          
-        System.out.println("description: " + request.getParameter("description"));
+    	// System.out.println("description: " + request.getParameter("description"));
          
-        if (fileUpload != null && fileUpload.length > 0) {
-            for (CommonsMultipartFile aFile : fileUpload){
+        //if (fileUpload != null && fileUpload.length > 0) {
+        	//for (CommonsMultipartFile aFile : fileUpload){
                  
-                System.out.println("Saving file: " + aFile.getOriginalFilename());
+            	// System.out.println("Saving file: " + aFile.getOriginalFilename());
                  
-                if (!aFile.getOriginalFilename().equals("")) {
-                    aFile.transferTo(new File(saveDirectory + aFile.getOriginalFilename()));
-                }
-            }
-        }
+                // if (!aFile.getOriginalFilename().equals("")) {
+                	//  aFile.transferTo(new File(saveDirectory + aFile.getOriginalFilename()));
+                    // }
+                // }
+            //}
  
         // returns to the view "Result"
-        return "Result";
-    }
-}
+        // return "Result";
+        // }
+//}

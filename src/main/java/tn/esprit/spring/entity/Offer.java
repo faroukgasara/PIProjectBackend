@@ -20,7 +20,7 @@ public class Offer implements Serializable{
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Long idOffer;
+	private Long id;
 	//@Size(min=5, max=20)
 	private String Title;
 	private String Domain;
