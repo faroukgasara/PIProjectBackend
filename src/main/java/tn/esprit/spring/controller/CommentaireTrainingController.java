@@ -28,8 +28,9 @@ public class CommentaireTrainingController {
 	//http://localhost:8089/WomenEmpowerment/CommentTraining/add-CommentTraining
 	@PostMapping("/add-CommentTraining")
 	@ResponseBody
-	public void ajouterComment(@RequestBody CommentaireTraining comment)
+	public void ajouterCommentFormation(@RequestBody CommentaireTraining comment)
 	{
+		
 		commentService.ajouterComment(comment);
 		
 	}
@@ -65,7 +66,7 @@ public class CommentaireTrainingController {
 	return commentService.retrieveComments(CommentTrainingId);
 	}
 	
-	//http://localhost:8089/WomenEmpowerment/CommentTraining/affecterCommentFormation/{idComment}/{idFormation}
+	//	
 	@PostMapping("/affecterCommentFormation/{id}/{idFormation}") 
 	@ResponseBody 
 	public void affecterCommentaireFormation(@PathVariable("id")Long id,@PathVariable("idFormation") Long idFormation) {

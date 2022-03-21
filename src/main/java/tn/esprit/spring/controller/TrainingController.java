@@ -84,7 +84,7 @@ public class TrainingController {
 				
 			}
 			
-	       //http://localhost:8089/WomenEmpowerment/Training/update-Training
+	       //http://localhost:8089/WomenEmpowerment/Training/	
 			@PutMapping("/update-Training/{email}")
 			@ResponseBody
 			public Training updateTraining(@RequestParam("idFormation")Long idFormation,@RequestParam("title") String title,@RequestParam("description") String description,

@@ -27,6 +27,8 @@ public interface IEvenementService {
 	List<Evenement> getEventByAdress(String adresse);
 
 	void addParticipant(Long idEvent, String email);
+
+	void deleteEvent(Long idEvent);
 	
 
 }

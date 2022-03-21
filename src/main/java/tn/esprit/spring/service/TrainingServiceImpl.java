@@ -99,8 +99,16 @@ public class TrainingServiceImpl implements TrainingService {
 				{
 			Training training=trainRepo.findById(idFormation).get();
 		User user =userRepo.findById(idUser).get();
-		training.getUsers().add(user);
-		trainRepo.save(training);
+		
+		if(user.getTrainings().size() == 3){
+			System.out.println("hi");
+			
+		}else {
+			training.getUsers().add(user);
+			System.out.println("hi2");
+			trainRepo.save(training);
+		}
+		
 		} 
 		//else 
 			//System.out.writeln.("impossible");

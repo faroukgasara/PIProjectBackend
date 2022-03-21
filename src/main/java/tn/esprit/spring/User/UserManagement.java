@@ -260,7 +260,7 @@ public class UserManagement implements IUserManagement{
 			Pattern p = Pattern.compile("[^a-zA-Z]");
 			Pattern p1 = Pattern.compile("[^a-zA-Z09]");
 			
-			if(user.getBirthdate().getYear()-LocalDateTime.now().getYear()>80 || user.getBirthdate().getYear()-LocalDateTime.now().getYear()<14 ){
+			if(user.getAge()>80 || user.getAge()<14 ){
 				sa.setAge("age does not meet the requirements");
 				suspicious = (float) (suspicious+0.20);
 			}else{

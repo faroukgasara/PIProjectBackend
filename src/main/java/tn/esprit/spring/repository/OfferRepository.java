@@ -26,4 +26,8 @@ public interface OfferRepository extends JpaRepository <Offer, Long>{
     		, @Param("description") String description ,@Param("adress")  String adress );
     
 
+@Query("SELECT t.Domain  FROM Offer t JOIN t.user u GROUP BY u.profession ORDER BY u.profession DESC")
+List<Object[]> countDestinationByDomainUser();
+
+
 }

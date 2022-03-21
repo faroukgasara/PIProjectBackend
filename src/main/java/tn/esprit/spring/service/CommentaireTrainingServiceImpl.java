@@ -20,6 +20,7 @@ public class CommentaireTrainingServiceImpl implements  CommentaireTrainingServi
 
 	@Override
 	public void ajouterComment(CommentaireTraining comment) {
+		
 		commentRepo.save(comment);
 		
 	}

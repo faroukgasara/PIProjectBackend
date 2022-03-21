@@ -134,5 +134,13 @@ public class EvenementService implements IEvenementService  {
 		eventRepository.save(evenement);
 		
 	}
+	
+	@Override
+	public void deleteEvent (Long idEvent){
+		
+
+		eventRepository.deleteById(idEvent);
+		
+	}
 }
    

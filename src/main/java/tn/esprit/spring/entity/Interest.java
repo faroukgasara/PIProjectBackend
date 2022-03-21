@@ -22,7 +22,6 @@ import tn.esprit.spring.User.UserRole;
 
 @Getter
 @Setter
-@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity

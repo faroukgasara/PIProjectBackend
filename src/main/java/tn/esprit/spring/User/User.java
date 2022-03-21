@@ -24,6 +24,7 @@ import tn.esprit.spring.entity.Publication;
 import tn.esprit.spring.entity.Publicite;
 import tn.esprit.spring.entity.Reclamation;
 import tn.esprit.spring.entity.RendezVous;
+import tn.esprit.spring.entity.ReponseRec;
 import tn.esprit.spring.entity.Reporting;
 import tn.esprit.spring.entity.Subscriber;
 import tn.esprit.spring.entity.SuspiciousAccount;
@@ -118,6 +119,10 @@ public class User implements UserDetails,Serializable {
     @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy="user")
     private Set<ToDoList> todolist;
+    
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<ReponseRec> ReponsRec;
     
     @JsonIgnore
     @ManyToMany(mappedBy="users", cascade = CascadeType.ALL)

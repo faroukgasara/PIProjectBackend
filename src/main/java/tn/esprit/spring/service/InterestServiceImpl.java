@@ -65,8 +65,7 @@ public class InterestServiceImpl implements  InterestService{
 
 	@Override
 	public Interest addInterest(Interest interest) {
-		ir.save(interest);
-		return interest;
+		return ir.save(interest);
 	}
 	 
 

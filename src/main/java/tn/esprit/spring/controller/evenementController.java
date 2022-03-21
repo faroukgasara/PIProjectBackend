@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,14 +46,8 @@ public class evenementController {
 	@Autowired
 	private UserRepository myRepository;
 	
-
-/*	
-	// http://localhost:8089/WomenEmpowerment/reporting/addReport/
-	@PostMapping("/addevent/{dd}/{df}")
-
 	// http://localhost:8089/addevent/dd/df/
 	@PostMapping("/addevent")
-
 	@ResponseBody
 	public Evenement addEvent(@RequestBody Evenement event) {
 		return EventService.addEvent(event);
@@ -85,7 +80,6 @@ public class evenementController {
 		return EventService.effectuer(idevent, idres, idcag);
 
 	}
-	*/
 	
 	@PostMapping("/getByLieux")
 	@ResponseBody
@@ -112,5 +106,12 @@ public class evenementController {
 	public void addParticipant(@PathVariable("idEvent") Long idEvent, @PathVariable("email") String email)
 	{
 		EventService.addParticipant(idEvent, email);
+	}
+	
+	@DeleteMapping("/deleteEvent/{idEvent}")
+	@ResponseBody
+	public void deleteEvent(@PathVariable("idEvent") Long idEvent)
+	{
+		EventService.deleteEvent(idEvent);
 	}
 }

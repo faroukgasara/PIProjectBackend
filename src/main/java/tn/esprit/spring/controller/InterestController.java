@@ -6,12 +6,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import tn.esprit.spring.entity.Interest;
 import tn.esprit.spring.service.InterestService;
 
@@ -25,7 +25,8 @@ public class InterestController {
 	
 	
 	@PostMapping("/add-interest")
-	public Interest addInterest(@RequestBody Interest  interest) {
+	@ResponseBody
+	public Interest addInterest(@ RequestBody  Interest  interest) {
 		return interestService.addInterest(interest);
 	}
 	
