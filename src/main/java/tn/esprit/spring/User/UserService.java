@@ -102,9 +102,9 @@ public class UserService implements UserDetailsService {
                 		
                 		);
                 confirmationTokenService.saveConfirmationToken(confirmationToken);
-                return token;
+                return "email already taken";
         	}else{
-        		throw new IllegalStateException("email already taken");
+        		return "email already taken";
         	}
             
         }
@@ -126,7 +126,7 @@ public class UserService implements UserDetailsService {
         		
         		);
         confirmationTokenService.saveConfirmationToken(confirmationToken);
-        return token;
+        return "";
     }
     
     public int enableAppUser(String email) {

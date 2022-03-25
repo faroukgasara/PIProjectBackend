@@ -35,6 +35,13 @@ public class UserController {
 	@Autowired
 	IUserManagement userService;
 	
+	// http://localhost:8089/WomenEmpowerment/user/findByEmail
+	@GetMapping("/findByEmail/{email}")
+	@ResponseBody
+	public User findByEmail(@PathVariable("email") String email){
+		return userService.findByEmail(email);
+	}
+	
 	// http://localhost:8089/WomenEmpowerment/user/getUsers
 	@GetMapping("/getUsers")
 	@ResponseBody

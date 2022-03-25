@@ -54,6 +54,11 @@ public class UserManagement implements IUserManagement{
 	private UserEmotionsRepository userEmotionsRepository;
 
 	@Override
+	public User findByEmail(String email) {
+		return myRepository.findByEmail(email).orElse(null);
+	}
+	
+	@Override
 	public List<User> getUsers() {
 		return myRepository.findAll(Sort.by(Sort.Direction.DESC, "firstName"));
 	}
@@ -335,5 +340,7 @@ public class UserManagement implements IUserManagement{
 		suspiciousAccountRepository.deleteById(id);;
 		
 	}
+
+
 
 }
