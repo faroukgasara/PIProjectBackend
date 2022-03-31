@@ -44,7 +44,7 @@ public class RegistrationService {
         String token ="";
 
         if (!isValidEmail) {
-            throw new IllegalStateException("email not valid");
+        	return "email not valid";
         }
 
 		

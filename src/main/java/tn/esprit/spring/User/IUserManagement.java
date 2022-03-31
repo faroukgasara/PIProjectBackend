@@ -10,6 +10,7 @@ import tn.esprit.spring.entity.SuspiciousAccount;
 
 public interface IUserManagement {
 	public List<User> getUsers();
+	public User findByEmail(String email);
 	public void deleteUser(String email);
 	public void updateUser(User user);
 	List<User> findByFirstNameContains(String firstName);
