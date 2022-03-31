@@ -7,7 +7,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import tn.esprit.spring.config.twilioConfig;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+
+import javax.annotation.PostConstruct;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +27,8 @@ import nu.pattern.OpenCV;
 @SpringBootApplication
 @RestController
 public class PiProjectBackendApplication {
-
+	
+	
 	public static void main(String[] args) {
 		OpenCV.loadShared();
 		SpringApplication.run(PiProjectBackendApplication.class, args);

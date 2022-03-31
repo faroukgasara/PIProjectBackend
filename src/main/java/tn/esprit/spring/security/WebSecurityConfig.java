@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.addFilterBefore(new CustomAuthorizationFilter(),UsernamePasswordAuthenticationFilter.class);
 		http
         .authorizeRequests()
-            .antMatchers("/registration/**","/face/**","/RendezVous/**")
+            .antMatchers("/registration/**","/face/**","/RendezVous/**","/pdf/**")
             .permitAll()
             
         .anyRequest()

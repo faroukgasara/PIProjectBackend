@@ -24,6 +24,15 @@ public class OfferService implements IOfferService{
 		
 		offerRepository.save(f);
 		}
+	
+	@Override
+	public  List<Object[]> statistic () {
+
+	List<Object[]> s = offerRepository.countDestinationByDomainUser();
+
+
+	return s;
+	}
 
 	@Override
 	public List<Offer> getAllOffers() {

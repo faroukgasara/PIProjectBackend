@@ -9,6 +9,9 @@ import tn.esprit.spring.entity.Blacklist;
 import tn.esprit.spring.entity.Calendrier;
 import tn.esprit.spring.entity.Candidature;
 import tn.esprit.spring.entity.Chat;
+
+import tn.esprit.spring.entity.Interest;
+
 import tn.esprit.spring.entity.FacebookData;
 import tn.esprit.spring.entity.NotificationUser;
 import tn.esprit.spring.entity.Cagnotte;
@@ -21,6 +24,7 @@ import tn.esprit.spring.entity.Publication;
 import tn.esprit.spring.entity.Publicite;
 import tn.esprit.spring.entity.Reclamation;
 import tn.esprit.spring.entity.RendezVous;
+import tn.esprit.spring.entity.ReponseRec;
 import tn.esprit.spring.entity.Reporting;
 import tn.esprit.spring.entity.Subscriber;
 import tn.esprit.spring.entity.SuspiciousAccount;
@@ -41,6 +45,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -84,8 +89,6 @@ public class User implements UserDetails,Serializable {
     private String niveauetude ;
 
 
-    private String profession;
-    private String niveauetude ;
 
     private LocalDateTime birthdate;
     
@@ -118,8 +121,16 @@ public class User implements UserDetails,Serializable {
     private Set<ToDoList> todolist;
     
     @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<ReponseRec> ReponsRec;
+    
+    @JsonIgnore
     @ManyToMany(mappedBy="users", cascade = CascadeType.ALL)
     private Set<Training> trainings;
+    
+    @ManyToMany()
+    private List<Interest> interests;
+    
     
     @JsonIgnore
     @OneToOne

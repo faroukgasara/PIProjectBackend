@@ -24,6 +24,7 @@ public interface IOfferService {
 	public void JobApplication(Long IdOffer, String email);
 	
 	public List<Offer> suggestedOffer(Long idUser);
+	List<Object[]> statistic();
 	
 	
 	

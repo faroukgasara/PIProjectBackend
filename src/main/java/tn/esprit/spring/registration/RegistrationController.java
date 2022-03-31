@@ -3,21 +3,29 @@ package tn.esprit.spring.registration;
 import lombok.AllArgsConstructor;
 import tn.esprit.spring.User.User;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 @RequestMapping(path = "registration")
 @AllArgsConstructor
+@CrossOrigin
 public class RegistrationController {
 
     private final RegistrationService registrationService;
 
     // http://localhost:8089/WomenEmpowerment/registration
     @PostMapping
-    public String register(@RequestBody User request) {
-    	
-        return registrationService.register(request);
+    public ResponseEntity<?> register(@RequestBody User request) {
+    	String a = registrationService.register(request);
+    	if(a =="") {
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    	 
     }
     
     // http://localhost:8089/WomenEmpowerment/registration/confirm

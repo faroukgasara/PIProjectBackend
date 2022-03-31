@@ -17,12 +17,15 @@ public class ReponsRecService implements IReponseRecService{
 	ReponseRecRepository reponseRepo;
 	@Autowired
 	ReclamationRepository recRepo;
+	@Autowired
+	IReclamationService recServ;
 	@Override
 	public String addReponse(ReponseRec reponse, Long id) {
 		Reclamation rec = recRepo.findById(id).get();	
 		reponse.setReclamation(rec);
 		reponseRepo.save(reponse);
 		rec.setReponseReclamation(reponse);
+		recServ.marqueTraitee(id);
 		recRepo.save(rec);
 		return "Selket";
 	}
@@ -43,6 +46,11 @@ public class ReponsRecService implements IReponseRecService{
 		}
 		return total/myList.size();
 	
+	}
+	@Override
+	public  List<String> suggestion( Long idRec) {
+		Reclamation rec = recRepo.findById(idRec).orElse(null);
+		return reponseRepo.reponseSuggestion(rec.getType());
 	}
 
 }

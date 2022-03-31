@@ -83,7 +83,7 @@ public class LoggingAspect {
 	IPublicationService pubserv;
 	
 	@Async
-	@Scheduled(fixedRate=5000000)
+	@Scheduled(fixedRate=300000)
 	public void deletePub() {
 		List<Publication> p= pubserv.getPublications();
 		for (Publication publication : p) {
@@ -123,7 +123,7 @@ public class LoggingAspect {
 
 	
 	@Async
-	@Scheduled(fixedRate = 30000)
+	@Scheduled(fixedRate = 300000)
 	public void UserReport() {
 		List<User> u = userService.getUsers();
 		for (User user : u) {
