@@ -31,7 +31,7 @@ public class DislikeController {
 		dislikser.AjouterDislik(dislik, idCo, email);
 		}
 			
-		@GetMapping("/delete/{id}")
+		@DeleteMapping("/delete/{id}")
 		@ResponseBody
 		public void delete(@PathVariable("id") Long id){
 			 dislikser.deleteDislikes(id);

@@ -1,5 +1,7 @@
 package tn.esprit.spring.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,5 +40,9 @@ public class ReponsRecController {
 	public long getTempsAttenteMoyenReclamation()
 	{
 		return rs.getTempsAttenteMoyenReclamation();
+	}
+	@GetMapping("/suggestions/{idRec}")
+	public List<String> suggest(@PathVariable("idRec") Long id){
+		return rs.suggestion(id);
 	}
 }
