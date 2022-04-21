@@ -9,5 +9,6 @@ public interface IToDoListService {
 	public void deleteFromTheToDoList(Long id);
 	List<ToDoList> findByUserEmail(String email);
 	public void updateToDoList(ToDoList todo,String email);
+	public void updateProgress(int progress,Long id);
 
 }

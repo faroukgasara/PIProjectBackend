@@ -117,7 +117,7 @@ public class User implements UserDetails,Serializable {
     private Set<FacebookData> facebookData;
     
     @JsonIgnore
-    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy="user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
     private Set<ToDoList> todolist;
     
     @JsonIgnore

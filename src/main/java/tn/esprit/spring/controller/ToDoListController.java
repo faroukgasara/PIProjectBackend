@@ -59,5 +59,12 @@ public class ToDoListController {
 	public void addToTheToDoList(@RequestBody ToDoList todo,@PathVariable("email") String email) {
 		todoService.addToTheToDoList(todo,email);
 	}
+	
+	//http://localhost:8089/WomenEmpowerment/todo/updateProgress
+	@PutMapping("/updateProgress/{progress}/{id}")
+	@ResponseBody
+	public void updateProgress(@PathVariable("progress") int progress,@PathVariable("id") Long id) {
+		todoService.updateProgress(progress,id);
+	}
 
 }

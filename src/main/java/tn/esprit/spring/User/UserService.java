@@ -126,7 +126,7 @@ public class UserService implements UserDetailsService {
         		
         		);
         confirmationTokenService.saveConfirmationToken(confirmationToken);
-        return "";
+        return token;
     }
     
     public int enableAppUser(String email) {
