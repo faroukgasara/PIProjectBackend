@@ -132,7 +132,7 @@ public class User implements UserDetails,Serializable {
     private List<Interest> interests;
     
     
-    @JsonIgnore
+    
     @OneToOne
     private Subscriber subscriber;
     
