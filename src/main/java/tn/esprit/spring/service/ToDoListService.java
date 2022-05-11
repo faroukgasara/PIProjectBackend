@@ -43,4 +43,10 @@ public class ToDoListService implements IToDoListService{
 		
 	}
 
+	@Override
+	public void updateProgress(int progress, Long id) {
+		myRepository.updateProgress(progress, id);
+		
+	}
+
 }

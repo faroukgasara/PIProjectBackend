@@ -3,7 +3,6 @@ package tn.esprit.spring.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +24,6 @@ public class ReclamationController {
 	IReclamationService rService;
 	@PostMapping("/add/{userId}")
 	@ResponseBody
-	@CrossOrigin(origins = "http://localhost:4200")
 	//localhost:8080/WomenEmpowerment/Reclamation/add/
 	public void addReclamation(@RequestBody Reclamation r,@PathVariable("userId") Long id) {
 		rService.addReclamation(r,id);
