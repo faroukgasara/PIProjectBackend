@@ -1,9 +1,11 @@
 package tn.esprit.spring.entity;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,15 +24,19 @@ public class CommentairePub implements Serializable{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+//	@NotNull()
+//	@NotBlanc
 
 	private String comment ; 
 	private String description;
-	private String type;
+	
 	private String emojis;
 	private Long likes;
 	private Long dislike;
 	
+	private String commented_By;
+	@Column(nullable=false)
+	private LocalDateTime createdAt;
 	
 	@JsonIgnore
 	@ManyToOne
@@ -39,5 +45,14 @@ public class CommentairePub implements Serializable{
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy="commentairesPub")
     private Set<MotsInterdit> motsInterdits;
-
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="commentairesPubs")
+    private Set<Likes> likess;
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="commentairesPubss")
+    private Set<Dislike> dislikess;
+    
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="commentairesPubsss")
+    private Set<Emojis> emojiss;
 }

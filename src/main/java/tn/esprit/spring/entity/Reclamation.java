@@ -44,8 +44,10 @@ public class Reclamation implements Serializable {
 	private Date dateReclamation = new Date(System.currentTimeMillis());
 	private boolean traitee=false;
 	@ManyToOne
+	@JsonIgnore
 	private User user;
 	
+	@JsonIgnore
 	@OneToOne
 	private ReponseRec reponseReclamation;
 	
