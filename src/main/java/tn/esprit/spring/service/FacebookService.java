@@ -88,6 +88,12 @@ public class FacebookService implements IFacebookService{
 		}
 		return new FacebookTemplate(accessToken).feedOperations().getFeed();
 	}
+
+	@Override
+	public List<FacebookData> getData(String email) {
+		
+		return (List<FacebookData>) facebookRepository.findByUserEmailContains(email);
+	}
 			
 
 }

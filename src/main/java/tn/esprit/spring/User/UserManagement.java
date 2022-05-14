@@ -228,27 +228,14 @@ public class UserManagement implements IUserManagement{
 	    }
 
 	@Override
-	public UserManagement fakeAccounts(MultipartFile file) {
+	public UserManagement fakeAccounts() {
+		suspiciousAccountRepository.deleteAll();
 		
 		 faceEntities=new ArrayList<>();
 	        MatOfRect faceDetections = new MatOfRect();
 	        CascadeClassifier faceDetector;
 			
-		
-		try {
-	       
-				faceDetector = new CascadeClassifier(faceResource.getFile().getAbsolutePath());
-				image = Imgcodecs.imdecode(new MatOfByte(file.getBytes()), Imgcodecs.CV_LOAD_IMAGE_UNCHANGED);
-		
-	        faceDetector.detectMultiScale(image, faceDetections);
 
-	        System.out.println(String.format("Detected %s faces", faceDetections.toArray().length));
-
-	        for (Rect rect : faceDetections.toArray()) {
-	            faceEntities.add(new FaceEntity(rect.x, rect.y, rect.width, rect.height, 0));
-	        }}	 catch (IOException e) {
-				e.printStackTrace();
-			}
 	        
 	        
 		List<User> userList = myRepository.findAll();
@@ -316,12 +303,7 @@ public class UserManagement implements IUserManagement{
 				sa.setPub("Verified");
 			}
 			
-			if(faceDetections.toArray().length==0){
-				sa.setPic("profile pic does not meet the requirements");
-				suspicious = (float) (suspicious+0.20);
-			}else{
-				sa.setPic("Verified");
-			}
+
 			sa.setPercentage(suspicious);
 			suspiciousAccountRepository.save(sa);
 	

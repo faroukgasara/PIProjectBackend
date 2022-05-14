@@ -19,6 +19,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import tn.esprit.spring.User.User;
+import tn.esprit.spring.User.UserRole;
 
 @Getter
 @Setter
@@ -34,10 +35,12 @@ public class Reporting implements Serializable{
 	
 	private String reported_by;
 	
-	@JsonIgnore
+	
 	@ManyToOne
 	User user;
 	
 	private String reason ;
+    @Enumerated(EnumType.STRING)
+    private ReportingReason reportingReason;
 
 }

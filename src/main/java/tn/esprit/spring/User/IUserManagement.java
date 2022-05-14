@@ -20,7 +20,7 @@ public interface IUserManagement {
     int lockedAppUser(String email);
     List<Object[]> countTotalUsersByYear();
     Map<String, Float> UserPrediction(String email);
-    public UserManagement fakeAccounts(MultipartFile file);
+    public UserManagement fakeAccounts();
     public List<SuspiciousAccount> getFakeAccounts();
     public void deleteFakeAccounts(Long id);
 

@@ -63,26 +63,9 @@ public class ChatBotService implements IChatBotService{
 	@Override
 	public String answer(String question ,String email) {
 		User u = userRepository.findByEmail(email).orElse(null);
-		HashMap<String, Float> listOfFloats = new HashMap<String, Float>();
 		float max =0 ; 
-		String emotions = "";
-		listOfFloats.put("sad", u.getUserEmotions().getSad());
-		listOfFloats.put("happy", u.getUserEmotions().getHappy());
-		listOfFloats.put("fear",u.getUserEmotions().getFear());
-		listOfFloats.put("anger", u.getUserEmotions().getAnger());
-		listOfFloats.put("violence", u.getUserEmotions().getViolence());
-		listOfFloats.put("suicide", u.getUserEmotions().getSuicide());
-		for (String i : listOfFloats.keySet()) {
-			if(listOfFloats.get(i)>max){
-				  max = listOfFloats.get(i) ; 
-				  emotions = i;
-			  }
-		}
 		
-		if("i need help".contains(question) || "i need your help".contains(question) || "help".contains(question)){
-			return "what's wrong are you "+emotions;
-		}
-		 System.out.println("key: " + emotions + " value: " + max);
+	
 		
 		List<ChatbotKnowledge> ck = (List<ChatbotKnowledge>) myRepository.findAll();
 		
@@ -93,7 +76,7 @@ public class ChatBotService implements IChatBotService{
 			
 		}
 		
-		return "Sorry, Im dumb! How should I reply http://localhost:8089/WomenEmpowerment/chatbot/trainMe";
+		return "Sorry, Im dumb! ";
 		
 	}
 	

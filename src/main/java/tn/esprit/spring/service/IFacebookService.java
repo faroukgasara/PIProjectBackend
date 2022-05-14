@@ -13,5 +13,6 @@ public interface IFacebookService {
 	public void generateFacebookAccessToken(String code);
 	public String getUserData();
 	public PagedList<Post> getUserFeed(String email);
+	public List<FacebookData> getData(String email);
 
 }
