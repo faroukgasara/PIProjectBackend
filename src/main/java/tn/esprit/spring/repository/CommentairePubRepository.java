@@ -25,5 +25,11 @@ public interface CommentairePubRepository extends JpaRepository<CommentairePub, 
 	@Query("SELECT COUNT(liked_by) FROM Likes l WHERE l.commentairesPubs= :pub")
 	int  egwfwwef( @Param("pub") Long pub);
 	
+
+
+	@Query("SELECT c FROM CommentairePub c join c.publications p WHERE p.id= :pub")
+	public List <CommentairePub>  Lisaaa( @Param("pub") Long pub);
+	
+
 	
 }

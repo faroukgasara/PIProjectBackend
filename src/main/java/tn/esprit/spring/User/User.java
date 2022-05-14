@@ -132,7 +132,11 @@ public class User implements UserDetails,Serializable {
     private List<Interest> interests;
     
     
+
     
+
+
+
     @OneToOne
     private Subscriber subscriber;
     

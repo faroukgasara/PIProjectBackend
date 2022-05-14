@@ -48,7 +48,9 @@ public class QRCodeGenerator implements IQRCodeGenerator{
 
 	        Path path = FileSystems.getDefault().getPath(filePath);
 	        MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
+
 	        final File attachment =new File("C:/Users/farou/Desktop/New folder (2)/QRCode.png");
+
 	        
 	        MatrixToImageWriter.writeToFile(bitMatrix, "PNG", attachment);
 	        try {
