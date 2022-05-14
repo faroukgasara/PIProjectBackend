@@ -36,14 +36,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     	http.cors().and().csrf().disable();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.authorizeRequests().antMatchers("/SpringMVC/login/**").permitAll();
+		http.authorizeRequests().antMatchers("/publication/**").permitAll();
+		http.authorizeRequests().antMatchers("/WomenEmpowerment/commentaire/add/**").permitAll();
+		http.authorizeRequests().antMatchers("/youtube-data/**").permitAll();
+
 		http.authorizeRequests().antMatchers(HttpMethod.GET,"/user/users/**").hasAnyAuthority("User");
-		http.authorizeRequests().antMatchers("/user/**").hasAnyAuthority("ADMIN");
-		http.authorizeRequests().antMatchers("/subscriber/**").hasAnyAuthority("ADMIN");
+		//http.authorizeRequests().antMatchers("/user/**").hasAnyAuthority("ADMIN");
+		//http.authorizeRequests().antMatchers("/subscriber/**").hasAnyAuthority("ADMIN");
 		http.addFilter(new CustomAuthentificationFilter(authenticationManagerBean()));
 		http.addFilterBefore(new CustomAuthorizationFilter(),UsernamePasswordAuthenticationFilter.class);
 		http
         .authorizeRequests()
-            .antMatchers("/registration/**","/face/**","/RendezVous/**","/pdf/**")
+            .antMatchers("/login/**","/registration/**","/face/**","/RendezVous/**","/commentaire/**","/pdf/**")
             .permitAll()
             
         .anyRequest()

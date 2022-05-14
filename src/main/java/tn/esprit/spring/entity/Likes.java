@@ -24,6 +24,7 @@ public class Likes implements Serializable{
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String likedBy;
+	private int likes;
 	@ManyToOne
 	CommentairePub commentairesPubs;
 

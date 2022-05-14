@@ -24,10 +24,12 @@ public interface PublicationRepository extends JpaRepository<Publication, Long>{
 	
 	
 	
-	@Query("SELECT P FROM Publication P join P.commentairesPub c join P.users u join P.ratings r where u.description= :description or u.companyName=:companyname or u.associationName=:assoc or u.enabled= true or u.appUserRole=:role or u.age=:age or c.description=:descriptionCom or r.rate = (select max(b.rate) from Rating b )")
-    public List<Publication> suggestedPub( @Param("description") String description,@Param("companyname") String companyname,@Param("assoc") String assoc,@Param("role") UserRole role,@Param("age") int age ,@Param("descriptionCom") String descriptionCom );
+	//@Query("SELECT P FROM Publication P join P.commentairesPub c join P.users u join P.ratings r where u.description= :description or u.companyName=:companyname or u.associationName=:assoc or u.enabled= true or u.appUserRole=:role or u.age=:age or c.description=:descriptionCom or r.rate = (select max(b.rate) from Rating b )")
+    //public List<Publication> suggestedPub( @Param("description") String description,@Param("companyname") String companyname,@Param("assoc") String assoc,@Param("role") UserRole role,@Param("age") int age ,@Param("descriptionCom") String descriptionCom );
 	
-
+	@Query("SELECT P FROM Publication P  join P.users u  where u.description= :description or u.companyName=:companyname or u.associationName=:assoc and u.enabled= true and u.appUserRole=:role and u.age=:age ")
+    public List<Publication> suggestedPub( @Param("description") String description,@Param("companyname") String companyname,@Param("assoc") String assoc,@Param("role") UserRole role,@Param("age") int age );
+	
 	
 	
 

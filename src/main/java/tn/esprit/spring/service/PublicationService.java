@@ -6,6 +6,7 @@ import org.springframework.util.CollectionUtils;
 
 import com.vdurmont.emoji.EmojiParser;
 
+import tn.esprit.spring.Response.Com;
 import tn.esprit.spring.User.User;
 import tn.esprit.spring.User.UserRepository;
 import tn.esprit.spring.User.UserRole;
@@ -18,26 +19,33 @@ import java.util.List;
 @Service
 public class PublicationService implements IPublicationService {
 	
+	private static final Com Com = null;
 	@Autowired
 	PublicationRepository pubrepo;
 	@Autowired
 	UserRepository userrepo;
 	
-	 
+	@Override
+	public Publication retrievePostById(Long idPost) {
+		
+		return pubrepo.findById(idPost).orElse(null);
+	}
 
 	@Override
-	public void AjouterPub(Publication pub, String email) {
+	public Com AjouterPub(Publication pub, String email) {
 	
 	 	User u = userrepo.findByEmail(email).orElse(null);
 		
 		  
 		pub.setCreatedAt(LocalDateTime.now());
-		Publication p = pubrepo.save(pub);
+	Publication p = pubrepo.save(pub);
 		
 	
 		
 		p.setUsers(u);
 		 pubrepo.save(p);
+		 
+		 return Com;
 	 }
 	
 	@Override
@@ -80,9 +88,16 @@ public class PublicationService implements IPublicationService {
 	}
 	
 	@Override
-	public List<Publication> suggpub(String  description,String  companyname,String  assoc,UserRole  role,int age,String descriptionCom) {
+	public List<Publication> suggpub(String  description,String  companyname,String  assoc,UserRole  role,int age) {
 		// TODO Auto-generated method stub
-		return pubrepo.suggestedPub(description, companyname, assoc, role, age, descriptionCom);
+		return pubrepo.suggestedPub(description, companyname, assoc, role, age);
+	}
+	
+
+	@Override
+	public Publication getPubID(Long id) {
+		// TODO Auto-generated method stub
+		return pubrepo.findById(id).get();
 	}
 
 	

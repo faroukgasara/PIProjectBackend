@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,12 +22,13 @@ import tn.esprit.spring.entity.Publication;
 import tn.esprit.spring.entity.TypePub;
 import tn.esprit.spring.service.ICommentairePubService;
 import tn.esprit.spring.service.IPublicationService;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/commentaire")
 public class CommentairePubController {
 	@Autowired
 	ICommentairePubService comserv;
+	@CrossOrigin(origins = "*")
 	@PostMapping("/add/{idPub}/{email}")
 	@ResponseBody
 	public void ajoutercategorie(@ RequestBody  CommentairePub com,@PathVariable("idPub") Long idPub,@PathVariable("email") String email){
@@ -40,6 +42,11 @@ public class CommentairePubController {
 		return ResponseEntity.ok().body(comserv.getCommentairePub());
 		
 	}
+	@GetMapping("/get/{pub}")
+	@ResponseBody
+	public List<CommentairePub> retrieveTraining(@PathVariable("pub") Long pub ) {
+	return comserv.Lisaa(pub);}
+	
 	
 	// http://localhost:8089/WomenEmpowerment/publication/delete/
 	@DeleteMapping("/delete/{id}")

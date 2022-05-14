@@ -37,27 +37,29 @@ LikesRepository likrepo;
 	
 	
 
-		  if (userExists) {
-			  
-			  if(likedbyExists){}
-			  else{
-			  CommentairePub p = comrepo.findById(idCo).orElse(null);
+		  if (userExists ) {
+			
 		  
 			
-			Likes L = likrepo.save(lik);
+			  CommentairePub p = comrepo.findById(idCo).orElse(null);
+			  
+				 
+				
+				Likes L = likrepo.save(lik);
+				
+			L.setLikedBy(email);
+			L.setLikes(L.getLikes()+1);
+			L.setCommentairesPubs(p);
+			p.setLikesss(p.getLikesss()+1);
 			
-		L.setLikedBy(email);
-		L.setCommentairesPubs(p);
-		likrepo.save(L);
-}}
-		  else{
-		
-
-
-
+			likrepo.save(L);}
+			else{}
+			  
+				  
+			
+		  
+}
 	
-		  }
-	}
 
 
 
