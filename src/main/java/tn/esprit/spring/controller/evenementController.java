@@ -114,15 +114,4 @@ public class evenementController {
 	{
 		EventService.deleteEvent(idEvent);
 	}
-
-	
-	@GetMapping("/getallevents")
-	public List<Evenement> getallevents()
-	{
-		List<Evenement> listF = EventService.getallevent();
-		
-		return listF ;
-	}
-	
-
 }

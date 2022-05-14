@@ -133,9 +133,6 @@ public class User implements UserDetails,Serializable {
     
     
 
-    
-
-
 
     @OneToOne
     private Subscriber subscriber;

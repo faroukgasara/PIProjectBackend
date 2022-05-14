@@ -85,6 +85,7 @@ public class LoggingAspect {
 	@Async
 	@Scheduled(fixedRate=30000000)
 
+
 	public void deletePub() {
 		List<Publication> p= pubserv.getPublications();
 		for (Publication publication : p) {

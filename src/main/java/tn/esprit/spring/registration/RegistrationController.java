@@ -21,7 +21,9 @@ public class RegistrationController {
     public ResponseEntity<?> register(@RequestBody User request) {
     	String a = registrationService.register(request);
 
+
     	if(a =="" || a.length()==36) {
+
 
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
