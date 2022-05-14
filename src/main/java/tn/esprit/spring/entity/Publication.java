@@ -33,9 +33,6 @@ public class Publication implements Serializable{
 	private TypePub type;
 	private String picture;
 
-
-	private LocalDateTime createdAt;
-
 	
 	private int commentrs;
 
@@ -48,9 +45,7 @@ public class Publication implements Serializable{
     @OneToMany(cascade = CascadeType.ALL, mappedBy="publications")
     private Set<Rating> ratings;
     
-
     
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy="publications")
     private Set<CommentairePub> commentairesPub;
 
