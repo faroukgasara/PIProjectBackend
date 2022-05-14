@@ -35,6 +35,7 @@ public class Training implements Serializable{
 	private Long nbrMaxApprenant;
 	private String affiche;
 	private String formateur;
+	//private Integer like;
 	
 	
 	@JsonIgnore

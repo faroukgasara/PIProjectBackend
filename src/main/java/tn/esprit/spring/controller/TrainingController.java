@@ -1,6 +1,8 @@
 package tn.esprit.spring.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -9,11 +11,19 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+
+import javax.servlet.ServletContext;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
+import org.assertj.core.util.Files;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.json.JsonParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,11 +32,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 import tn.esprit.spring.User.User;
 import tn.esprit.spring.User.UserService;
@@ -40,8 +53,10 @@ import tn.esprit.spring.service.TrainingService;
 import org.springframework.ui.Model;
 
 
+
 @RestController
 @RequestMapping("/Training")
+@CrossOrigin(origins = "http://localhost:4200/**")
 public class TrainingController {
 	
 	@Autowired
@@ -58,50 +73,52 @@ public class TrainingController {
 	
 	@Autowired
 	HistoriqueTrainingService historiqueTrainiSer;
+	@Autowired  ServletContext context;
 	
 	
 	
 	//http://localhost:8089/WomenEmpowerment/Training/add-training
 			@PostMapping("/add-training/{email}")
 			
-			public void ajouterFormation(@RequestParam("title") String title,@RequestParam("description") String description,
-					@RequestParam("dateDebut") String dateDebut,@RequestParam("dateFin") String dateFin,@RequestParam("nbrMaxApprenant") Long nbrMaxApprenant,
-					@RequestParam("file") MultipartFile file,@PathVariable("email") String email) throws IllegalStateException, IOException, ParseException
+			public void ajouterFormation(@RequestBody Training training,
+					@PathVariable("email") String email)  
 			{
 				
-				Date dateDeb =new SimpleDateFormat("yyyy/MM/dd").parse(dateDebut);
-				Date dateF =new SimpleDateFormat("yyyy/MM/dd").parse(dateFin);
-				Training training = new Training();
-				training.setTitle(title);
-				training.setDescription(description);
-				training.setDateDebut(dateDeb);
-				training.setDateFin(dateF);
-				training.setNbrMaxApprenant(nbrMaxApprenant);
-				fileupload.uploadfile(file);
-				training.setAffiche(file.getOriginalFilename());
+				
+				//Date dateDeb =new SimpleDateFormat("yyyy/MM/dd").parse(dateDebut);
+			//	Date dateF =new SimpleDateFormat("yyyy/MM/dd").parse(dateFin);
+				//Training training = new Training();
+				//training.setTitle(title);
+				//training.setDescription(description);
+				//training.setDateDebut(dateDeb);
+				//training.setDateFin(dateF);
+				//training.setNbrMaxApprenant(nbrMaxApprenant);
+				//fileupload.uploadfile(file);
+				//training.setAffiche(file.getOriginalFilename());
 				trainService.ajouterFormation(training,email);
 				
 				
 			}
 			
+			
+			
 	       //http://localhost:8089/WomenEmpowerment/Training/	
+			
 			@PutMapping("/update-Training/{email}")
 			@ResponseBody
-			public Training updateTraining(@RequestParam("idFormation")Long idFormation,@RequestParam("title") String title,@RequestParam("description") String description,
-					@RequestParam("dateDebut") String dateDebut,@RequestParam("dateFin") String dateFin,@RequestParam("nbrMaxApprenant") Long nbrMaxApprenant,
-					@RequestParam("file") MultipartFile file,@PathVariable("email") String email) throws ParseException, IllegalStateException, IOException {
-				Date dateDeb =new SimpleDateFormat("yyyy/MM/dd").parse(dateDebut);
-				Date dateF =new SimpleDateFormat("yyyy/MM/dd").parse(dateFin);
-				Training training = new Training();
-				training.setIdFormation(idFormation);
-				training.setTitle(title);
-				training.setDescription(description);
-				training.setDateDebut(dateDeb);
-				training.setDateFin(dateF);
-				training.setNbrMaxApprenant(nbrMaxApprenant);
-				training.setFormateur(email);
-				fileupload.uploadfile(file);
-				training.setAffiche(file.getOriginalFilename());
+			public Training updateTraining(@PathVariable("email") String email,@RequestBody Training training) throws ParseException, IllegalStateException, IOException {
+				//Date dateDeb =new SimpleDateFormat("yyyy/MM/dd").parse(dateDebut);
+				//Date dateF =new SimpleDateFormat("yyyy/MM/dd").parse(dateFin);
+				//Training training = new Training();
+				//training.setIdFormation(idFormation);
+				//training.setTitle(title);
+				//training.setDescription(description);
+				//training.setDateDebut(dateDeb);
+				//training.setDateFin(dateF);
+				//training.setNbrMaxApprenant(nbrMaxApprenant);
+				//training.setFormateur(email);
+				//fileupload.uploadfile(file);
+				//training.setAffiche(file.getOriginalFilename());
 			return trainService.updateTraining(training ,email);
 			}
 			
@@ -197,6 +214,18 @@ public class TrainingController {
 				List<Training> recom = new ArrayList<Training>(listedrecom);
 				return recom;
 				
+			}
+			
+			@GetMapping("/getTrainingASC")
+			@ResponseBody
+			public List<Training> getClasseByLabel(){
+				return trainService.getAllClasseLabel();
+			}
+
+			@GetMapping("/getTrainingDesc")
+			@ResponseBody
+			public List<Training> getClasseDesc(){
+				return trainService.getLabelDesc();
 			}
 			
 			
