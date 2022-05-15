@@ -67,7 +67,7 @@ public class EvenementService implements IEvenementService  {
 	@Override
 	public Evenement addEvent(Evenement event){
 		
-		System.out.println("aaaa");
+		//System.out.println("aaaa");
 		System.out.println(event.getCagnotte());
 		reservationRepository.save(event.getReservation());
 		cagRepository.save(event.getCagnotte()) ;
@@ -78,19 +78,11 @@ public class EvenementService implements IEvenementService  {
 	}
 	
 	@Override
-	public Evenement UpdateEvent(Long  idevent,Evenement event,Reservation res,Date dd , Date df){
-		Evenement e =  eventRepository.findById(idevent).orElse(null);
+	public Evenement UpdateEvent(Evenement event){
+
+	
 		
-		e.setAffiche(event.getAffiche());		
-		e.setTitre(event.getTitre());
-		e.setLieux(event.getLieux());
-		e.setDateEvenement(event.getDateEvenement());
-		e.setDescription(event.getDescription());
-		e.setReservation(res);
-		e.getCagnotte().setDateDebut(dd);
-		e.getCagnotte().setDateFin(df);
-		
-		eventRepository.save(e);
+		eventRepository.save(event);
 		
 		return event;
 			

@@ -1,9 +1,12 @@
 package tn.esprit.spring.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,6 +38,24 @@ public class CagnotteController {
 				{
 					return	cagnottesService.addcagnotte(cag);
 					
+				}
+				
+				
+				// http://localhost:8089/getcagnotte/
+				@GetMapping("/getcagnotte")
+				@ResponseBody
+				public List<Cagnotte> getallcag()
+				{
+					return	cagnottesService.getallcag();
+					
+				}
+				
+				
+				@DeleteMapping("/deleteCagnotte/{id}")
+				@ResponseBody
+				public void deleteEvent(@PathVariable("id") Long id)
+				{
+					cagnottesService.deletecagnotte(id);
 				}
 	
 	

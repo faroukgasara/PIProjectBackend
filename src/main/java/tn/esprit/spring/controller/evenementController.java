@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +28,7 @@ import tn.esprit.spring.User.UserService;
 import tn.esprit.spring.entity.Cagnotte;
 import tn.esprit.spring.entity.Evenement;
 import tn.esprit.spring.entity.Reservation;
+import tn.esprit.spring.entity.TypeEvenement;
 import tn.esprit.spring.service.FileUploadService;
 import tn.esprit.spring.service.IEvenementService;
 
@@ -56,19 +58,29 @@ public class evenementController {
 	// http://localhost:8089/addeventon//
 	@PostMapping("/addeventonly")
 	@ResponseBody
-	public Evenement addEventonly(@RequestParam("dateEvenement") String dateEvenement,
-			@RequestParam("titre") String titre, @RequestParam("lieux") String lieux,
-			@RequestParam("description") String description, @RequestParam("affiche") MultipartFile affiche)
+	public Evenement addEventonly(@RequestBody Evenement event)
 			throws IllegalStateException, IOException, ParseException {
-		Evenement event = new Evenement();
-		Date sDate = new SimpleDateFormat("yyyy-MM-dd").parse(dateEvenement);
-		event.setDateEvenement(sDate);
-		event.setTitre(titre);
-		event.setLieux(lieux);
-		event.setDescription(description);
-		fileUploadService.uploadfile(affiche);
-		event.setAffiche(affiche.getOriginalFilename());
+		//Evenement event = new Evenement();
+		//Date sDate = new SimpleDateFormat("yyyy-MM-dd").parse(dateEvenement);
+		//event.setDateEvenement(sDate);
+		//event.setTitre(titre);
+		//event.setLieux(lieux);
+		//event.setDescription(description);
+		//fileUploadService.uploadfile(affiche);
+		//event.setAffiche(affiche.getName());
+		//event.setTypeEvenement(typeEvenement);
 		return EventService.addEventonly(event);
+
+	}
+	
+	
+	// http://localhost:8089/updatevent//
+	@PutMapping("/updatevent")
+	@ResponseBody
+	public Evenement updatevent(@RequestBody Evenement event)
+			throws IllegalStateException, IOException, ParseException {
+
+		return EventService.UpdateEvent(event);
 
 	}
 
@@ -92,13 +104,17 @@ public class evenementController {
 	@GetMapping("/Recommend/{email}")
 	public List<Evenement> recommend(@PathVariable("email") String email)
 	{
+
 		User currentUser = myRepository.findByEmail(email).orElse(null);
+
 		String lieu = currentUser.getAdress();
+		
 		List<Evenement> listFinal = EventService.getEventByAdress(lieu);
 		List<Evenement> therest = EventService.getallevent();
 		listFinal.addAll(therest);
-		
+				
 		return  listFinal;
+		
 	}
 	
 	@PostMapping("/addparticipant/{idEvent}/{email}")

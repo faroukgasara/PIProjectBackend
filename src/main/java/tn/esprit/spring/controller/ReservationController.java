@@ -1,9 +1,11 @@
 package tn.esprit.spring.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
+import tn.esprit.spring.entity.Cagnotte;
 import tn.esprit.spring.entity.Evenement;
 import tn.esprit.spring.entity.Reservation;
 import tn.esprit.spring.service.IReservationService;
@@ -30,11 +33,21 @@ public class ReservationController {
 	
 	
 	// http://localhost:8089/addreservation//
-			@PostMapping("/addreservation/")
+			@PostMapping("/addreservation")
 			@ResponseBody
 			public Reservation addreservation(@RequestBody Reservation res)
 			{
 				return	reservationService.addReservation(res);
+				
+			}
+			
+			
+			// http://localhost:8089/getres/
+			@GetMapping("/getres")
+			@ResponseBody
+			public List<Reservation> getallcag()
+			{
+				return	reservationService.getallres();
 				
 			}
 }
