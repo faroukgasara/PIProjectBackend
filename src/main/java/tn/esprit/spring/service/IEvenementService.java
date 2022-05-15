@@ -12,7 +12,7 @@ public interface IEvenementService {
 
 	Evenement addEvent(Evenement event);
 
-	Evenement UpdateEvent(Long idevent, Evenement event, Reservation res, Date dd, Date df);
+	Evenement UpdateEvent(Evenement event);
 
 	String deleteevent(Long idevent);
 
