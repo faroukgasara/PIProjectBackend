@@ -20,7 +20,11 @@ public class RegistrationController {
     @PostMapping
     public ResponseEntity<?> register(@RequestBody User request) {
     	String a = registrationService.register(request);
+
+
     	if(a =="" || a.length()==36) {
+
+
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

@@ -30,7 +30,6 @@ public class SuspiciousAccount implements Serializable{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String pic;
 	private String adre;
 	private String fistlastname;
 	private String tokensus;
@@ -42,7 +41,7 @@ public class SuspiciousAccount implements Serializable{
 	
 	
 	
-	@JsonIgnore
+	
 	@OneToOne
 	private User user;
 	

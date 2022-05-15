@@ -18,5 +18,9 @@ public interface TrainingService {
 	public List<Training> suggestTraining(String uname);
 	//List<Facture> getFacturesByClient(Long clientId);
 	public List<Training> searchTraining(String text);
+
+	public List<Training> getAllClasseLabel();
+	public List<Training> getLabelDesc();
+
 }
 

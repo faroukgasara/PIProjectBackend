@@ -29,10 +29,10 @@ public class ReportingController {
 	
 	
 	// http://localhost:8089/WomenEmpowerment/reporting/addReport/
-	@PostMapping("/addReport/{reported}/{reportedby}/{reason}")
+	@PostMapping("/addReport/{reported}/{reportedby}/{reason}/{type}")
 	@ResponseBody
-	public void addReport(@PathVariable("reported") String reported,@PathVariable("reportedby") String reportedby,@PathVariable("reason") String reason){
-		reportingService.addReport(reported, reportedby, reason);
+	public void addReport(@PathVariable("reported") String reported,@PathVariable("reportedby") String reportedby,@PathVariable("reason") String reason,@PathVariable("type") ReportingReason type){
+		reportingService.addReport(reported, reportedby, reason,type);
 	}
 	
 	
@@ -69,6 +69,14 @@ public class ReportingController {
 	@ResponseBody
 	public List<Object[]> countTotalReportingByReason(){
 		return reportingService.countTotalReportingByReason();
+	}
+	
+	
+	// http://localhost:8089/WomenEmpowerment/reporting/findByUserEmailContains
+	@GetMapping("/findByUserEmailContains/{email}")
+	@ResponseBody
+	public List<Reporting> findByUserEmailContains(@PathVariable("email") String email){
+		return reportingService.findByUserEmailContains(email);
 	}
 	
 

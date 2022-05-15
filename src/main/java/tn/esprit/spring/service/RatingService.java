@@ -22,6 +22,7 @@ UserRepository userrepo;
 	@Override
 	public void AjouterRat(Rating rat, Long idPub,String email) {
 		User u = userrepo.findByEmail(email).orElse(null);
+
 		boolean userExists = userrepo
                 .findByEmail(u.getEmail())
                 .isPresent();
@@ -40,6 +41,7 @@ UserRepository userrepo;
 			}
 			
 			
+
 			
 		
 			  
@@ -53,8 +55,10 @@ Publication p = pubrepo.findById(idPub).orElse(null);
 		ratrepo.save(r);
 	}
 
+
 }
-	
+
+
 	@Override
 	public void deleteRate(Long id) {
 		Rating p = ratrepo.findById(id).orElse(null);

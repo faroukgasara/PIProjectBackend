@@ -1,6 +1,7 @@
 package tn.esprit.spring.service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,33 +33,66 @@ public class CommentairePubService implements ICommentairePubService {
 	
 	
 	@Override
-	public void AjouterCommentare(CommentairePub com, Long idPub, String email) {
+	public String AjouterCommentare(CommentairePub com, Long idPub, String email) {
 		
+		Publication p=pubrepo.findById(idPub).orElse(null);
 		
 		User u = userrepo.findByEmail(email).orElse(null);
 		 boolean userExists = userrepo
 	                .findByEmail(u.getEmail())
 	                .isPresent();
+		 boolean pubexist = pubrepo.findById(idPub).isPresent();
 	
+		if (pubexist){
 		
 		  if (userExists) {
-			  com.setCreatedAt(LocalDateTime.now());
-		Publication p=pubrepo.findById(idPub).orElse(null);
-		CommentairePub C=comrepo.save(com);
+			  List<String> badwords=new ArrayList<>();
+				badwords.add("bad");
+				badwords.add("badwords");
+				badwords.add("bads");
+				String motPost[]=com.getComment().split(" ");
+				String comm="";
+				 
+			for(String mots:motPost){
+
+				
+					if (badwords.contains(mots)){
+					    mots="***";
+						comm=comm+" "+mots;
+						com.setComment(comm);
+						com.setCreatedAt(LocalDateTime.now());
+						p.setCommentrs(p.getCommentrs()+1);
+						com.setPublications(p);
+						com.setCommented_By(email);
+						comrepo.save(com);
+						return comm;
+					}
+				else
+					comm=comm+" "+mots;}
+			 com.setComment(comm);
+			com.setCreatedAt(LocalDateTime.now());
+			p.setCommentrs(p.getCommentrs()+1);
+			com.setPublications(p);
+			com.setCommented_By(email);
+			comrepo.save(com);
+			 
+			 
+			 return comm;
+			  
+	
 		
-		C.setCreatedAt(LocalDateTime.now());
 		
 		
 		
-		C.setPublications(p);
-		C.setCommented_By(email);
-		comrepo.save(C);
+		
+		
 		
 		
 	}else{
 		throw new IllegalStateException("email already taken");
 	}}
-	
+		return "okey";
+	}
 	 
 	
 
@@ -109,6 +143,15 @@ public class CommentairePubService implements ICommentairePubService {
 
 	
 	
+	}
+
+
+
+
+
+	@Override
+	public List<CommentairePub> Lisaa(Long pub) {
+		return comrepo.Lisaaa(pub);
 	}
 	
 

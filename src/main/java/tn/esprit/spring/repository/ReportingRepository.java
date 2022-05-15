@@ -14,6 +14,8 @@ public interface ReportingRepository extends JpaRepository<Reporting, Long>{
 	
 	List<Reporting> findByUserFirstNameContains(String firstName);
 	
+	List<Reporting> findByUserEmailContains(String email);
+	
 	List<Reporting> findByReasonContains(String reason);
 	
     @Query("SELECT c.reason, COUNT(c.reason) FROM Reporting AS c GROUP BY c.reason ORDER BY c.reason DESC")

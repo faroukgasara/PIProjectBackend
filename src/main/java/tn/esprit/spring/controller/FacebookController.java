@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import tn.esprit.spring.entity.FacebookData;
 import tn.esprit.spring.service.IFacebookService;
 import tn.esprit.spring.service.NotificationUserService;
 
@@ -57,6 +58,13 @@ public class FacebookController {
 	@ResponseBody
 	public PagedList<Post> getUserFeed(@PathVariable("email") String email){
 		return facebookService.getUserFeed(email);
+	}
+	
+	
+	
+	@GetMapping("/data/{email}")
+	public List<FacebookData> getData(@PathVariable("email") String email){
+		return facebookService.getData(email);
 	}
 	
 

@@ -35,6 +35,7 @@ public class FacebookData implements Serializable{
 	@Column(length = 65555)
 	private String message;
 	
+	@JsonIgnore
 	@ManyToOne
 	User user;
 

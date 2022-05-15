@@ -123,10 +123,10 @@ public class UserController {
 	
 	
 	// http://localhost:8089/WomenEmpowerment/user/fakeAccounts
-    @RequestMapping(value = "/fakeAccounts", method = RequestMethod.POST, produces = MediaType.IMAGE_JPEG_VALUE)
+    @RequestMapping(value = "/fakeAccounts")
 	@ResponseBody
-	public byte[] fakeAccounts(@RequestParam("file") MultipartFile file){
-    	return userService.fakeAccounts(file).toImage();
+	public void fakeAccounts(){
+    	userService.fakeAccounts();
 	}
     
     

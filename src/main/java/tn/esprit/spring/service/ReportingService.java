@@ -21,12 +21,13 @@ public class ReportingService implements IReportingService{
 	UserRepository userRepository ;
 
 	@Override
-	public void addReport(String reported, String reportedby,String reason) {
+	public void addReport(String reported, String reportedby,String reason,ReportingReason type) {
 		User u =  userRepository.findByEmail(reported).orElse(null);
 		Reporting r = new Reporting();
 		r.setReason(reason);
 		r.setReported_by(reportedby);
 		r.setUser(u);
+		r.setReportingReason(type);
 		Reporting r1 = myRepository.save(r);
 		u.getReporting().add(r1);
 	}
@@ -55,6 +56,11 @@ public class ReportingService implements IReportingService{
 	@Override
 	public List<Object[]> countTotalReportingByReason() {
 		return myRepository.countTotalReportingByReason();
+	}
+
+	@Override
+	public List<Reporting> findByUserEmailContains(String email) {
+		return myRepository.findByUserEmailContains(email);
 	}
 
 

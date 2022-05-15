@@ -105,10 +105,10 @@ public class User implements UserDetails,Serializable {
     private Set<Publication> publications;
     
     @JsonIgnore
-    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy="user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
     private Set<Reporting> reporting;
     
-    @JsonIgnore
+    
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy="user")
     private Set<NotificationUser> notificationUser;
     
@@ -132,7 +132,8 @@ public class User implements UserDetails,Serializable {
     private List<Interest> interests;
     
     
-    
+
+
     @OneToOne
     private Subscriber subscriber;
     

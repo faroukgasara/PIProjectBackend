@@ -20,5 +20,10 @@ public interface TrainingRepository extends CrudRepository <Training,Long> {
 	List<Training> findByformateur(String formateur);
 
 	List<Training> findByTitleContaining(String text);
+	@Query("Select a FROM Training a ORDER BY a.title ASC")
+	public List<Training> getByLabelAsc();
+	
+@Query("Select a FROM Training a ORDER BY a.title DESC")
+	public List<Training> getByLabelDesc();
 
 }

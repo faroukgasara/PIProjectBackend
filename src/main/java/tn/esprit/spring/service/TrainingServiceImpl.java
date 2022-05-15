@@ -51,20 +51,20 @@ public class TrainingServiceImpl implements TrainingService {
 		}
 		else 
 		{
-			
+			training.setFormateur(email);
+			trainRepo.save(training);	
 			
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setFrom("faroukgasaraa@gmail.com");
 		message.setTo("loujein.hragua@esprit.tn");
 		message.setSubject("Nouvelle formation\n");
-		message.setText("Hi "+userRepo.findByEmail(email).get().getFirstName() +" Welcom to your Training " +training.getTitle());
+		message.setText("Hi "+userRepo.findByEmail(email).get().getFirstName() +" your Training " +training.getTitle()+" is added successfuly votre code de reunion est :salleA");
 		System.out.println("success");
 		mailsender.send(message);
 		
 	
 		
-			training.setFormateur(email);
-			trainRepo.save(training);	
+			
 		}
 		 
 	}
@@ -99,6 +99,7 @@ public class TrainingServiceImpl implements TrainingService {
 				{
 			Training training=trainRepo.findById(idFormation).get();
 		User user =userRepo.findById(idUser).get();
+		//trainRepo.save(training);
 		
 		if(user.getTrainings().size() == 3){
 			System.out.println("hi");
@@ -126,6 +127,16 @@ public class TrainingServiceImpl implements TrainingService {
 	public List<Training> searchTraining(String text) {
 	
 		return trainRepo.findByTitleContaining(text) ;
+	}
+	
+	@Override
+	public List<Training> getAllClasseLabel(){
+		return trainRepo.getByLabelAsc();
+	}
+
+	@Override
+	public List<Training> getLabelDesc(){
+		return trainRepo.getByLabelDesc();
 	}
 	
 	

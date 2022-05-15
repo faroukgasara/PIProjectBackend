@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import tn.esprit.spring.User.User;
 import tn.esprit.spring.User.UserRepository;
 import tn.esprit.spring.entity.NotificationUser;
+import tn.esprit.spring.entity.Reporting;
 import tn.esprit.spring.repository.NotificationUserRepository;
 
 
@@ -21,6 +22,15 @@ public class NotificationUserService implements INotificationUserService{
 	
 	@Autowired
 	UserRepository userRepository;
+	
+	
+	
+	
+	@Override
+	public List<NotificationUser> findByUserEmailContains(String email) {
+		return myRepository.findByUserEmailContains(email);
+	}
+	
 	
 	@Override
 	public void sendGlobalNotification(String description) {
