@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/WomenEmpowerment/commentaire/add/**").permitAll();
 		http.authorizeRequests().antMatchers("/youtube-data/**").permitAll();
 
-		http.authorizeRequests().antMatchers(HttpMethod.GET,"/user/users/**").hasAnyAuthority("User");
+		//http.authorizeRequests().antMatchers(HttpMethod.GET,"/user/users/**").hasAnyAuthority("User");
 		//http.authorizeRequests().antMatchers("/user/**").hasAnyAuthority("ADMIN");
 		//http.authorizeRequests().antMatchers("/subscriber/**").hasAnyAuthority("ADMIN");
 		http.addFilter(new CustomAuthentificationFilter(authenticationManagerBean()));
@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 
-            .antMatchers("/login/**","/registration/**","/face/**","/RendezVous/**","/commentaire/**","/pdf/**")
+            .antMatchers("/**")
 
 
             .permitAll()

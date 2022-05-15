@@ -82,22 +82,10 @@ public class LoggingAspect {
 	@Autowired
 	IPublicationService pubserv;
 	
-	@Async
-	@Scheduled(fixedRate=30000000)
 
-
-	public void deletePub() {
-		List<Publication> p= pubserv.getPublications();
-		for (Publication publication : p) {
-			if(publication.getCommentairesPub().size()==0){
-				
-				pubserv.deletePub(publication.getId());
-			}
-			
-		}
 		
 	
-	}
+	
 	@Async
 	@AfterReturning("execution(* tn.esprit.spring.service.PublicationService.AjouterPub(..))")
 	public void deletePub1() {
